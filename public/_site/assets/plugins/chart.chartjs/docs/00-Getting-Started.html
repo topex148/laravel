@@ -1,0 +1,201 @@
+<p>###Include Chart.js</p>
+
+<p>First we need to include the Chart.js library on the page. The library occupies a global variable of <code class="highlighter-rouge">Chart</code>.</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"Chart.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+</code></pre></div></div>
+
+<p>Alternatively, if you’re using an AMD loader for JavaScript modules, that is also supported in the Chart.js core. Please note: the library will still occupy a global variable of <code class="highlighter-rouge">Chart</code>, even if it detects <code class="highlighter-rouge">define</code> and <code class="highlighter-rouge">define.amd</code>. If this is a problem, you can call <code class="highlighter-rouge">noConflict</code> to restore the global Chart variable to it’s previous owner.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Using requirejs</span>
+<span class="nx">require</span><span class="p">([</span><span class="s1">'path/to/Chartjs'</span><span class="p">],</span> <span class="kd">function</span><span class="p">(</span><span class="nx">Chart</span><span class="p">){</span>
+	<span class="c1">// Use Chart.js as normal here.</span>
+
+	<span class="c1">// Chart.noConflict restores the Chart global variable to it's previous owner</span>
+	<span class="c1">// The function returns what was previously Chart, allowing you to reassign.</span>
+	<span class="kd">var</span> <span class="nx">Chartjs</span> <span class="o">=</span> <span class="nx">Chart</span><span class="p">.</span><span class="nx">noConflict</span><span class="p">();</span>
+
+<span class="p">});</span>
+</code></pre></div></div>
+
+<p>You can also grab Chart.js using bower:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bower install Chart.js <span class="nt">--save</span>
+</code></pre></div></div>
+
+<p>Also, Chart.js is available from CDN:</p>
+
+<p>https://cdnjs.com/libraries/chart.js</p>
+
+<p>###Creating a chart</p>
+
+<p>To create a chart, we need to instantiate the <code class="highlighter-rouge">Chart</code> class. To do this, we need to pass in the 2d context of where we want to draw the chart. Here’s an example.</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;canvas</span> <span class="na">id=</span><span class="s">"myChart"</span> <span class="na">width=</span><span class="s">"400"</span> <span class="na">height=</span><span class="s">"400"</span><span class="nt">&gt;&lt;/canvas&gt;</span>
+</code></pre></div></div>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Get the context of the canvas element we want to select</span>
+<span class="kd">var</span> <span class="nx">ctx</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">"myChart"</span><span class="p">).</span><span class="nx">getContext</span><span class="p">(</span><span class="s2">"2d"</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">myNewChart</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Chart</span><span class="p">(</span><span class="nx">ctx</span><span class="p">).</span><span class="nx">PolarArea</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>We can also get the context of our canvas with jQuery. To do this, we need to get the DOM node out of the jQuery collection, and call the <code class="highlighter-rouge">getContext("2d")</code> method on that.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Get context with jQuery - using jQuery's .get() method.</span>
+<span class="kd">var</span> <span class="nx">ctx</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s2">"#myChart"</span><span class="p">).</span><span class="kd">get</span><span class="p">(</span><span class="mi">0</span><span class="p">).</span><span class="nx">getContext</span><span class="p">(</span><span class="s2">"2d"</span><span class="p">);</span>
+<span class="c1">// This will get the first returned node in the jQuery collection.</span>
+<span class="kd">var</span> <span class="nx">myNewChart</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Chart</span><span class="p">(</span><span class="nx">ctx</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>After we’ve instantiated the Chart class on the canvas we want to draw on, Chart.js will handle the scaling for retina displays.</p>
+
+<p>With the Chart class set up, we can go on to create one of the charts Chart.js has available. In the example below, we would be drawing a Polar area chart.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">new</span> <span class="nx">Chart</span><span class="p">(</span><span class="nx">ctx</span><span class="p">).</span><span class="nx">PolarArea</span><span class="p">(</span><span class="nx">data</span><span class="p">,</span> <span class="nx">options</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>We call a method of the name of the chart we want to create. We pass in the data for that chart type, and the options for that chart as parameters. Chart.js will merge the global defaults with chart type specific defaults, then merge any options passed in as a second argument after data.</p>
+
+<p>###Global chart configuration</p>
+
+<p>This concept was introduced in Chart.js 1.0 to keep configuration DRY, and allow for changing options globally across chart types, avoiding the need to specify options for each instance, or the default for a particular chart type.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">Chart</span><span class="p">.</span><span class="nx">defaults</span><span class="p">.</span><span class="nb">global</span> <span class="o">=</span> <span class="p">{</span>
+	<span class="c1">// Boolean - Whether to animate the chart</span>
+	<span class="na">animation</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+
+	<span class="c1">// Number - Number of animation steps</span>
+	<span class="na">animationSteps</span><span class="p">:</span> <span class="mi">60</span><span class="p">,</span>
+
+	<span class="c1">// String - Animation easing effect</span>
+	<span class="c1">// Possible effects are:</span>
+	<span class="c1">// [easeInOutQuart, linear, easeOutBounce, easeInBack, easeInOutQuad,</span>
+	<span class="c1">//  easeOutQuart, easeOutQuad, easeInOutBounce, easeOutSine, easeInOutCubic,</span>
+	<span class="c1">//  easeInExpo, easeInOutBack, easeInCirc, easeInOutElastic, easeOutBack,</span>
+	<span class="c1">//  easeInQuad, easeInOutExpo, easeInQuart, easeOutQuint, easeInOutCirc,</span>
+	<span class="c1">//  easeInSine, easeOutExpo, easeOutCirc, easeOutCubic, easeInQuint,</span>
+	<span class="c1">//  easeInElastic, easeInOutSine, easeInOutQuint, easeInBounce,</span>
+	<span class="c1">//  easeOutElastic, easeInCubic]</span>
+	<span class="na">animationEasing</span><span class="p">:</span> <span class="s2">"easeOutQuart"</span><span class="p">,</span>
+
+	<span class="c1">// Boolean - If we should show the scale at all</span>
+	<span class="na">showScale</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+
+	<span class="c1">// Boolean - If we want to override with a hard coded scale</span>
+	<span class="na">scaleOverride</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+
+	<span class="c1">// ** Required if scaleOverride is true **</span>
+	<span class="c1">// Number - The number of steps in a hard coded scale</span>
+	<span class="na">scaleSteps</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
+	<span class="c1">// Number - The value jump in the hard coded scale</span>
+	<span class="na">scaleStepWidth</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
+	<span class="c1">// Number - The scale starting value</span>
+	<span class="na">scaleStartValue</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
+
+	<span class="c1">// String - Colour of the scale line</span>
+	<span class="na">scaleLineColor</span><span class="p">:</span> <span class="s2">"rgba(0,0,0,.1)"</span><span class="p">,</span>
+
+	<span class="c1">// Number - Pixel width of the scale line</span>
+	<span class="na">scaleLineWidth</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+
+	<span class="c1">// Boolean - Whether to show labels on the scale</span>
+	<span class="na">scaleShowLabels</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+
+	<span class="c1">// Interpolated JS string - can access value</span>
+	<span class="na">scaleLabel</span><span class="p">:</span> <span class="s2">"&lt;%=value%&gt;"</span><span class="p">,</span>
+
+	<span class="c1">// Boolean - Whether the scale should stick to integers, not floats even if drawing space is there</span>
+	<span class="na">scaleIntegersOnly</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+
+	<span class="c1">// Boolean - Whether the scale should start at zero, or an order of magnitude down from the lowest value</span>
+	<span class="na">scaleBeginAtZero</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+
+	<span class="c1">// String - Scale label font declaration for the scale label</span>
+	<span class="na">scaleFontFamily</span><span class="p">:</span> <span class="s2">"'Helvetica Neue', 'Helvetica', 'Arial', sans-serif"</span><span class="p">,</span>
+
+	<span class="c1">// Number - Scale label font size in pixels</span>
+	<span class="na">scaleFontSize</span><span class="p">:</span> <span class="mi">12</span><span class="p">,</span>
+
+	<span class="c1">// String - Scale label font weight style</span>
+	<span class="na">scaleFontStyle</span><span class="p">:</span> <span class="s2">"normal"</span><span class="p">,</span>
+
+	<span class="c1">// String - Scale label font colour</span>
+	<span class="na">scaleFontColor</span><span class="p">:</span> <span class="s2">"#666"</span><span class="p">,</span>
+
+	<span class="c1">// Boolean - whether or not the chart should be responsive and resize when the browser does.</span>
+	<span class="na">responsive</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+
+	<span class="c1">// Boolean - whether to maintain the starting aspect ratio or not when responsive, if set to false, will take up entire container</span>
+	<span class="na">maintainAspectRatio</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+
+	<span class="c1">// Boolean - Determines whether to draw tooltips on the canvas or not</span>
+	<span class="na">showTooltips</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+
+	<span class="c1">// Function - Determines whether to execute the customTooltips function instead of drawing the built in tooltips (See [Advanced - External Tooltips](#advanced-usage-custom-tooltips))</span>
+	<span class="na">customTooltips</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+
+	<span class="c1">// Array - Array of string names to attach tooltip events</span>
+	<span class="na">tooltipEvents</span><span class="p">:</span> <span class="p">[</span><span class="s2">"mousemove"</span><span class="p">,</span> <span class="s2">"touchstart"</span><span class="p">,</span> <span class="s2">"touchmove"</span><span class="p">],</span>
+
+	<span class="c1">// String - Tooltip background colour</span>
+	<span class="na">tooltipFillColor</span><span class="p">:</span> <span class="s2">"rgba(0,0,0,0.8)"</span><span class="p">,</span>
+
+	<span class="c1">// String - Tooltip label font declaration for the scale label</span>
+	<span class="na">tooltipFontFamily</span><span class="p">:</span> <span class="s2">"'Helvetica Neue', 'Helvetica', 'Arial', sans-serif"</span><span class="p">,</span>
+
+	<span class="c1">// Number - Tooltip label font size in pixels</span>
+	<span class="na">tooltipFontSize</span><span class="p">:</span> <span class="mi">14</span><span class="p">,</span>
+
+	<span class="c1">// String - Tooltip font weight style</span>
+	<span class="na">tooltipFontStyle</span><span class="p">:</span> <span class="s2">"normal"</span><span class="p">,</span>
+
+	<span class="c1">// String - Tooltip label font colour</span>
+	<span class="na">tooltipFontColor</span><span class="p">:</span> <span class="s2">"#fff"</span><span class="p">,</span>
+
+	<span class="c1">// String - Tooltip title font declaration for the scale label</span>
+	<span class="na">tooltipTitleFontFamily</span><span class="p">:</span> <span class="s2">"'Helvetica Neue', 'Helvetica', 'Arial', sans-serif"</span><span class="p">,</span>
+
+	<span class="c1">// Number - Tooltip title font size in pixels</span>
+	<span class="na">tooltipTitleFontSize</span><span class="p">:</span> <span class="mi">14</span><span class="p">,</span>
+
+	<span class="c1">// String - Tooltip title font weight style</span>
+	<span class="na">tooltipTitleFontStyle</span><span class="p">:</span> <span class="s2">"bold"</span><span class="p">,</span>
+
+	<span class="c1">// String - Tooltip title font colour</span>
+	<span class="na">tooltipTitleFontColor</span><span class="p">:</span> <span class="s2">"#fff"</span><span class="p">,</span>
+
+	<span class="c1">// Number - pixel width of padding around tooltip text</span>
+	<span class="na">tooltipYPadding</span><span class="p">:</span> <span class="mi">6</span><span class="p">,</span>
+
+	<span class="c1">// Number - pixel width of padding around tooltip text</span>
+	<span class="na">tooltipXPadding</span><span class="p">:</span> <span class="mi">6</span><span class="p">,</span>
+
+	<span class="c1">// Number - Size of the caret on the tooltip</span>
+	<span class="na">tooltipCaretSize</span><span class="p">:</span> <span class="mi">8</span><span class="p">,</span>
+
+	<span class="c1">// Number - Pixel radius of the tooltip border</span>
+	<span class="na">tooltipCornerRadius</span><span class="p">:</span> <span class="mi">6</span><span class="p">,</span>
+
+	<span class="c1">// Number - Pixel offset from point x to tooltip edge</span>
+	<span class="na">tooltipXOffset</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
+	
+	<span class="c1">// String - Template string for single tooltips</span>
+	<span class="na">tooltipTemplate</span><span class="p">:</span> <span class="s2">"&lt;%if (label){%&gt;&lt;%=label%&gt;: &lt;%}%&gt;&lt;%= value %&gt;"</span><span class="p">,</span>
+	
+	<span class="c1">// String - Template string for multiple tooltips</span>
+	<span class="na">multiTooltipTemplate</span><span class="p">:</span> <span class="s2">"&lt;%= value %&gt;"</span><span class="p">,</span>
+
+	<span class="c1">// Function - Will fire on animation progression.</span>
+	<span class="na">onAnimationProgress</span><span class="p">:</span> <span class="kd">function</span><span class="p">(){},</span>
+
+	<span class="c1">// Function - Will fire on animation completion.</span>
+	<span class="na">onAnimationComplete</span><span class="p">:</span> <span class="kd">function</span><span class="p">(){}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>If for example, you wanted all charts created to be responsive, and resize when the browser window does, the following setting can be changed:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">Chart</span><span class="p">.</span><span class="nx">defaults</span><span class="p">.</span><span class="nb">global</span><span class="p">.</span><span class="nx">responsive</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p>Now, every time we create a chart, <code class="highlighter-rouge">options.responsive</code> will be <code class="highlighter-rouge">true</code>.</p>

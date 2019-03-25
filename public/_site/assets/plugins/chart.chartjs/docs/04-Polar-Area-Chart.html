@@ -1,0 +1,160 @@
+<h3 id="introduction">Introduction</h3>
+<p>Polar area charts are similar to pie charts, but each segment has the same angle - the radius of the segment differs depending on the value.</p>
+
+<p>This type of chart is often useful when we want to show a comparison data similar to a pie chart, but also show a scale of values for context.</p>
+
+<div class="canvas-holder">
+	<canvas width="250" height="125"></canvas>
+</div>
+
+<h3 id="example-usage">Example usage</h3>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">new</span> <span class="nx">Chart</span><span class="p">(</span><span class="nx">ctx</span><span class="p">).</span><span class="nx">PolarArea</span><span class="p">(</span><span class="nx">data</span><span class="p">,</span> <span class="nx">options</span><span class="p">);</span>
+</code></pre></div></div>
+
+<h3 id="data-structure">Data structure</h3>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">data</span> <span class="o">=</span> <span class="p">[</span>
+	<span class="p">{</span>
+		<span class="na">value</span><span class="p">:</span> <span class="mi">300</span><span class="p">,</span>
+		<span class="na">color</span><span class="p">:</span><span class="s2">"#F7464A"</span><span class="p">,</span>
+		<span class="na">highlight</span><span class="p">:</span> <span class="s2">"#FF5A5E"</span><span class="p">,</span>
+		<span class="na">label</span><span class="p">:</span> <span class="s2">"Red"</span>
+	<span class="p">},</span>
+	<span class="p">{</span>
+		<span class="na">value</span><span class="p">:</span> <span class="mi">50</span><span class="p">,</span>
+		<span class="na">color</span><span class="p">:</span> <span class="s2">"#46BFBD"</span><span class="p">,</span>
+		<span class="na">highlight</span><span class="p">:</span> <span class="s2">"#5AD3D1"</span><span class="p">,</span>
+		<span class="na">label</span><span class="p">:</span> <span class="s2">"Green"</span>
+	<span class="p">},</span>
+	<span class="p">{</span>
+		<span class="na">value</span><span class="p">:</span> <span class="mi">100</span><span class="p">,</span>
+		<span class="na">color</span><span class="p">:</span> <span class="s2">"#FDB45C"</span><span class="p">,</span>
+		<span class="na">highlight</span><span class="p">:</span> <span class="s2">"#FFC870"</span><span class="p">,</span>
+		<span class="na">label</span><span class="p">:</span> <span class="s2">"Yellow"</span>
+	<span class="p">},</span>
+	<span class="p">{</span>
+		<span class="na">value</span><span class="p">:</span> <span class="mi">40</span><span class="p">,</span>
+		<span class="na">color</span><span class="p">:</span> <span class="s2">"#949FB1"</span><span class="p">,</span>
+		<span class="na">highlight</span><span class="p">:</span> <span class="s2">"#A8B3C5"</span><span class="p">,</span>
+		<span class="na">label</span><span class="p">:</span> <span class="s2">"Grey"</span>
+	<span class="p">},</span>
+	<span class="p">{</span>
+		<span class="na">value</span><span class="p">:</span> <span class="mi">120</span><span class="p">,</span>
+		<span class="na">color</span><span class="p">:</span> <span class="s2">"#4D5360"</span><span class="p">,</span>
+		<span class="na">highlight</span><span class="p">:</span> <span class="s2">"#616774"</span><span class="p">,</span>
+		<span class="na">label</span><span class="p">:</span> <span class="s2">"Dark Grey"</span>
+	<span class="p">}</span>
+
+<span class="p">];</span>
+</code></pre></div></div>
+<p>As you can see, for the chart data you pass in an array of objects, with a value and a colour. The value attribute should be a number, while the color attribute should be a string. Similar to CSS, for this string you can use HEX notation, RGB, RGBA or HSL.</p>
+
+<h3 id="chart-options">Chart options</h3>
+
+<p>These are the customisation options specific to Polar Area charts. These options are merged with the <a href="#getting-started-global-chart-configuration">global chart configuration options</a>, and form the options of the chart.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span>
+	<span class="c1">//Boolean - Show a backdrop to the scale label</span>
+	<span class="nl">scaleShowLabelBackdrop</span> <span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+
+	<span class="c1">//String - The colour of the label backdrop</span>
+	<span class="nx">scaleBackdropColor</span> <span class="p">:</span> <span class="s2">"rgba(255,255,255,0.75)"</span><span class="p">,</span>
+
+	<span class="c1">// Boolean - Whether the scale should begin at zero</span>
+	<span class="nx">scaleBeginAtZero</span> <span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+
+	<span class="c1">//Number - The backdrop padding above &amp; below the label in pixels</span>
+	<span class="nx">scaleBackdropPaddingY</span> <span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+
+	<span class="c1">//Number - The backdrop padding to the side of the label in pixels</span>
+	<span class="nx">scaleBackdropPaddingX</span> <span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+
+	<span class="c1">//Boolean - Show line for each value in the scale</span>
+	<span class="nx">scaleShowLine</span> <span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+
+	<span class="c1">//Boolean - Stroke a line around each segment in the chart</span>
+	<span class="nx">segmentShowStroke</span> <span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+
+	<span class="c1">//String - The colour of the stroke on each segement.</span>
+	<span class="nx">segmentStrokeColor</span> <span class="p">:</span> <span class="s2">"#fff"</span><span class="p">,</span>
+
+	<span class="c1">//Number - The width of the stroke value in pixels</span>
+	<span class="nx">segmentStrokeWidth</span> <span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+
+	<span class="c1">//Number - Amount of animation steps</span>
+	<span class="nx">animationSteps</span> <span class="p">:</span> <span class="mi">100</span><span class="p">,</span>
+
+	<span class="c1">//String - Animation easing effect.</span>
+	<span class="nx">animationEasing</span> <span class="p">:</span> <span class="s2">"easeOutBounce"</span><span class="p">,</span>
+
+	<span class="c1">//Boolean - Whether to animate the rotation of the chart</span>
+	<span class="nx">animateRotate</span> <span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+
+	<span class="c1">//Boolean - Whether to animate scaling the chart from the centre</span>
+	<span class="nx">animateScale</span> <span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+	
+	<span class="c1">//String - A legend template</span>
+	<span class="nx">legendTemplate</span> <span class="p">:</span> <span class="s2">"&lt;ul class=</span><span class="se">\"</span><span class="s2">&lt;%=name.toLowerCase()%&gt;-legend</span><span class="se">\"</span><span class="s2">&gt;&lt;% for (var i=0; i&lt;segments.length; i++){%&gt;&lt;li&gt;&lt;span style=</span><span class="se">\"</span><span class="s2">background-color:&lt;%=segments[i].fillColor%&gt;</span><span class="se">\"</span><span class="s2">&gt;&lt;/span&gt;&lt;%if(segments[i].label){%&gt;&lt;%=segments[i].label%&gt;&lt;%}%&gt;&lt;/li&gt;&lt;%}%&gt;&lt;/ul&gt;"</span>
+	
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>You can override these for your <code class="highlighter-rouge">Chart</code> instance by passing a second argument into the <code class="highlighter-rouge">PolarArea</code> method as an object with the keys you want to override.</p>
+
+<p>For example, we could have a polar area chart with a black stroke on each segment like so:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">new</span> <span class="nx">Chart</span><span class="p">(</span><span class="nx">ctx</span><span class="p">).</span><span class="nx">PolarArea</span><span class="p">(</span><span class="nx">data</span><span class="p">,</span> <span class="p">{</span>
+	<span class="na">segmentStrokeColor</span><span class="p">:</span> <span class="s2">"#000000"</span>
+<span class="p">});</span>
+<span class="c1">// This will create a chart with all of the default options, merged from the global config,</span>
+<span class="c1">// and the PolarArea chart defaults but this particular instance will have `segmentStrokeColor` set to `"#000000"`.</span>
+</code></pre></div></div>
+
+<p>We can also change these defaults values for each PolarArea type that is created, this object is available at <code class="highlighter-rouge">Chart.defaults.PolarArea</code>.</p>
+
+<h3 id="prototype-methods">Prototype methods</h3>
+
+<h4 id="getsegmentsatevent-event-">.getSegmentsAtEvent( event )</h4>
+
+<p>Calling <code class="highlighter-rouge">getSegmentsAtEvent(event)</code> on your Chart instance passing an argument of an event, or jQuery event, will return the segment elements that are at that the same position of that event.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">canvas</span><span class="p">.</span><span class="nx">onclick</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">evt</span><span class="p">){</span>
+	<span class="kd">var</span> <span class="nx">activePoints</span> <span class="o">=</span> <span class="nx">myPolarAreaChart</span><span class="p">.</span><span class="nx">getSegmentsAtEvent</span><span class="p">(</span><span class="nx">evt</span><span class="p">);</span>
+	<span class="c1">// =&gt; activePoints is an array of segments on the canvas that are at the same position as the click event.</span>
+<span class="p">};</span>
+</code></pre></div></div>
+
+<p>This functionality may be useful for implementing DOM based tooltips, or triggering custom behaviour in your application.</p>
+
+<h4 id="update-">.update( )</h4>
+
+<p>Calling <code class="highlighter-rouge">update()</code> on your Chart instance will re-render the chart with any updated values, allowing you to edit the value of multiple existing points, then render those in one animated render loop.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">myPolarAreaChart</span><span class="p">.</span><span class="nx">segments</span><span class="p">[</span><span class="mi">1</span><span class="p">].</span><span class="nx">value</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+<span class="c1">// Would update the first dataset's value of 'Green' to be 10</span>
+<span class="nx">myPolarAreaChart</span><span class="p">.</span><span class="nx">update</span><span class="p">();</span>
+<span class="c1">// Calling update now animates the position of Green from 50 to 10.</span>
+</code></pre></div></div>
+
+<h4 id="adddata-segmentdata-index-">.addData( segmentData, index )</h4>
+
+<p>Calling <code class="highlighter-rouge">addData(segmentData, index)</code> on your Chart instance passing an object in the same format as in the constructor. There is an option second argument of ‘index’, this determines at what index the new segment should be inserted into the chart.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// An object in the same format as the original data source</span>
+<span class="nx">myPolarAreaChart</span><span class="p">.</span><span class="nx">addData</span><span class="p">({</span>
+	<span class="na">value</span><span class="p">:</span> <span class="mi">130</span><span class="p">,</span>
+	<span class="na">color</span><span class="p">:</span> <span class="s2">"#B48EAD"</span><span class="p">,</span>
+	<span class="na">highlight</span><span class="p">:</span> <span class="s2">"#C69CBE"</span><span class="p">,</span>
+	<span class="na">label</span><span class="p">:</span> <span class="s2">"Purple"</span>
+<span class="p">});</span>
+<span class="c1">// The new segment will now animate in.</span>
+</code></pre></div></div>
+
+<h4 id="removedata-index-">.removeData( index )</h4>
+
+<p>Calling <code class="highlighter-rouge">removeData(index)</code> on your Chart instance will remove segment at that particular index. If none is provided, it will default to the last segment.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">myPolarAreaChart</span><span class="p">.</span><span class="nx">removeData</span><span class="p">();</span>
+<span class="c1">// Other segments will update to fill the empty space left.</span>
+</code></pre></div></div>
