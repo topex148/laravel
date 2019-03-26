@@ -9,4 +9,9 @@ class Package extends Model
   protected $fillable = [
     'Fecha_Inicio', 'Fecha_Final',
   ];
+
+  public function itinerario(){
+  return $this->hasMany(Itinerario::class);
+  }
+
 }

@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.menuInicio')
 
 @section('content')
 <!-- CONTACT -->
@@ -29,12 +29,15 @@
 
 									<div class="row">
 
-											<div class="col-md-6">
-	                      <h5>ID de Zona</h5>
-	                      <!-- date picker -->
-	                      <input type="text" value="{{old('zona_id')}}" class="form-control"  name="zona_id"  placeholder="Ingrese el ID Zona">
-
-	                    </div>
+										<div class="col-md-6"><!-- select -->
+											<label for="">ID Zona</label>
+											<select required class="form-control" name="zona_id" value="{{old('zona_id')}}">
+												<option value="">--- Seleccione la zona a la que pertenece ---</option>
+												@foreach ($zonas as $zona)
+													<option value="{{$zona->id}}">{{$zona->id}}-{{$zona->nombre}}</option>
+													@endforeach
+											</select>
+										</div>
 
 	                    <div class="col-md-6">
 	                      <h5>Nombre del Atractivo</h5>

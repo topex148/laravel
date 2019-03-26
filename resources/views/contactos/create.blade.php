@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.menuInicio')
 
 @section('content')
 <!-- CONTACT -->
@@ -28,63 +28,52 @@
 									<!--<input type="hidden" name="action" value="contact_send" />-->
 
 									<div class="row">
-
-											<div class="col-md-6">
-	                      <h5>Nombre</h5>
-	                      <!-- date picker -->
-	                      <input type="text" value="{{old('nombre')}}" class="form-control"  name="nombre"  placeholder="Ingrese el Nombre">
-
-	                    </div>
-
-	                    <div class="col-md-6">
-	                      <h5>Email</h5>
-	                      <!-- date picker -->
-	                      <input type="text" value="{{old('correo')}}" class="form-control" name="correo"  placeholder="Ingrese el Email">
-
-	                    </div>
+											<div class="col-md-4">
+												<label for="">Nombre completo *</label>
+												<input required type="text" value="{{old('nombre')}}" class="form-control" name="nombre" placeholder="Ingrese su Nombre">
+											</div>
+											<div class="col-md-4">
+												<label for="">Dirección E-mail *</label>
+												<input required type="email" value="{{old('correo')}}" class="form-control" name="correo" placeholder="Ingrese su Correo">
+											</div>
+											<div class="col-md-4">
+												<label for="">Teléfono </label>
+												<div class="fancy-form">
+												<i class="fa fa-phone-square"></i>
+												<input required type="text"  maxlength="10" class="form-control masked" data-format="(999) 999-9999" data-placeholder="X" value="{{old('Telefono')}}"  name="Telefono" placeholder="Ingrese su Numero de Telefono">
+											</div>
+											</div>
 									</div>
-
 									<div class="row">
-
-											<div class="col-md-4">
-												<h5>Telefono</h5>
-												<!-- date picker -->
-												<input type="text" value="{{old('Telefono')}}" class="form-control"  name="Telefono"  placeholder="Ingrese el Telefono">
-
+											<div class="col-md-8">
+												<label for="">Asunto *</label>
+												<input required type="text" value="{{old('Asunto')}}" class="form-control" name="Asunto" placeholder="Ingrese el Asunto">
 											</div>
-
 											<div class="col-md-4">
-												<h5>Mensaje</h5>
-												<!-- date picker -->
-												<input type="text" value="{{old('Mensaje')}}" class="form-control" name="Mensaje"  placeholder="Ingrese el Mensaje">
-
-											</div>
-
-											<div class="col-md-4">
-												<h5>Area</h5>
-												<!-- date picker -->
-												<input type="text" value="{{old('Area')}}" class="form-control" name="Area"  placeholder="Ingrese el Area">
-
+												<label for="">Área </label>
+												<select  required class="form-control pointer"  name="Area" value="{{old('Area')}}">
+													<option value="">--- Seleccionar ---</option>
+													<option value="Turista">Turista</option>
+													<option value="Prestador de Servicio">Prestador de Servicio</option>
+													<option value="Guía turístico">Guía turístico </option>
+												</select>
 											</div>
 									</div>
-
 									<div class="row">
-
-											<div class="col-md-6">
-												<h5>Asunto</h5>
-												<!-- date picker -->
-												<input type="text" value="{{old('Asunto')}}" class="form-control"  name="Asunto"  placeholder="Ingrese el Asunto">
-
-											</div>
-
-											<div class="col-md-6">
-												<h5>Archivo</h5>
-												<!-- date picker -->
-												<input type="text" value="{{old('archivo')}}" class="form-control" name="archivo"  placeholder="Ingrese el Archivo">
-
+											<div class="col-md-12">
+												<label for="contact:message">Mensaje *</label>
+												<textarea required maxlength="10000" rows="8"  value="{{old('Mensaje')}}" class="form-control" name="Mensaje" placeholder="Ingrese el Mensaje"></textarea>
 											</div>
 									</div>
+									<div class="row">
+										<div class="col-md-12">
+											<!-- custom file upload -->
+										<label for="">Archivo</label>
+										<input class="custom-file-upload"  required type="file" name="archivo"  data-btn-text="Seleccionar Archivo" />
+										<small class="text-muted block">Tamaño de Archivo Maximo: 10Mb (zip/pdf/jpg/png)</small>
 
+									</div>
+									</div>
 
 
 							<!--	</fieldset>-->

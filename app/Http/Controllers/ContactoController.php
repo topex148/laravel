@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Contacto;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+use Auth;
+use Input;
+use Image;
 
 class ContactoController extends Controller
 {
@@ -15,14 +19,39 @@ class ContactoController extends Controller
       return view('contactos.index', compact('contactos'));
   }
 
-  public function create()
+  public function create(Request $request)
   {
-      return view('contactos.create');
+      $contacto = Contacto::all();
+      return view('contactos.create',['contactos' => $contacto]);
   }
 
   public function store(Request $request)
   {
-      $contacto = Contacto::create($request->all());
+    if($request->hasFile('archivo'))
+{
+
+
+  $fileNameExt = $request->file('archivo')->getClientOriginalName();
+  $fileName = pathinfo($fileNameExt, PATHINFO_FILENAME);
+  $fileExt = $request->file('archivo')->getClientOriginalExtension();
+  $fileNameToStore = $fileName.'_'.time().'.'.$fileExt;
+  $pathToStore = $request->file('archivo')->storeAs('imagen/contactar/',$fileNameToStore);
+}
+
+$post = new Contacto;
+if($request->hasFile('archivo')){
+          $post->archivo = $fileNameToStore;
+      }
+$post->nombre = request()->nombre;
+$post->correo = request()->correo;
+$post->Telefono = request()->Telefono;
+$post->Mensaje = request()->Mensaje;
+$post->Area = request()->Area;
+$post->Asunto = request()->Asunto;
+
+$post->save();
+
+      //$contacto = Contacto::create($request->all());
 
       return redirect()->route('contactos.index')
         ->with('info', 'Contacto creado con exito');

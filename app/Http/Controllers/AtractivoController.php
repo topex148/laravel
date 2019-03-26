@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Atractivo;
+use App\Zona;
 use Illuminate\Http\Request;
 
 class AtractivoController extends Controller
@@ -26,7 +27,8 @@ class AtractivoController extends Controller
    */
   public function create()
   {
-      return view('atractivos.create');
+      $zonas = Zona::all();
+      return view('atractivos.create',  compact('zonas'));
   }
 
   /**
@@ -60,9 +62,10 @@ class AtractivoController extends Controller
    * @param  \App\Atractivo  $atractivo
    * @return \Illuminate\Http\Response
    */
-  public function edit(Atractivo $atractivo)
+  public function edit(Request $request , Atractivo $atractivo)
   {
-      return view('atractivos.edit', compact ('atractivo'));
+      $zonas = Zona::all();
+      return view('atractivos.edit', compact ('atractivo', 'zonas'));
   }
 
   /**

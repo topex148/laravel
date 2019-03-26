@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.menuInicio')
 
 @section('content')
 <div class="container">
@@ -25,7 +25,7 @@
                         <table class="table table-striped table-hover">
                           <thead>
                             <tr>
-                              
+
                                 <th width="10px">ID de Atractivo</th>
                                 <th>Nombre del Atractivo</th>
                                 <th colspan="3">&nbsp;</th>
