@@ -321,4 +321,51 @@ Route::middleware(['auth'])->group(function(){
   Route::get('perfilPrestador', 'PerfilPrestadorController@index')->name('prestador.index')
         ->middleware('permission:prestador.index');
 
+  //Editar Prestador
+  Route::get('perfilPrestador/{prestadore}/edit', 'PerfilPrestadorController@editPrestador')->name('perfil.edit')
+        ->middleware('permission:perfil.edit');
+
+  Route::patch('perfilPrestador/{prestadore}', 'PerfilPrestadorController@updatePrestador')->name('perfil.update')
+        ->middleware('permission:perfil.edit');
+
+  //Imagenes Prestador
+
+  Route::get('perfilPrestador/create', 'PerfilPrestadorController@create')->name('imagen.create')
+        ->middleware('permission:imagen.create');
+
+  Route::post('perfilPrestador/store', 'PerfilPrestadorController@store')->name('imagen.store')
+        ->middleware('permission:imagen.create');
+
+  Route::get('perfilPrestador/{foto}/editImagen', 'PerfilPrestadorController@edit')->name('imagen.edit')
+        ->middleware('permission:imagen.edit');
+
+  Route::patch('perfilPrestador/{foto}/imagen', 'PerfilPrestadorController@update')->name('imagen.update')
+        ->middleware('permission:imagen.edit');
+
+  Route::get('perfilPrestador/{foto}', 'PerfilPrestadorController@show')->name('imagen.show')
+        ->middleware('permission:imagen.show');
+
+  Route::delete('perfilPrestador/{foto}', 'PerfilPrestadorController@destroy')->name('imagen.destroy')
+        ->middleware('permission:imagen.destroy');
+
+  //Itinerarios Prestador
+
+  Route::get('perfilPrestador/create/itinerario', 'PerfilPrestadorController@createItine')->name('itine.create')
+        ->middleware('permission:itine.create');
+
+  Route::post('perfilPrestador/store/itinerario', 'PerfilPrestadorController@storeItine')->name('itine.store')
+        ->middleware('permission:itine.create');
+
+  Route::get('perfilPrestador/{itinerario}/editItinerario', 'PerfilPrestadorController@editItine')->name('itine.edit')
+        ->middleware('permission:itine.edit');
+
+  Route::patch('perfilPrestador/{itinerario}/itinerario', 'PerfilPrestadorController@updateItine')->name('itine.update')
+        ->middleware('permission:itine.edit');
+
+  Route::get('perfilPrestador/{itinerario}/itinerarios', 'PerfilPrestadorController@showItine')->name('itine.show')
+        ->middleware('permission:itine.show');
+
+  Route::delete('perfilPrestador/{itinerario}/deleteItinerario', 'PerfilPrestadorController@destroyItine')->name('itine.destroy')
+        ->middleware('permission:itine.destroy');
+
 });

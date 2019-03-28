@@ -3,15 +3,18 @@
 namespace App\Http\Controllers;
 
 use App\Prestadore;
+use App\Foto;
 use Illuminate\Http\Request;
 
 class PrestadoreController extends Controller
 {
   public function index()
   {
-      $prestadores = Prestadore::paginate();
+      $fotos = Foto::paginate();
+      $itinerarios = Itinerario::paginate();
 
-      return view('prestadores.index', compact('prestadores'));
+
+      return view('prestadores.index', compact('prestadores', 'fotos'));
   }
 
   public function create()
