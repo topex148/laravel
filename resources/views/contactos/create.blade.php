@@ -20,7 +20,7 @@
 							<h3>Verifica los datos antes de seleccionar <strong><em>Registrar!</em></strong></h3>
 
 
-							<form action="/LaTesis/public/contactos/store" method="POST" role="form">
+							<form enctype="multipart/form-data" action="/LaTesis/public/contactos/store" method="POST" role="form">
 
                 {{csrf_field()}}
 

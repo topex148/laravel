@@ -16,8 +16,11 @@ class User extends Authenticatable
      *
      * @var array
      */
+
+
+
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password', 'RIF_Prest',
     ];
 
     /**
@@ -29,6 +32,14 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+
+    public function prestadore(){
+      return $this->belongsTo(Prestadore::class, 'RIF_Prest');
+    }
+
+    public function fotos(){
+      return $this->hasMany(Foto::class);
+    }
     /**
      * The attributes that should be cast to native types.
      *

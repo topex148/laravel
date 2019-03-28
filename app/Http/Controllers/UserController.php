@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\User;
+use App\Foto;
+use App\Prestadore;
 use Caffeinated\Shinobi\Models\Role;
 use Illuminate\Http\Request;
 
@@ -13,6 +15,7 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
     public function index()
     {
         $users = User::paginate();
@@ -46,8 +49,9 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
+        $prestadores = Prestadore::all();
         $roles = Role::get();
-        return view('users.edit', compact ('user', 'roles'));
+        return view('users.edit', compact ('user', 'roles', 'prestadores'));
     }
 
     /**

@@ -1,5 +1,6 @@
 <?php
-
+use Illuminate\Http\Request;
+use Conner\Tagging\Providers\TaggingServiceProvider;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,6 +15,27 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+//Paginas Iniciales
+
+Route::get('/inicio', 'ControladorPrincipal@inicio');
+Route::post("/inicio", "ControladorPrincipal@inicioContactoGuardar");
+Route::get('/nosotros', 'ControladorPrincipal@nosotros');
+Route::get('/atractivoLista', 'ControladorPrincipal@atractivoLista');
+Route::get('/atractivoLista/{atractivo}/atractivo', 'ControladorPrincipal@atractivo');
+Route::get('/zonaLista', 'ControladorPrincipal@zonaLista');
+Route::get('/zonaLista/{zona}/zona', 'ControladorPrincipal@zona');
+Route::get('/actividadLista', 'ControladorPrincipal@actividadLista');
+Route::get('/actividad', 'ControladorPrincipal@actividad');
+Route::get('/servicioLista', 'ControladorPrincipal@servicioLista');
+Route::get('/servicioLista/{prestadore}/prestador', 'ControladorPrincipal@servicio');
+Route::get('/contacto', 'ControladorPrincipal@contacto');
+Route::post("/contacto", "ControladorPrincipal@contactoGuardar");
+Route::get('/galeria', 'ControladorPrincipal@galeria');
+
+//Final Paginas Iniciales
+
+//Autentificacion
 
 Auth::routes();
 
@@ -293,5 +315,10 @@ Route::middleware(['auth'])->group(function(){
 
   Route::get('zonas/{zona}/edit', 'ZonaController@edit')->name('zonas.edit')
         ->middleware('permission:zonas.edit');
+
+  //Perfil Prestador
+
+  Route::get('perfilPrestador', 'PerfilPrestadorController@index')->name('prestador.index')
+        ->middleware('permission:prestador.index');
 
 });

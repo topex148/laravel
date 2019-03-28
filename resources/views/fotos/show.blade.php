@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.menuInicio')
 
 @section('content')
 
@@ -20,14 +20,21 @@
 
 								<div class="row">
 
-                  <div class="col-md-6">
+									<div class="col-md-4">
+									<td>
+										<h3>Foto</h5>
+										<img src="{{asset('storage/imagen/foto/'.$foto->imagen)}}" style="width:150px; height:150px; float:left; border-radius:50%; margin-right:25px;">
+									</td>
+									</div>
+
+                  <div class="col-md-4">
                     <h3>Titulo</h5>
                     <!-- date picker -->
                     <p><strong>{{ $foto->title }}</strong> </p>
 
                   </div>
 
-                  <div class="col-md-6">
+                  <div class="col-md-4">
                     <h3>Descripcion</h5>
                     <!-- date picker -->
                     <p><strong>{{ $foto->descripcion }}</strong> </p>

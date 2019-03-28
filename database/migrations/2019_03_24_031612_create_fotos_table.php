@@ -14,16 +14,29 @@ class CreateFotosTable extends Migration
     public function up()
     {
         Schema::create('fotos', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('title');
-            $table->string('descripcion');
-            $table->string('imagen');
-            $table->string('Galeria')->nullable();
-            $table->string('RIF_Prest')->nullable();
-            $table->unsignedInteger('id_Zona')->nullable();
-            $table->unsignedInteger('id_Atrac')->nullable();
-            $table->unsignedInteger('id_Activi')->nullable();
-            $table->timestamps();
+          $table->increments('id');
+          $table->string('title');
+          $table->string('descripcion');
+          $table->string('imagen');
+
+          $table->string('Galeria')->nullable();
+
+          $table->integer('user_id')->unsigned();
+          $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+
+          $table->string('RIF_Prest')->nullable();
+          $table->foreign('RIF_Prest')->references('RIF')->on('prestadores')->onDelete('cascade');
+
+          $table->unsignedInteger('id_Zona')->nullable();
+          $table->foreign('id_Zona')->references('id')->on('zonas')->onDelete('cascade');
+
+          $table->unsignedInteger('id_Atrac')->nullable();
+          $table->foreign('id_Atrac')->references('id')->on('atractivos')->onDelete('cascade');
+
+          $table->unsignedInteger('id_Activi')->nullable();
+          $table->foreign('id_Activi')->references('id')->on('actividades')->onDelete('cascade');
+
+          $table->timestamps();
         });
     }
 

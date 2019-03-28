@@ -4,7 +4,7 @@ use Faker\Generator as Faker;
 
 $factory->define(App\Itinerario::class, function (Faker $faker) {
     return [
-      'user_id' =>$faker->randomDigit,
+
       'RIF_4' => $faker->randomDigit,
       'id_P_3' => $faker->randomDigit,
       'id_Cliente_1' => $faker->randomDigit,

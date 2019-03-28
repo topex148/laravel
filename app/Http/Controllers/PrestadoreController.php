@@ -16,12 +16,40 @@ class PrestadoreController extends Controller
 
   public function create()
   {
-      return view('prestadores.create');
+      $prestadore = Prestadore::all();
+      return view('prestadores.create',['prestadores' => $prestadore]);
   }
 
   public function store(Request $request)
   {
-      $prestadore = Prestadore::create($request->all());
+    if($request->hasFile('imagen'))
+      {
+
+
+          $fileNameExt = $request->file('imagen')->getClientOriginalName();
+          $fileName = pathinfo($fileNameExt, PATHINFO_FILENAME);
+          $fileExt = $request->file('imagen')->getClientOriginalExtension();
+          $fileNameToStore = $fileName.'_'.time().'.'.$fileExt;
+          $pathToStore = $request->file('imagen')->storeAs('imagen/prestador/',$fileNameToStore);
+      }
+
+      $post = new Prestadore;
+      if($request->hasFile('imagen')){
+                  $post->imagen = $fileNameToStore;
+              }
+      $post->RIF = request()->RIF;
+      $post->Telefono = request()->Telefono;
+      $post->RTN = request()->RTN;
+      $post->Nombre = request()->Nombre;
+      $post->DescripcionServicio = request()->DescripcionServicio;
+      $post->DescripcionPrestador = request()->DescripcionPrestador;
+      $post->Facebook = request()->Facebook;
+      $post->Twitter = request()->Twitter;
+      $post->Instagram = request()->Instagram;
+
+      $post->save();
+
+    //  $prestadore = Prestadore::create($request->all());
 
       return redirect()->route('prestadores.index')
         ->with('info', 'Prestador creado con exito');
@@ -37,9 +65,36 @@ class PrestadoreController extends Controller
       return view('prestadores.edit', compact ('prestadore'));
   }
 
-  public function update(Request $request, Prestadore $prestadore)
+  public function update(Request $request, $RIF)
   {
-      $prestadore->update($request->all());
+
+    if($request->hasFile('imagen'))
+      {
+
+
+          $fileNameExt = $request->file('imagen')->getClientOriginalName();
+          $fileName = pathinfo($fileNameExt, PATHINFO_FILENAME);
+          $fileExt = $request->file('imagen')->getClientOriginalExtension();
+          $fileNameToStore = $fileName.'_'.time().'.'.$fileExt;
+          $pathToStore = $request->file('imagen')->storeAs('imagen/prestador',$fileNameToStore);
+      }
+
+      $post = Prestadore::find($RIF);
+      if($request->hasFile('imagen')){
+                  $post->imagen = $fileNameToStore;
+              }
+      $post->RIF = request()->RIF;
+      $post->Telefono = request()->Telefono;
+      $post->RTN = request()->RTN;
+      $post->Nombre = request()->Nombre;
+      $post->DescripcionServicio = request()->DescripcionServicio;
+      $post->DescripcionPrestador = request()->DescripcionPrestador;
+      $post->Facebook = request()->Facebook;
+      $post->Twitter = request()->Twitter;
+      $post->Instagram = request()->Instagram;
+
+      $post->save();
+      //$prestadore->update($request->all());
 
       return redirect()->route('prestadores.index')
         ->with('info', 'Prestador actualizado con exito');

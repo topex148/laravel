@@ -67,9 +67,34 @@ $post->save();
       return view('contactos.edit', compact ('contacto'));
   }
 
-  public function update(Request $request, Contacto $contacto)
+  public function update(Request $request, $id)
   {
-      $contacto->update($request->all());
+
+    if($request->hasFile('archivo'))
+{
+
+
+  $fileNameExt = $request->file('archivo')->getClientOriginalName();
+  $fileName = pathinfo($fileNameExt, PATHINFO_FILENAME);
+  $fileExt = $request->file('archivo')->getClientOriginalExtension();
+  $fileNameToStore = $fileName.'_'.time().'.'.$fileExt;
+  $pathToStore = $request->file('archivo')->storeAs('imagen/contactar/',$fileNameToStore);
+}
+
+$post = Contacto::find($id);
+if($request->hasFile('archivo')){
+          $post->archivo = $fileNameToStore;
+      }
+$post->nombre = request()->nombre;
+$post->correo = request()->correo;
+$post->Telefono = request()->Telefono;
+$post->Mensaje = request()->Mensaje;
+$post->Area = request()->Area;
+$post->Asunto = request()->Asunto;
+
+$post->save();
+
+    //  $contacto->update($request->all());
 
       return redirect()->route('contactos.index')
         ->with('info', 'Contacto actualizado con exito');

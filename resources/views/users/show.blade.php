@@ -20,19 +20,26 @@
 
 							<div class="row">
 
-                  <div class="col-md-6">
+                  <div class="col-md-4">
                     <h3>Nombre</h5>
                     <!-- date picker -->
                     <p><strong>{{ $user->name }}</strong> </p>
 
                   </div>
 
-                  <div class="col-md-6">
+                  <div class="col-md-4">
                     <h3>Email</h5>
                     <!-- date picker -->
                     <p><strong>{{ $user->email }}</strong> </p>
 
                   </div>
+
+									<div class="col-md-4">
+										<h3>RIF Prestador</h5>
+										<!-- date picker -->
+										<p><strong>{{ $user->RIF_Prest }}</strong> </p>
+
+									</div>
               </div>
 
 					</div>

@@ -74,6 +74,7 @@
 										<h3>Archivo</h5>
 										<!-- date picker -->
 										<p><strong>{{ $contacto->archivo }}</strong> </p>
+										<img src="{{asset('storage/imagen/contactar/'.$contacto->archivo)}}" style="width:125px; height:125px; float:left; border-radius:50%; margin-right:25px;">
 
 									</div>
 

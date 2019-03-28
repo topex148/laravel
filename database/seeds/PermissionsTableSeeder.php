@@ -33,7 +33,7 @@ class PermissionsTableSeeder extends Seeder
                 ]);
 
         Permission::create([
-            'name'        =>'Navegar usuarios',
+            'name'        =>'Eliminar usuarios',
             'slug'        =>'users.destroy',
             'description' =>'Eliminar cualquier usuario del sistema',
                 ]);
@@ -65,7 +65,7 @@ class PermissionsTableSeeder extends Seeder
             ]);
 
       Permission::create([
-            'name'        =>'Navegar roles',
+            'name'        =>'Eliminar roles',
             'slug'        =>'roles.destroy',
             'description' =>'Eliminar cualquier rol del sistema',
             ]);
@@ -97,7 +97,7 @@ class PermissionsTableSeeder extends Seeder
               ]);
 
         Permission::create([
-              'name'        => 'Navegar paquetes',
+              'name'        => 'Eliminar paquetes',
               'slug'        => 'packages.destroy',
               'description' => 'Eliminar cualquier paquete del sistema',
               ]);
@@ -130,7 +130,7 @@ class PermissionsTableSeeder extends Seeder
               ]);
 
         Permission::create([
-              'name'        => 'Navegar actividad',
+              'name'        => 'Eliminar actividad',
               'slug'        => 'actividades.destroy',
               'description' => 'Eliminar cualquier actividad del sistema',
               ]);
@@ -162,7 +162,7 @@ class PermissionsTableSeeder extends Seeder
               ]);
 
         Permission::create([
-              'name'        => 'Navegar atractivos',
+              'name'        => 'Eliminar atractivos',
               'slug'        => 'atractivos.destroy',
               'description' => 'Eliminar cualquier atractivo del sistema',
               ]);
@@ -195,7 +195,7 @@ class PermissionsTableSeeder extends Seeder
               ]);
 
         Permission::create([
-              'name'        => 'Navegar contactos',
+              'name'        => 'Eliminar contactos',
               'slug'        => 'contactos.destroy',
               'description' => 'Eliminar cualquier contacto del sistema',
               ]);
@@ -227,7 +227,7 @@ class PermissionsTableSeeder extends Seeder
               ]);
 
         Permission::create([
-              'name'        => 'Navegar fotos',
+              'name'        => 'Eliminar fotos',
               'slug'        => 'fotos.destroy',
               'description' => 'Eliminar cualquier foto del sistema',
               ]);
@@ -259,7 +259,7 @@ class PermissionsTableSeeder extends Seeder
               ]);
 
         Permission::create([
-              'name'        => 'Navegar itinerarios',
+              'name'        => 'Eliminar itinerarios',
               'slug'        => 'itinerarios.destroy',
               'description' => 'Eliminar cualquier itinerario del sistema',
               ]);
@@ -291,7 +291,7 @@ class PermissionsTableSeeder extends Seeder
               ]);
 
         Permission::create([
-              'name'        => 'Navegar planes',
+              'name'        => 'Eliminar planes',
               'slug'        => 'planes.destroy',
               'description' => 'Eliminar cualquier plan del sistema',
               ]);
@@ -323,7 +323,7 @@ class PermissionsTableSeeder extends Seeder
               ]);
 
         Permission::create([
-              'name'        => 'Navegar prestadores',
+              'name'        => 'Eliminar prestadores',
               'slug'        => 'prestadores.destroy',
               'description' => 'Eliminar cualquier prestador del sistema',
               ]);
@@ -355,7 +355,7 @@ class PermissionsTableSeeder extends Seeder
               ]);
 
         Permission::create([
-              'name'        => 'Navegar turistas',
+              'name'        => 'Eliminar turistas',
               'slug'        => 'turistas.destroy',
               'description' => 'Eliminar cualquier turista del sistema',
               ]);
@@ -387,9 +387,72 @@ class PermissionsTableSeeder extends Seeder
               ]);
 
         Permission::create([
-              'name'        => 'Navegar zonas',
+              'name'        => 'Eliminar zonas',
               'slug'        => 'zonas.destroy',
               'description' => 'Eliminar cualquier zona del sistema',
               ]);
+
+        //Prestador Perfil
+
+        Permission::create([
+              'name'        => 'Navegar Perfil Prestador',
+              'slug'        => 'prestador.index',
+              'description' => 'Lista y navega por el perfil del prestador',
+              ]);
+
+        Permission::create([
+              'name'        => 'Ver detalle de imagen en Prestador',
+              'slug'        => 'imagen.show',
+              'description' => 'Ver en detalle las fotos del prestador',
+              ]);
+
+        Permission::create([
+              'name'        => 'Creacion de foto en Prestador',
+              'slug'        => 'imagen.create',
+              'description' => 'Agregar foto al perfil del prestador',
+              ]);
+
+        Permission::create([
+              'name'        => 'Edicion de foto en Prestador',
+              'slug'        => 'imagen.edit',
+              'description' => 'Editar cualquier foto en el perfil del prestador',
+              ]);
+
+        Permission::create([
+              'name'        => 'Eliminar foto en Prestador',
+              'slug'        => 'imagen.destroy',
+              'description' => 'Eliminar cualquier zona del sistema del prestador',
+              ]);
+
+        Permission::create([
+              'name'        => 'Ver detalle de itinerario en Prestador',
+              'slug'        => 'itine.show',
+              'description' => 'Ver en detalle los itinerarios del prestador',
+              ]);
+
+        Permission::create([
+              'name'        => 'Creacion de itinerario en Prestador',
+              'slug'        => 'itine.create',
+              'description' => 'Agregar itinerario al perfil del prestador',
+              ]);
+
+        Permission::create([
+              'name'        => 'Edicion de itinerario en Prestador',
+              'slug'        => 'itine.edit',
+              'description' => 'Editar cualquier itinerario en el perfil del prestador',
+              ]);
+
+        Permission::create([
+              'name'        => 'Eliminar itinerario en Prestador',
+              'slug'        => 'itine.destroy',
+              'description' => 'Eliminar cualquier itinerario del sistema del prestador',
+              ]);
+
+        Permission::create([
+              'name'        => 'Edicion de perfil en Prestador',
+              'slug'        => 'perfil.edit',
+              'description' => 'Editar perfil del prestador',
+              ]);
+
     }
 }

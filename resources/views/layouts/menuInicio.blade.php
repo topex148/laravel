@@ -131,6 +131,16 @@
                     </li>
                     @endcan
 
+									<!--Prueba menu Prestador -->
+
+									@can('prestador.index')
+									<li class="nav-item">
+										<a class="nav-link" href="{{route('prestador.index')}}"> Perfil Prestador </a>
+									</li>
+									@endcan
+
+									<!-- Fin Prueba menu Prestador -->
+
                     @guest
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('login') }}">{{ __('Ingresar') }}</a>
@@ -190,7 +200,7 @@
   </main>
 
     @yield('content')
-    
+
   <!-- FOOTER -->
   <footer id="footer">
 

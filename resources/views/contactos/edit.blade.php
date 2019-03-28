@@ -19,67 +19,58 @@
 
 							<h3>Verifica los datos antes de seleccionar <strong><em>Actualizar!</em></strong></h3>
 
-            <form action="/LaTesis/public/contactos/{{$contacto->id}}" method="POST" role="form">
+            <form enctype="multipart/form-data" action="/LaTesis/public/contactos/{{$contacto->id}}" method="POST" role="form">
 
               {{method_field('PATCH')}}
               {{csrf_field()}}
 
 							<div class="row">
-
-									<div class="col-md-6">
-										<h5>Nombre</h5>
-										<!-- date picker -->
-										<input type="text" value="{{$contacto->nombre}}" class="form-control"  name="nombre"  placeholder="Ingrese el Nombre">
-
+									<div class="col-md-4">
+										<label for="">Nombre completo *</label>
+										<input required type="text" value="{{$contacto->nombre}}" class="form-control" name="nombre" placeholder="Ingrese su Nombre">
 									</div>
-
-									<div class="col-md-6">
-										<h5>Email</h5>
-										<!-- date picker -->
-										<input type="text" value="{{$contacto->correo}}" class="form-control" name="correo"  placeholder="Ingrese el Email">
-
+									<div class="col-md-4">
+										<label for="">Dirección E-mail *</label>
+										<input required type="email" value="{{$contacto->correo}}" class="form-control" name="correo" placeholder="Ingrese su Correo">
+									</div>
+									<div class="col-md-4">
+										<label for="">Teléfono </label>
+										<div class="fancy-form">
+										<i class="fa fa-phone-square"></i>
+										<input required type="text"  maxlength="10" class="form-control masked" data-format="(999) 999-9999"
+										 data-placeholder="X" value="{{$contacto->Telefono}}"  name="Telefono" placeholder="Ingrese su Numero de Telefono">
+									</div>
 									</div>
 							</div>
-
 							<div class="row">
-
-									<div class="col-md-4">
-										<h5>Telefono</h5>
-										<!-- date picker -->
-										<input type="text" value="{{$contacto->Telefono}}" class="form-control"  name="Telefono"  placeholder="Ingrese el Telefono">
-
+									<div class="col-md-8">
+										<label for="">Asunto *</label>
+										<input required type="text" value="{{$contacto->Asunto}}" class="form-control" name="Asunto" placeholder="Ingrese el Asunto">
 									</div>
-
 									<div class="col-md-4">
-										<h5>Mensaje</h5>
-										<!-- date picker -->
-										<input type="text" value="{{$contacto->Mensaje}}" class="form-control" name="Mensaje"  placeholder="Ingrese el Mensaje">
-
-									</div>
-
-									<div class="col-md-4">
-										<h5>Area</h5>
-										<!-- date picker -->
-										<input type="text" value="{{$contacto->Area}}" class="form-control" name="Area"  placeholder="Ingrese el Area">
-
+										<label for="">Área </label>
+										<select  required class="form-control pointer"  name="Area" value="{{$contacto->Area}}">
+											<option value="{{$contacto->Area}}">Area: "{{$contacto->Area}}" </option>
+											<option value="Turista">Turista</option>
+											<option value="Prestador de Servicio">Prestador de Servicio</option>
+											<option value="Guía turístico">Guía turístico </option>
+										</select>
 									</div>
 							</div>
-
 							<div class="row">
-
-									<div class="col-md-6">
-										<h5>Asunto</h5>
-										<!-- date picker -->
-										<input type="text" value="{{$contacto->Asunto}}" class="form-control"  name="Asunto"  placeholder="Ingrese el Asunto">
-
+									<div class="col-md-12">
+										<label for="">Mensaje *</label>
+										<input required type="text" value="{{$contacto->Mensaje}}" class="form-control" name="Mensaje" placeholder="Ingrese el Mensaje">
 									</div>
+							</div>
+							<div class="row">
+								<div class="col-md-12">
+									<!-- custom file upload -->
+								<label for="">Archivo</label>
+								<input class="custom-file-upload" value="{{$contacto-> archivo}}" type="file" name="archivo"  data-btn-text="Seleccionar Archivo" />
+								<small class="text-muted block">Tamaño de Archivo Maximo: 10Mb (zip/pdf/jpg/png)</small>
 
-									<div class="col-md-6">
-										<h5>Archivo</h5>
-										<!-- date picker -->
-										<input type="text" value="{{$contacto->archivo}}" class="form-control" name="archivo"  placeholder="Ingrese el Archivo">
-
-									</div>
+							</div>
 							</div>
 
 

@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Itinerario;
+use App\Prestadore;
+use App\Package;
+use App\Turista;
 use Illuminate\Http\Request;
 
 class ItinerarioController extends Controller
@@ -16,7 +19,10 @@ class ItinerarioController extends Controller
 
   public function create()
   {
-      return view('itinerarios.create');
+      $prestadores = Prestadore::all();
+      $paquetes = Package::all();
+      $turistas = Turista::all();
+      return view('itinerarios.create', compact('prestadores', 'paquetes', 'turistas'));
   }
 
   public function store(Request $request)
@@ -27,14 +33,17 @@ class ItinerarioController extends Controller
         ->with('info', 'Itinerario creado con exito');
   }
 
-  public function show(Itinerario $itinerario)
+  public function show(Request $request ,Itinerario $itinerario)
   {
       return view('itinerarios.show', compact ('itinerario'));
   }
 
   public function edit(Itinerario $itinerario)
   {
-      return view('itinerarios.edit', compact ('itinerario'));
+      $prestadores = Prestadore::all();
+      $paquetes = Package::all();
+      $turistas = Turista::all();
+      return view('itinerarios.edit', compact ('itinerario', 'prestadores', 'paquetes', 'turistas'));
   }
 
   public function update(Request $request, Itinerario $itinerario)

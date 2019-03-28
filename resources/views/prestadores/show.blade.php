@@ -1,9 +1,9 @@
-@extends('layouts.app')
+@extends('layouts.menuInicio')
 
 @section('content')
 
 <!-- CONTACT -->
-			<section id="contact">
+			<section >
 				<div class="container">
 
 					<header class="text-center mb-60">
@@ -20,21 +20,28 @@
 
 								<div class="row">
 
-                  <div class="col-md-4">
+									<div class="col-md-3">
+									<td>
+										<h3>Foto Prestador</h5>
+										<img src="{{asset('storage/imagen/prestador/'.$prestadore->imagen)}}" style="width:150px; height:150px; float:left; border-radius:50%; margin-right:25px;">
+									</td>
+									</div>
+
+                  <div class="col-md-3">
                     <h3>RIF</h5>
                     <!-- date picker -->
                     <p><strong>{{ $prestadore->RIF }}</strong> </p>
 
                   </div>
 
-                  <div class="col-md-4">
+                  <div class="col-md-3">
                     <h3>Telefono</h5>
                     <!-- date picker -->
                     <p><strong>{{ $prestadore->Telefono }}</strong> </p>
 
                   </div>
 
-									<div class="col-md-4">
+									<div class="col-md-3">
 										<h3>RTN</h5>
 										<!-- date picker -->
 										<p><strong>{{ $prestadore->RTN }}</strong> </p>

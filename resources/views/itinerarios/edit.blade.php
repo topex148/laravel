@@ -26,54 +26,82 @@
 
 							<div class="row">
 
-									<div class="col-md-6">
-										<h5>Usuario ID</h5>
-										<!-- date picker -->
-										<input type="text" value="{{$itinerario->user_id}}" class="form-control"  name="user_id"  placeholder="Ingrese el ID de Usuario">
 
-									</div>
-
-									<div class="col-md-6">
-										<h5>RIF 4</h5>
-										<!-- date picker -->
-										<input type="text" value="{{$itinerario->RIF_4}}" class="form-control" name="RIF_4"  placeholder="Ingrese el RIF">
-
-									</div>
+							<div class="col-md-4"><!-- select -->
+								<label for="">RIF</label>
+									<select class="form-control" name="RIF_4" value="{{$itinerario->RIF_4}}">
+											<option value="{{$itinerario->RIF_4}}">Prestador Número: {{$itinerario->RIF_4}}</option>
+											@foreach ($prestadores as $prestadore)
+												<option value="{{$prestadore->RIF}}">RIF {{$prestadore->RIF}}: {{$prestadore->Nombre}}</option>
+											@endforeach
+									</select>
 							</div>
 
-							<div class="row">
+							<!--
+								<div class="col-md-4">
+									<label for="">RIF*</label>
+									<input required type="text" maxlength="9" value="{{$itinerario->RIF_4}}" data-format="99-999999-9" data-placeholder="X" class="form-control  masked" name="RIF_4" placeholder="Ingrese el RIF">
+								</div>
+								-->
 
-									<div class="col-md-6">
-										<h5>ID Paquete</h5>
-										<!-- date picker -->
-										<input type="text" value="{{$itinerario->id_P_3}}" class="form-control"  name="id_P_3"  placeholder="Ingrese el ID del Paquete">
+								<div class="col-md-4"><!-- select -->
+									<label for="">Id de paquete</label>
+										<select class="form-control" name="id_P_3" value="{{$itinerario->id_P_3}}">
+												<option value="{{$itinerario->id_P_3}}">Paquete Número: {{$itinerario->id_P_3}}</option>
+												@foreach ($paquetes as $paquete)
+													<option value="{{$paquete->id}}">Paquete Número: {{$paquete->id}}</option>
+												@endforeach
+										</select>
+								</div>
 
-									</div>
 
-									<div class="col-md-6">
-										<h5>ID Cliente</h5>
-										<!-- date picker -->
-										<input type="text" value="{{$itinerario->id_Cliente_1}}" class="form-control" name="id_Cliente_1"  placeholder="Ingrese el ID del Cliente">
+								<!--
+								<div class="col-md-4">
+									<label for="">Ingrese el id del Paquete</label>
+									<input required type="text" maxlength="4" value="{{$itinerario->id_P_3}}" class="form-control" name="id_P_3" placeholder="Ingrese el id del Paquete" >
+								</div>
+								-->
 
-									</div>
+								<div class="col-md-4"><!-- select -->
+									<label for="">Numero de cliente</label>
+										<select class="form-control" name="id_Cliente_1" value="{{$itinerario->id_Cliente_1}}">
+												<option value="{{$itinerario->id_Cliente_1}}">Cliente Número: {{$itinerario->id_Cliente_1}}</option>
+												@foreach ($turistas as $turista)
+													<option value="{{$turista->id}}">Cliente Número: {{$turista->id}}</option>
+												@endforeach
+										</select>
+								</div>
+
+								<!--
+								<div class="col-md-4">
+									<label for="">Ingrese el numero de cliente</label>
+									<input required type="text" maxlength="4" value="{{$itinerario->id_Cliente_1}}" class="form-control" name="id_Cliente_1" placeholder="Ingrese el numero de cliente">
+								</div>
+							-->
+
+						</div>
+
+						<div class="row">
+							<div class="col-md-6">
+								<h5>Fecha de Inicio</h5>
+								<!-- date picker -->
+								<input required type="text" value="{{$itinerario->Fecha_Inicio}}" class="form-control datepicker" name="Fecha_Inicio" data-format="yyyy-mm-dd" data-lang="en" data-RTL="false" placeholder="Ingrese la Fecha de Inicio">
+
+								<br /><br />
+
 							</div>
 
-							<div class="row">
+							<div class="col-md-6">
+								<h5>Fecha Final</h5>
+								<!-- date picker -->
+								<input required type="text" value="{{$itinerario->Fecha_Final}}" class="form-control datepicker" name="Fecha_Final" data-format="yyyy-mm-dd" data-lang="en" data-RTL="false" placeholder="Ingrese la Fecha Final">
 
-									<div class="col-md-6">
-										<h5>Fecha de Inicio</h5>
-										<!-- date picker -->
-										<input type="text" value="{{$itinerario->Fecha_Inicio}}" class="form-control datepicker" name="Fecha_Inicio" data-format="yyyy-mm-dd" data-lang="en" data-RTL="false" placeholder="Ingrese la Fecha de Inicio">
+								<br /><br />
 
-									</div>
-
-									<div class="col-md-6">
-										<h5>Fecha Final</h5>
-										<!-- date picker -->
-										<input type="text" value="{{$itinerario->Fecha_Final}}" class="form-control datepicker" name="Fecha_Final" data-format="yyyy-mm-dd" data-lang="en" data-RTL="false" placeholder="Ingrese la Fecha Final">
-
-									</div>
 							</div>
+
+						</div>
+
 
 							<!--	</fieldset>-->
 

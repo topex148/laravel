@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.menuInicio')
 
 @section('content')
 <!-- CONTACT -->
@@ -19,33 +19,49 @@
 
 							<h3>Verifica los datos antes de seleccionar <strong><em>Actualizar!</em></strong></h3>
 
-            <form action="/LaTesis/public/prestadores/{{$prestadore->RIF}}" method="POST" role="form">
+            <form enctype="multipart/form-data" action="/LaTesis/public/prestadores/{{$prestadore->RIF}}" method="POST" role="form">
 
               {{method_field('PATCH')}}
               {{csrf_field()}}
 
 							<div class="row">
-
 									<div class="col-md-4">
-										<h5>RIF</h5>
-										<!-- date picker -->
-										<input type="text" value="{{$prestadore->RIF}}" class="form-control"  name="RIF"  placeholder="Ingrese el RIF">
-
+										<label for="">RIF*</label>
+										<input required type="text" maxlength="9" value="{{$prestadore->RIF}}"  data-format="99-999999-9" data-placeholder="X" class="form-control  masked" name="RIF" placeholder="Ingrese el RIF">
 									</div>
-
 									<div class="col-md-4">
-										<h5>Telefono</h5>
-										<!-- date picker -->
-										<input type="text" value="{{$prestadore->Telefono}}" class="form-control" name="Telefono"
-										 placeholder="Ingrese el Telefono">
-
+										<label for="">RTN</label>
+										<input required type="text" maxlength="5" value="{{$prestadore->RTN}}" class="form-control masked" name="RTN" data-format="99999" data-placeholder="X" placeholder="Ingrese el RTN" >
 									</div>
-
 									<div class="col-md-4">
-										<h5>RTN</h5>
-										<!-- date picker -->
-										<input type="text" value="{{$prestadore->RTN}}" class="form-control" name="RTN"
-										placeholder="Ingrese el RTN">
+										<label for="">Teléfono </label>
+										<div class="fancy-form">
+										<i class="fa fa-phone-square"></i>
+										<input required type="text"  maxlength="10" class="form-control masked" value="{{$prestadore->Telefono}}" data-format="(999) 999-9999" data-placeholder="X" name="Telefono" placeholder="Ingrese el Teléfono">
+										</div>
+									</div>
+								<!--	<div class="col-md-4">
+										<label for="">Teléfono </label>
+										<input required type="number" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="10"  value="{{old('Telefono')}}" class="form-control" name="Telefono" placeholder="Ingrese el Teléfono">
+									</div>-->
+							</div>
+
+
+
+							<div class="row">
+
+
+
+								<div class="col-md-6">
+									<label for="">Nombre</label>
+									<input required type="text"  maxlength="30" value="{{$prestadore->Nombre}}" class="form-control" name="Nombre" placeholder="Ingrese el Nombre">
+								</div>
+
+										<div class="col-md-6">
+											<!-- custom file upload -->
+										<label for="">Imagen Perfil Prestador</label>
+										<input class="custom-file-upload"  value="{{$prestadore-> imagen}}" type="file" name="imagen"  data-btn-text="Seleccionar Archivo" />
+										<small class="text-muted block">Tamaño de Archivo Maximo: 10Mb (zip/pdf/jpg/png)</small>
 
 									</div>
 
@@ -53,70 +69,40 @@
 
 							<div class="row">
 
-									<div class="col-md-6">
-										<h5>Descripcion Servicio</h5>
-										<!-- date picker -->
-										<input type="text" value="{{$prestadore->DescripcionServicio}}"
-										class="form-control"  name="DescripcionServicio"
-										 placeholder="Ingrese la Descripcion del Servicio">
-
-									</div>
-
-									<div class="col-md-6">
-										<h5>Descripcion Prestador</h5>
-										<!-- date picker -->
-										<input type="text" value="{{$prestadore->DescripcionPrestador}}"
-										class="form-control" name="DescripcionPrestador"
-										placeholder="Ingrese la Descripcion del Prestador">
-
-									</div>
+								<div class="col-md-12">
+									<label for="">Descripcion del Servicio</label>
+									<input required type="text"  maxlength="500" value="{{$prestadore->DescripcionServicio}}" class="form-control" name="DescripcionServicio" placeholder="Ingrese la Descripcion del Servicio">
+								</div>
 
 							</div>
 
 							<div class="row">
 
-									<div class="col-md-6">
-										<h5>Nombre</h5>
-										<!-- date picker -->
-										<input type="text" value="{{$prestadore->Nombre}}" class="form-control"  name="Nombre"
-										placeholder="Ingrese el Nombre">
-
-									</div>
-
-									<div class="col-md-6">
-										<h5>Imagen</h5>
-										<!-- date picker -->
-										<input type="text" value="{{$prestadore->imagen}}" class="form-control" name="imagen"
-										 placeholder="Ingrese la Imagen">
-
-									</div>
+								<div class="col-md-12">
+									<label for="">Descripcion del Prestador</label>
+									<input required type="text"  maxlength="500" value="{{$prestadore->DescripcionPrestador}}" class="form-control" name="DescripcionPrestador" placeholder="Ingrese la Descripcion del Prestador">
+								</div>
 
 							</div>
+
+
+
 
 							<div class="row">
-
 									<div class="col-md-4">
-										<h5>Facebook</h5>
-										<!-- date picker -->
-										<input type="text" value="{{$prestadore->Facebook}}" class="form-control"  name="Facebook"  placeholder="Ingrese el Facebook">
-
+										<label for="">Facebook</label>
+										<input required type="email" value="{{$prestadore->Facebook}}" class="form-control" name="Facebook" placeholder="Ingrese el Facebook" >
 									</div>
-
 									<div class="col-md-4">
-										<h5>Twitter</h5>
-										<!-- date picker -->
-										<input type="text" value="{{$prestadore->Twitter}}" class="form-control" name="Twitter"  placeholder="Ingrese el Twitter">
-
+										<label for="">Twitter</label>
+										<input required type="email" value="{{$prestadore->Twitter}}" class="form-control" name="Twitter" placeholder="Ingrese el Twitter">
 									</div>
-
 									<div class="col-md-4">
-										<h5>Instagram</h5>
-										<!-- date picker -->
-										<input type="text" value="{{$prestadore->Instagram}}" class="form-control" name="Instagram"  placeholder="Ingrese el Instagram">
-
+										<label for="">Instagram</label>
+										<input required type="email" value="{{$prestadore->Instagram}}" class="form-control" name="Instagram" placeholder="Ingrese el Instagram" >
 									</div>
-
 							</div>
+
 
 							<!--	</fieldset>-->
 

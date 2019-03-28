@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.menuInicio')
 
 @section('content')
 <div class="container">
@@ -26,6 +26,7 @@
                           <thead>
                             <tr>
                                 <th width="10px">RIF</th>
+                                <th>Foto</th>
                                 <th>Nombre</th>
                                 <th>Telefono</th>
                                 <th colspan="3">&nbsp;</th>
@@ -35,6 +36,9 @@
                               @foreach($prestadores as $prestadore)
                               <tr>
                                 <td>{{$prestadore->RIF}}</td>
+                                <td>
+                                  <img src="{{asset('storage/imagen/prestador/'.$prestadore->imagen)}}" style="width:75px; height:75px; float:left; border-radius:50%; margin-right:25px;">
+                                </td>
                                 <td>{{$prestadore->Nombre}}</td>
                                 <td>{{$prestadore->Telefono}}</td>
                                 <td width="10px">

@@ -26,6 +26,7 @@
                           <thead>
                             <tr>
                                 <th width="10px">ID</th>
+                                <th>Archivo</th>
                                 <th>Nombre</th>
                                 <th>Asunto</th>
                                 <th colspan="3">&nbsp;</th>
@@ -35,6 +36,9 @@
                               @foreach($contactos as $contacto)
                               <tr>
                                 <td>{{$contacto->id}}</td>
+                                <td>
+                                  <img src="{{asset('storage/imagen/contactar/'.$contacto->archivo)}}" style="width:75px; height:75px; float:left; border-radius:50%; margin-right:25px;">
+                                </td>
                                 <td>{{$contacto->nombre}}</td>
                                 <td>{{$contacto->Asunto}}</td>
                                 <td width="10px">

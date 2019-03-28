@@ -14,15 +14,9 @@ class UsersTableSeeder extends Seeder
   public function run()
   {
 
-    //  $user = new User();
-    //  $user->name = 'Admin';
-    //  $user->email = 'admin@example.com';
-    //  $user->password = bcrypt('secret');
-    //  $user->save();
-    //  $role_user = Role::where('name', 'Admin')->first();
-    //  $user->roles()->attach($role_admin);
 
-      factory(App\User::class, 1)->create();
+
+      //factory(App\User::class, 1)->create();
 
 
 
@@ -32,6 +26,14 @@ class UsersTableSeeder extends Seeder
           'description' => 'Todos los permisos',
           'special'    => 'all-access',
       ]);
+
+      $user = new User();
+      $user->name = 'Admin';
+      $user->email = 'admin@example.com';
+      $user->password = bcrypt('secret');
+      $user->save();
+      $role_user = Role::where('name', 'Admin')->first();
+      $user->roles()->attach($role_user);
 
 
   }

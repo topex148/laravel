@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.menuInicio')
 
 @section('content')
 <!-- CONTACT -->
@@ -20,7 +20,7 @@
 							<h3>Verifica los datos antes de seleccionar <strong><em>Registrar!</em></strong></h3>
 
 
-							<form action="/LaTesis/public/fotos/store" method="POST" role="form">
+							<form enctype="multipart/form-data" action="/LaTesis/public/fotos/store" method="POST" role="form">
 
                 {{csrf_field()}}
 
@@ -28,70 +28,85 @@
 									<!--<input type="hidden" name="action" value="contact_send" />-->
 
 									<div class="row">
-
 											<div class="col-md-6">
-	                      <h5>Titulo</h5>
-	                      <!-- date picker -->
-	                      <input type="text" value="{{old('title')}}" class="form-control"  name="title"  placeholder="Ingrese el Titulo">
-
-	                    </div>
-
-	                    <div class="col-md-6">
-	                      <h5>Descripcion</h5>
-	                      <!-- date picker -->
-	                      <input type="text" value="{{old('descripcion')}}" class="form-control" name="descripcion"  placeholder="Ingrese la Descripcion">
-
-	                    </div>
+												<label for="">Titulo</label>
+												<input required type="text" value="{{old('title')}}" class="form-control" name="title" placeholder="Ingrese el Titulo" >
+											</div>
 									</div>
+
+                  <div class="row">
+                      <div class="col-md-12">
+                        <label for="">Descripcion</label>
+                        <input required type="text" value="{{old('descripcion')}}" class="form-control" name="descripcion" placeholder="Ingrese la Descripcion de la Foto">
+                      </div>
+                  </div>
 
 									<div class="row">
-
-											<div class="col-md-6">
-	                      <h5>Imagen</h5>
-	                      <!-- date picker -->
-	                      <input type="text" value="{{old('imagen')}}" class="form-control"  name="imagen"  placeholder="Seleccione la Imagen">
-
-	                    </div>
-
-	                    <div class="col-md-6">
-	                      <h5>Galeria</h5>
-	                      <!-- date picker -->
-	                      <input type="text" value="{{old('Galeria')}}" class="form-control" name="Galeria"  placeholder="¿Pertenece a Galeria?">
-
-	                    </div>
+									<div class="col-md-6">
+										<!-- custom file upload -->
+										<label for="">Imagen</label>
+										<input class="custom-file-upload"  required type="file" name="imagen"  data-btn-text="Seleccionar Archivo" />
+										<small class="text-muted block">Tamaño de Archivo Maximo: 10Mb (zip/pdf/jpg/png)</small>
 									</div>
 
-									<div class="row">
-
-											<div class="col-md-3">
-												<h5>RIF Prestador</h5>
-												<!-- date picker -->
-												<input type="text" value="{{old('RIF_Prest')}}" class="form-control"  name="RIF_Prest"  placeholder="Seleccione el RIF">
-
-											</div>
-
-											<div class="col-md-3">
-												<h5>ID de la Zona</h5>
-												<!-- date picker -->
-												<input type="text" value="{{old('id_Zona')}}" class="form-control" name="id_Zona"  placeholder="Ingrese el ID de la Zona">
-
-											</div>
-
-											<div class="col-md-3">
-												<h5>ID del Atractivo</h5>
-												<!-- date picker -->
-												<input type="text" value="{{old('id_Atrac')}}" class="form-control"  name="id_Atrac"  placeholder="Ingrese el ID del Atractivo">
-
-											</div>
-
-											<div class="col-md-3">
-												<h5>ID de la Actividad</h5>
-												<!-- date picker -->
-												<input type="text" value="{{old('id_Activi')}}" class="form-control" name="id_Activi"  placeholder="Ingrese el ID de la Actividad">
-
-											</div>
+									<div class="col-md-6">
+										<h5>Galeria</h5>
+												<select type="text" value="{{old('Galeria')}}" class="form-control select2" name="Galeria" placeholder="Ingrese si Pertenece a la Galeria" >
+													<option value="">--- Pertene a Galeria? ---</option>
+															<option value="SI">Si</option>
+												</select>
+										</div>
 
 									</div>
+
+								<div class="row">
+
+								<div class="col-md-6"><!-- select -->
+									<label for="">RIF Prestador</label>
+										<select class="form-control" name="RIF_Prest" value="{{old('RIF_Prest')}}">
+												<option value="">--- Seleccione el RIF del prestador ---</option>
+												@foreach ($prestadores as $prestadore)
+													<option value="{{$prestadore->RIF}}">{{$prestadore->RIF}}</option>
+												@endforeach
+										</select>
+								</div>
+
+								<div class="col-md-6"><!-- select -->
+									<label for="">ID Atractivo</label>
+										<select class="form-control" name="id_Atrac" value="{{old('id_Atrac')}}">
+												<option value="">--- Seleccione el id del atractivo ---</option>
+												@foreach ($atractivos as $atractivo)
+													<option value="{{$atractivo->id}}">{{$atractivo->id}}</option>
+												@endforeach
+										</select>
+								</div>
+
+
+								</div>
+
+								<div class="row">
+
+								<div class="col-md-6"><!-- select -->
+									<label for="">ID Zona</label>
+										<select class="form-control" name="id_Zona" value="{{old('id_Zona')}}">
+												<option value="">--- Seleccione el id de la zona ---</option>
+												@foreach ($zonas as $zona)
+													<option value="{{$zona->id}}">{{$zona->id}}</option>
+												@endforeach
+										</select>
+								</div>
+
+								<div class="col-md-6"><!-- select -->
+									<label for="">ID Actividad</label>
+										<select class="form-control" name="id_Activi" value="{{old('id_Activi')}}">
+												<option value="">--- Seleccione el id de la actividad ---</option>
+												@foreach ($actividades as $actividade)
+													<option value="{{$actividade->id}}">{{$actividade->id}}</option>
+												@endforeach
+										</select>
+								</div>
+
+								</div>
 
 
 							<!--	</fieldset>-->

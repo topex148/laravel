@@ -27,19 +27,29 @@
 
 								<div class="row">
 
-                  <div class="col-md-6">
+                  <div class="col-md-4">
                     <h5>Nombre</h5>
                     <!-- date picker -->
                     <input type="text" value="{{$user->name}}" class="form-control" name="name"  data-lang="en" data-RTL="false" placeholder="Ingrese el nombre">
 
                   </div>
 
-                  <div class="col-md-6">
+                  <div class="col-md-4">
                     <h5>Email</h5>
                     <!-- date picker -->
                     <input type="text" value="{{$user->email}}" class="form-control" name="email"  data-lang="en" data-RTL="false" placeholder="Ingrese el email">
 
                   </div>
+
+									<div class="col-md-4"><!-- select -->
+										<label for="">RIF Prestador</label>
+											<select class="form-control" name="RIF_Prest" value="{{$user->RIF_Prest}}">
+													<option value="{{$user->RIF_Prest}}">--- Seleccione el RIF del prestador ---</option>
+													@foreach ($prestadores as $prestadore)
+														<option value="{{$prestadore->RIF}}">{{$prestadore->RIF}}</option>
+													@endforeach
+											</select>
+									</div>
 
 								</div>
 

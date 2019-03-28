@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.menuInicio')
 
 @section('content')
 <!-- CONTACT -->
@@ -26,28 +26,33 @@
 
 							<div class="row">
 
-									<div class="col-md-4">
-										<h5>Fecha de Inicio</h5>
-										<!-- date picker -->
-										<input type="text" value="{{$plane->Fecha_Inicio}}" class="form-control datepicker" name="Fecha_Inicio" data-format="yyyy-mm-dd" data-lang="en" data-RTL="false" placeholder="Ingrese la Fecha de Inicio">
+                <div class="col-md-4">
+                  <h5>Publicidad</h5>
+                      <select required type="text" value="{{$plane->Publicidad}}" class="form-control select2" name="Publicidad" placeholder="Ingrese la Publicidad" >
+                        <option value="">¿Poseé Publicidad?-->{{$plane->Publicidad}}</option>
+                            <option value="SI">Si</option>
+                            <option value="NO">No</option>
+                      </select>
+                  </div>
 
-									</div>
+                <div class="col-md-4">
+                  <h5>Fecha de Inicio</h5>
+                  <!-- date picker -->
+                  <input type="text" value="{{$plane->Fecha_Inicio}}" class="form-control datepicker" name="Fecha_Inicio" data-format="yyyy-mm-dd" data-lang="en" data-RTL="false" placeholder="Ingrese la Fecha de Inicio">
 
-									<div class="col-md-4">
-										<h5>Fecha Final</h5>
-										<!-- date picker -->
-										<input type="text" value="{{$plane->Fecha_Final}}" class="form-control datepicker" name="Fecha_Final" data-format="yyyy-mm-dd" data-lang="en" data-RTL="false" placeholder="Ingrese la Fecha Final">
 
-									</div>
+                </div>
 
-									<div class="col-md-4">
-										<h5>Publicidad</h5>
-										<!-- date picker -->
-										<input type="text" value="{{$plane->Publicidad}}" class="form-control"  name="Publicidad"  placeholder="¿Tiene Publicidad?">
+                <div class="col-md-4">
+                  <h5>Fecha Final</h5>
+                  <!-- date picker -->
+                  <input type="text" value="{{$plane->Fecha_Final}}" class="form-control datepicker" name="Fecha_Final" data-format="yyyy-mm-dd" data-lang="en" data-RTL="false" placeholder="Ingrese la Fecha Final">
 
-									</div>
 
-							</div>
+                </div>
+
+              </div>
+
 
 							<!--	</fieldset>-->
 

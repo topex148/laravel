@@ -15,7 +15,6 @@ class CreateItinerariosTable extends Migration
     {
         Schema::create('itinerarios', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('user_id')->unsigned();
             $table->string('RIF_4');
             $table->unsignedInteger('id_P_3');
             $table->unsignedInteger('id_Cliente_1');
