@@ -28,26 +28,7 @@
 							<div class="row">
 
 
-							<div class="col-md-4"><!-- select -->
-								<label for="">RIF</label>
-									<select class="form-control" name="RIF_4" value="{{$itinerario->RIF_4}}">
-											<option value="{{$itinerario->RIF_4}}">Prestador Número: {{$itinerario->RIF_4}}</option>
-											@foreach ($prestadores as $prestadore)
-                      @if (($prestadore->RIF) == (\Auth::user()->RIF_Prest))
-												<option value="{{$prestadore->RIF}}">RIF {{$prestadore->RIF}}: {{$prestadore->Nombre}}</option>
-                      @endif
-                      @endforeach
-									</select>
-							</div>
-
-							<!--
-								<div class="col-md-4">
-									<label for="">RIF*</label>
-									<input required type="text" maxlength="9" value="{{$itinerario->RIF_4}}" data-format="99-999999-9" data-placeholder="X" class="form-control  masked" name="RIF_4" placeholder="Ingrese el RIF">
-								</div>
-								-->
-
-								<div class="col-md-4"><!-- select -->
+								<div class="col-md-6"><!-- select -->
 									<label for="">Id de paquete</label>
 										<select class="form-control" name="id_P_3" value="{{$itinerario->id_P_3}}">
 												<option value="{{$itinerario->id_P_3}}">Paquete Número: {{$itinerario->id_P_3}}</option>
@@ -65,7 +46,7 @@
 								</div>
 								-->
 
-								<div class="col-md-4"><!-- select -->
+								<div class="col-md-6"><!-- select -->
 									<label for="">Numero de cliente</label>
 										<select class="form-control" name="id_Cliente_1" value="{{$itinerario->id_Cliente_1}}">
 												<option value="{{$itinerario->id_Cliente_1}}">Cliente Número: {{$itinerario->id_Cliente_1}}</option>

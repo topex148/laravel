@@ -26,7 +26,7 @@
               {{csrf_field()}}
 
 							<div class="row">
-                  <div class="col-md-6">
+                  <div class="col-md-12">
                     <label for="">Titulo</label>
                     <input required type="text" value="{{$foto->title}}" class="form-control" name="title" placeholder="Ingrese el Titulo" >
                   </div>
@@ -40,7 +40,7 @@
               </div>
 
 							<div class="row">
-							<div class="col-md-6">
+							<div class="col-md-12">
 
 							<label for="">Imagen</label>
 							<input class="custom-file-upload"  type="file" name="imagen"  value="{{$foto -> imagen}}"  data-btn-text="Seleccionar Archivo" />
@@ -48,17 +48,7 @@
 
 						</div>
 
-						<div class="col-md-6"><!-- select -->
-							<label for="">RIF Prestador</label>
-								<select class="form-control" name="RIF_Prest" value="{{$foto->RIF_Prest}}">
-										<option value="{{$foto->RIF_Prest}}">--- {{$foto->RIF_Prest}} ---</option>
-										@foreach ($prestadores as $prestadore)
-										@if (($prestadore->RIF) == (\Auth::user()->RIF_Prest))
-											<option value="{{$prestadore->RIF}}">{{$prestadore->RIF}}</option>
-										@endif
-										@endforeach
-								</select>
-						</div>
+
 						</div>
 
 

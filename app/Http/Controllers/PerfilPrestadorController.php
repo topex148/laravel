@@ -54,9 +54,8 @@ class PerfilPrestadorController extends Controller
     if($request->hasFile('imagen')){
             $post->imagen = $fileNameToStore;
         }
-    $post->RIF = request()->RIF;
+
     $post->Telefono = request()->Telefono;
-    $post->RTN = request()->RTN;
     $post->Nombre = request()->Nombre;
     $post->DescripcionServicio = request()->DescripcionServicio;
     $post->DescripcionPrestador = request()->DescripcionPrestador;

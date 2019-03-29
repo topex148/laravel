@@ -20,21 +20,14 @@
 
 								<div class="row">
 
-                  <div class="col-md-3">
-                    <h3>Usuario ID</h5>
-                    <!-- date picker -->
-                    <p><strong>{{ $itinerario->user_id }}</strong> </p>
+									<div class="col-md-6">
+										<h3>ID Cliente</h5>
+										<!-- date picker -->
+										<p><strong>{{ $itinerario->id_Cliente_1 }}</strong> </p>
 
-                  </div>
+									</div>
 
-                  <div class="col-md-3">
-                    <h3>RIF 4</h5>
-                    <!-- date picker -->
-                    <p><strong>{{ $itinerario->RIF_4 }}</strong> </p>
-
-                  </div>
-
-									<div class="col-md-3">
+									<div class="col-md-6">
                     <h3>ID Paquete</h5>
                     <!-- date picker -->
                     <p><strong>{{ $itinerario->id_P_3 }}</strong> </p>
@@ -45,21 +38,16 @@
 
 								<div class="row">
 
-									<div class="col-md-3">
-										<h3>ID Cliente</h5>
-										<!-- date picker -->
-										<p><strong>{{ $itinerario->id_Cliente_1 }}</strong> </p>
 
-									</div>
 
-									<div class="col-md-3">
+									<div class="col-md-6">
 										<h3>Fecha Inicio</h5>
 										<!-- date picker -->
 										<p><strong>{{ $itinerario->Fecha_Inicio }}</strong> </p>
 
 									</div>
 
-									<div class="col-md-3">
+									<div class="col-md-6">
 										<h3>Fecha Final</h5>
 										<!-- date picker -->
 										<p><strong>{{ $itinerario->Fecha_Final }}</strong> </p>

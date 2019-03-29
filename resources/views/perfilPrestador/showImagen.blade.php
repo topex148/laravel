@@ -20,30 +20,12 @@
 
 								<div class="row">
 
-									<div class="col-md-4">
+									<div class="col-md-6">
 									<td>
 										<h3>Foto</h5>
 										<img src="{{asset('storage/imagen/foto/'.$foto->imagen)}}" style="width:150px; height:150px; float:left; border-radius:50%; margin-right:25px;">
 									</td>
 									</div>
-
-                  <div class="col-md-4">
-                    <h3>Titulo</h5>
-                    <!-- date picker -->
-                    <p><strong>{{ $foto->title }}</strong> </p>
-
-                  </div>
-
-                  <div class="col-md-4">
-                    <h3>Descripcion</h5>
-                    <!-- date picker -->
-                    <p><strong>{{ $foto->descripcion }}</strong> </p>
-
-                  </div>
-
-								</div>
-
-								<div class="row">
 
 									<div class="col-md-6">
 										<h3>Imagen</h5>
@@ -52,46 +34,29 @@
 
 									</div>
 
-									<div class="col-md-6">
-										<h3>Galeria</h5>
-										<!-- date picker -->
-										<p><strong>{{ $foto->Galeria }}</strong> </p>
-
-									</div>
 
 								</div>
 
 								<div class="row">
 
-									<div class="col-md-3">
-										<h3>RIF Prestador</h5>
-										<!-- date picker -->
-										<p><strong>{{ $foto->RIF_Prest }}</strong> </p>
 
-									</div>
+									<div class="col-md-6">
+                    <h3>Titulo</h5>
+                    <!-- date picker -->
+                    <p><strong>{{ $foto->title }}</strong> </p>
 
-									<div class="col-md-3">
-										<h3>ID de la Zona</h5>
-										<!-- date picker -->
-										<p><strong>{{ $foto->id_Zona }}</strong> </p>
+                  </div>
 
-									</div>
+                  <div class="col-md-6">
+                    <h3>Descripcion</h5>
+                    <!-- date picker -->
+                    <p><strong>{{ $foto->descripcion }}</strong> </p>
 
-									<div class="col-md-3">
-										<h3>ID del Atractivo</h5>
-										<!-- date picker -->
-										<p><strong>{{ $foto->id_Atrac }}</strong> </p>
-
-									</div>
-
-									<div class="col-md-3">
-										<h3>ID de la Actividad</h5>
-										<!-- date picker -->
-										<p><strong>{{ $foto->id_Activi }}</strong> </p>
-
-									</div>
+                  </div>
 
 								</div>
+
+
 
               </div>
 
