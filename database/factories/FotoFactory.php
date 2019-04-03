@@ -4,7 +4,7 @@ use Faker\Generator as Faker;
 
 $factory->define(App\Foto::class, function (Faker $faker) {
     return [
-      'title' => $faker->sentence,
+      'title' => $faker->word,
       'descripcion' => $faker->sentence,
       'imagen' => $faker->imageURL,
       'Galeria' => $faker->sentence,

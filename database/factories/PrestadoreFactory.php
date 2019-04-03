@@ -9,7 +9,7 @@ $factory->define(App\Prestadore::class, function (Faker $faker) {
         'RTN' => $faker->unique()->numberBetween($min = 10000, $max = 90000),
         'DescripcionServicio' => $faker->sentence,
         'DescripcionPrestador' => $faker->sentence,
-        'Nombre' => $faker->sentence,
+        'Nombre' => $faker->lastName,
         'imagen' => $faker->imageURL,
         'Facebook' => $faker->freeEmail,
         'Twitter' => $faker->freeEmail,
