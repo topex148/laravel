@@ -71,7 +71,7 @@
                               @endforeach
                           </tbody>
                         </table>
-                        {{ $prestadores->render()}}
+                        
                 </div>
             </div>
         </div>

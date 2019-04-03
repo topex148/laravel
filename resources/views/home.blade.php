@@ -22,7 +22,7 @@
             </div>
         @endif
 
-        <h3>Usted a iniciado sesion!</h3>
+        <h3>Usted ha iniciado sesion!</h3>
 
         <p>Le damos la bienvenida a Meriventura, un empresa encargada de promocionar el Turismo de Montaña del Estado Mérida. </p>
       </div>

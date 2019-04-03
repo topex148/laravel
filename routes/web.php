@@ -368,4 +368,64 @@ Route::middleware(['auth'])->group(function(){
   Route::delete('perfilPrestador/{itinerario}/deleteItinerario', 'PerfilPrestadorController@destroyItine')->name('itine.destroy')
         ->middleware('permission:itine.destroy');
 
+  //Fotos Atractivos
+
+  Route::post('atractivos/fotos/store', 'AtractivoController@storeAtractivo')->name('fotosAtractivos.store')
+        ->middleware('permission:fotos.create');
+
+  Route::get('atractivos/fotos/create', 'AtractivoController@createAtractivo')->name('fotosAtractivos.create')
+        ->middleware('permission:fotos.create');
+
+  Route::patch('atractivos/fotos/{foto}', 'AtractivoController@updateAtractivo')->name('fotosAtractivos.update')
+        ->middleware('permission:fotos.edit');
+
+  Route::get('atractivos/fotos/{foto}', 'AtractivoController@showAtractivo')->name('fotosAtractivos.show')
+        ->middleware('permission:fotos.show');
+
+  Route::delete('atractivos/fotos/{foto}', 'AtractivoController@destroyAtractivo')->name('fotosAtractivos.destroy')
+        ->middleware('permission:fotos.destroy');
+
+  Route::get('atractivos/fotos/{foto}/edit', 'AtractivoController@editAtractivo')->name('fotosAtractivos.edit')
+        ->middleware('permission:fotos.edit');
+
+  //Fotos Actividades
+
+  Route::post('actividades/fotos/store', 'ActividadeController@storeActividade')->name('fotosActividades.store')
+        ->middleware('permission:fotos.create');
+
+  Route::get('actividades/fotos/create', 'ActividadeController@createActividade')->name('fotosActividades.create')
+        ->middleware('permission:fotos.create');
+
+  Route::patch('actividades/fotos/{foto}', 'ActividadeController@updateActividade')->name('fotosActividades.update')
+        ->middleware('permission:fotos.edit');
+
+  Route::get('actividades/fotos/{foto}', 'ActividadeController@showActividade')->name('fotosActividades.show')
+        ->middleware('permission:fotos.show');
+
+  Route::delete('actividades/fotos/{foto}', 'ActividadeController@destroyActividade')->name('fotosActividades.destroy')
+        ->middleware('permission:fotos.destroy');
+
+  Route::get('actividades/fotos/{foto}/edit', 'ActividadeController@editActividade')->name('fotosActividades.edit')
+        ->middleware('permission:fotos.edit');
+
+  //Fotos Zonas
+
+  Route::post('zonas/fotos/store', 'ZonaController@storeZona')->name('fotosZonas.store')
+        ->middleware('permission:fotos.create');
+
+  Route::get('zonas/fotos/create', 'ZonaController@createZona')->name('fotosZonas.create')
+        ->middleware('permission:fotos.create');
+
+  Route::patch('zonas/fotos/{foto}', 'ZonaController@updateZona')->name('fotosZonas.update')
+        ->middleware('permission:fotos.edit');
+
+  Route::get('zonas/fotos/{foto}', 'ZonaController@showZona')->name('fotosZonas.show')
+        ->middleware('permission:fotos.show');
+
+  Route::delete('zonas/fotos/{foto}', 'ZonaController@destroyZona')->name('fotosZonas.destroy')
+        ->middleware('permission:fotos.destroy');
+
+  Route::get('zonas/fotos/{foto}/edit', 'ZonaController@editZona')->name('fotosZonas.edit')
+        ->middleware('permission:fotos.edit');
+
 });
