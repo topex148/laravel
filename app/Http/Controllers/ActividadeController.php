@@ -8,6 +8,8 @@ use Auth;
 use App\Atractivo;
 use App\Zona;
 use App\Foto;
+use File;
+use Storage;
 use Illuminate\Http\Request;
 
 
@@ -167,7 +169,7 @@ class ActividadeController extends Controller
 
     if($request->hasFile('imagen'))
           {
-
+              Storage::delete('imagen/foto/'.$post->imagen);
 
               $fileNameExt = $request->file('imagen')->getClientOriginalName();
               $fileName = pathinfo($fileNameExt, PATHINFO_FILENAME);
@@ -195,6 +197,7 @@ class ActividadeController extends Controller
 
   public function destroyActividade(Foto $foto)
   {
+      Storage::delete('imagen/foto/'.$foto->imagen);
       $foto->delete();
 
       return back()->with('info', 'Eliminado correctamente');

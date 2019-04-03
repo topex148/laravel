@@ -8,6 +8,8 @@ use Auth;
 use App\Atractivo;
 use App\Zona;
 use App\Foto;
+use File;
+use Storage;
 use Illuminate\Http\Request;
 
 class AtractivoController extends Controller
@@ -169,7 +171,7 @@ class AtractivoController extends Controller
 
     if($request->hasFile('imagen'))
           {
-
+              Storage::delete('imagen/foto/'.$post->imagen);
 
               $fileNameExt = $request->file('imagen')->getClientOriginalName();
               $fileName = pathinfo($fileNameExt, PATHINFO_FILENAME);
@@ -197,6 +199,7 @@ class AtractivoController extends Controller
 
   public function destroyAtractivo(Foto $foto)
   {
+      Storage::delete('imagen/foto/'.$foto->imagen);
       $foto->delete();
 
       return back()->with('info', 'Eliminado correctamente');

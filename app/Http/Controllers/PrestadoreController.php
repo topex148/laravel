@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Prestadore;
 use App\Itinerario;
 use App\Foto;
+use Storage;
 use Illuminate\Http\Request;
 
 class PrestadoreController extends Controller
@@ -72,10 +73,11 @@ class PrestadoreController extends Controller
 
   public function update(Request $request, $RIF)
   {
+    $post = Prestadore::find($RIF);
 
     if($request->hasFile('imagen'))
       {
-
+          Storage::delete('imagen/prestador/'.$post->imagen);
 
           $fileNameExt = $request->file('imagen')->getClientOriginalName();
           $fileName = pathinfo($fileNameExt, PATHINFO_FILENAME);
@@ -84,7 +86,7 @@ class PrestadoreController extends Controller
           $pathToStore = $request->file('imagen')->storeAs('imagen/prestador',$fileNameToStore);
       }
 
-      $post = Prestadore::find($RIF);
+
       if($request->hasFile('imagen')){
                   $post->imagen = $fileNameToStore;
               }
@@ -107,6 +109,7 @@ class PrestadoreController extends Controller
 
   public function destroy(Prestadore $prestadore)
   {
+      Storage::delete('imagen/prestador/'.$prestadore->imagen);
       $prestadore->delete();
 
       return back()->with('info', 'Eliminado correctamente');

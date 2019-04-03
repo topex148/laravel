@@ -28,7 +28,7 @@
 									<!--<input type="hidden" name="action" value="contact_send" />-->
 
 									<div class="row">
-											<div class="col-md-6">
+											<div class="col-md-12">
 												<label for="">Titulo</label>
 												<input required type="text" value="{{old('title')}}" class="form-control" name="title" placeholder="Ingrese el Titulo" >
 											</div>

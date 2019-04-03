@@ -25,7 +25,7 @@
               {{csrf_field()}}
 
 							<div class="row">
-                  <div class="col-md-6">
+                  <div class="col-md-12">
                     <label for="">Titulo</label>
                     <input required type="text" value="{{$foto->title}}" class="form-control" name="title" placeholder="Ingrese el Titulo" >
                   </div>
