@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\Storage;
 use Auth;
 use Input;
 use Image;
+use Mail;
+
 
 class ContactoController extends Controller
 {
@@ -51,6 +53,14 @@ $post->Asunto = request()->Asunto;
 
 $post->save();
 
+$subject = "Solicitud de Contacto";
+$for = "topex148@gmail.com";
+      Mail::send('email',$request->all(), function($msj) use($subject,$for){
+          $msj->from("meriventura.c.a@gmail.com","Meriventura");
+          $msj->subject($subject);
+          $msj->to($for);
+      });
+
       //$contacto = Contacto::create($request->all());
 
       return redirect()->route('contactos.index')
@@ -72,7 +82,7 @@ $post->save();
 
     if($request->hasFile('archivo'))
 {
-
+  Storage::delete('imagen/contactar/'.$contacto->archivo);
 
   $fileNameExt = $request->file('archivo')->getClientOriginalName();
   $fileName = pathinfo($fileNameExt, PATHINFO_FILENAME);
@@ -102,6 +112,7 @@ $post->save();
 
   public function destroy(Contacto $contacto)
   {
+      Storage::delete('imagen/contactar/'.$contacto->archivo);
       $contacto->delete();
 
       return back()->with('info', 'Eliminado correctamente');

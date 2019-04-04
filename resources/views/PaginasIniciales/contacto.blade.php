@@ -110,7 +110,7 @@
 										<div class="col-md-12">
 											<!-- custom file upload -->
 										<label for="">Archivo</label>
-										<input class="custom-file-upload"  required type="file" name="archivo"  data-btn-text="Seleccionar Archivo" />
+										<input class="custom-file-upload"  type="file" name="archivo"  data-btn-text="Seleccionar Archivo" />
 										<small class="text-muted block">Tamaño de Archivo Maximo: 10Mb (zip/pdf/jpg/png)</small>
 
 									</div>
