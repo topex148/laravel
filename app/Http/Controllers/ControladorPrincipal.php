@@ -57,6 +57,14 @@ class ControladorPrincipal extends Controller
 
     $post->save();
 
+
+    $subject = "Solicitud de Contacto";
+    $for = "meriventura.c.a@gmail.com";
+          Mail::send('email',$request->all(), function($msj) use($subject,$for){
+              $msj->from("meriventura.c.a@gmail.com","Meriventura");
+              $msj->subject($subject);
+              $msj->to($for);
+          });
       //$contacto = Contacto::create($request->all());
 
       return redirect ('/inicio')
@@ -156,6 +164,14 @@ class ControladorPrincipal extends Controller
     $post->Asunto = request()->Asunto;
 
     $post->save();
+
+    $subject = "Solicitud de Contacto";
+    $for = "meriventura.c.a@gmail.com";
+          Mail::send('email',$request->all(), function($msj) use($subject,$for){
+              $msj->from("meriventura.c.a@gmail.com","Meriventura");
+              $msj->subject($subject);
+              $msj->to($for);
+          });
 
       //$contacto = Contacto::create($request->all());
 

@@ -54,7 +54,7 @@ $post->Asunto = request()->Asunto;
 $post->save();
 
 $subject = "Solicitud de Contacto";
-$for = "topex148@gmail.com";
+$for = "meriventura.c.a@gmail.com";
       Mail::send('email',$request->all(), function($msj) use($subject,$for){
           $msj->from("meriventura.c.a@gmail.com","Meriventura");
           $msj->subject($subject);
