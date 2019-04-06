@@ -1,8 +1,8 @@
 <?php
 return array(
     // set your paypal credential
-    'client_id' => '<YOUR-CLIENT-ID>',
-    'secret' => '<YOUR-SECRET-ID>',
+    'client_id' => 'ARaX82ky03IXjJVIcXRnrNdKl-gY9durI1lOyMBBbPVOjm0Fh0YojyCKe1w9CH1d7tFqGrZmmJLaAbBy',
+    'secret' => 'EI-cWpoQyhALSiGED3MpUcpiWXXRdi0vV-TQGTTX6tNdwJcOs5EOsSfVv91BVLLyu84QfZH6iwHX6xkE',
 
     /**
      * SDK configuration
@@ -16,7 +16,7 @@ return array(
         /**
          * Specify the max request time in seconds
          */
-        'http.ConnectionTimeOut' => 30,
+        'http.ConnectionTimeOut' => 1000,
 
         /**
          * Whether want to log to a file

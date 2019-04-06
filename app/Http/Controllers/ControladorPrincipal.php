@@ -165,15 +165,22 @@ class ControladorPrincipal extends Controller
 
     $post->save();
 
-    $subject = "Solicitud de Contacto";
-    $for = "meriventura.c.a@gmail.com";
-          Mail::send('email',$request->all(), function($msj) use($subject,$for){
-              $msj->from("meriventura.c.a@gmail.com","Meriventura");
-              $msj->subject($subject);
-              $msj->to($for);
-          });
+   $subject = "Solicitud de Contacto";
+   $for = "meriventura.c.a@gmail.com";
+       Mail::send('email',$request->all(), function($msj) use($subject,$for){
+             $msj->from("meriventura.c.a@gmail.com","Meriventura");
+             $msj->subject($subject);
+             $msj->to($for);
+       });
 
-      //$contacto = Contacto::create($request->all());
+//   $beautymail = app()->make(Snowfire\Beautymail\Beautymail::class);
+//   $beautymail->send('emails.welcome', [], function($message)
+//   {
+//       $message
+//     ->from('meriventura.c.a@gmail.com')
+//     ->to('meriventura.c.a@gmail.com', 'John Smith')
+//     ->subject('Welcome!');
+//   });
 
       return redirect ('/contacto')
         ->with('info', 'Mensaje enviado con exito');

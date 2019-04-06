@@ -139,6 +139,14 @@
 									</li>
 									@endcan
 
+									<li class="dropdown"><!-- PAYPAL -->
+
+										<a  href="http://localhost/LaTesis/public/paywithpaypal">
+											<span class="bordered">PayPal</span>
+										</a>
+
+									</li>
+
 									<!-- Fin Prueba menu Prestador -->
 
                     @guest

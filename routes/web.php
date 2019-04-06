@@ -11,10 +11,26 @@ use Conner\Tagging\Providers\TaggingServiceProvider;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('/test', function()
+{
+  $beautymail = app()->make(Snowfire\Beautymail\Beautymail::class);
+  $beautymail->send('emails.welcome', [], function($message)
+  {
+      $message
+    ->from('meriventura.c.a@gmail.com')
+    ->to('meriventura.c.a@gmail.com', 'John Smith')
+    ->subject('Welcome!');
+  });
+
+});
 
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/paywithpaypal', array('as' => 'addmoney.paywithpaypal','uses' => 'AddMoneyController@payWithPaypal',));
+Route::post('/paypal', array('as' => 'addmoney.paypal','uses' => 'AddMoneyController@postPaymentWithpaypal',));
+Route::get('/paypal', array('as' => 'payment.status','uses' => 'AddMoneyController@getPaymentStatus',));
 
 //Paginas Iniciales
 
