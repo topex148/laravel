@@ -1,47 +1,20 @@
 @extends('layouts.menu')
 
 @section('content')
-<section id="slider">
+<!-- OWL SLIDER -->
+    <section id="slider">
 
-<div class="flexslider">
-  <ul class="slides">
+      <div class="owl-carousel buttons-autohide controlls-over m-0" data-plugin-options='{"singleItem": true, "autoPlay": true, "navigation": true, "pagination": true, "transitionStyle":"fade"}'>
+        <div>
+          <img class="img-fluid" src="demo_files/images/panorama/1-min.jpg" alt="">
+        </div>
+        <div>
+          <img class="img-fluid" src="demo_files/images/panorama/2-min.jpg" alt="">
+        </div>
+      </div>
 
-    <!-- Slide 1 -->
-    <li>
-      <a href="#">
-        <img src="img/img sliders/camping 1.png" alt="Slide 2">
-        <div class="flex-caption">CAMPING</div>
-      </a>
-    </li>
-
-    <!-- Slide 2 -->
-    <li>
-      <a href="#">
-        <img src="img/img sliders/ciclista 1.png" alt="Slide 3">
-        <div class="flex-caption">CICLISMO</div>
-      </a>
-    </li>
-
-    <!-- Slide 3 -->
-    <li>
-      <a href="#">
-        <img src="img/img sliders/montaña 1.png" alt="Slide 4">
-        <div class="flex-caption">MONTAÑA</div>
-      </a>
-    </li>
-
-    <!-- Slide 4 -->
-    <li>
-      <a href="#">
-        <img src="img/img sliders/senderismo 1.png" alt="Slide 5" height="1200" width="500">
-        <div class="flex-caption">SENDERISMO</div>
-      </a>
-    </li>
-
-  </ul>
-</div>
-
-</section>
+    </section>
+    <!-- /OWL SLIDER -->
 
 <!-- FEATURES -->
 			<section id="features">
@@ -54,30 +27,32 @@
 						<hr />
 					</header>
 
-					<!-- FEATURED BOXES 3 -->
-					<div class="row">
 
-						@foreach ($actividades as $actividade)
-						<div class="col-md-3 col-xs-6">
+          <!-- FEATURED BOXES 3 -->
+          <div class="row">
+
+            @foreach ($actividades as $actividade)
+            <div class="col-md-3 col-xs-6">
               <div class="text-center">
-                <div class="owl-carousel owl-padding-3 buttons-autohide controlls-over" data-plugin-options='{"singleItem": false, "items": "5", "autoPlay": true, "navigation": true, "pagination": false}'>
-								@foreach ($fotos as $foto)
-								@if (($foto->id_Activi) == ($actividade->id))
-								<div class="float">
-										<img  class="img-fluid rounded"src="{{asset('storage/imagen/foto/'.$foto->imagen)}}" style="width:75px; height:75px;">
-								</div>
-								@endif
-								@endforeach
+                  <div class="owl-carousel text-center owl-testimonial m-0" data-plugin-options='{"singleItem": true, "autoPlay": 4000, "navigation": false, "pagination": true, "transitionStyle":"fade"}'>
+                @foreach ($fotos as $foto)
+                @if (($foto->id_Activi) == ($actividade->id))
+                <figure>
+                    <img  class="img rounded" src="{{asset('storage/imagen/foto/'.$foto->imagen)}}" style="width:75px; height:75px;">
+                </figure>
+                @endif
+                @endforeach
                 </div>
-								<h4>{{$actividade->titulo}}</h4>
-								<p>{{$actividade->descripcion}}</p>
-							</div>
-						</div>
-						@endforeach
+                <h4>{{$actividade->titulo}}</h4>
+                <p>{{$actividade->descripcion}}</p>
+               <!-- <p>{{$actividade->descripcion}}</p>-->
+              </div>
+            </div>
+            @endforeach
 
 
-					</div>
-					<!-- /FEATURED BOXES 3 -->
+          </div>
+          <!-- /FEATURED BOXES 3 -->
 
 
 				</div>

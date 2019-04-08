@@ -203,7 +203,7 @@
 			</div>
 
 
-  <main class="py-4">
+	<!--		<main class="py-4">
       @if(session('info'))
         <div class="container">
           <div class="row justify-content-center">
@@ -215,7 +215,7 @@
          </div>
        </div>
       @endif
-  </main>
+  </main>-->
 
     @yield('content')
 
@@ -255,7 +255,7 @@
 					<!-- /col #1 -->
 
 					<!-- REDES SOCIALES -->
-					<div class="col-md-5 col-sm-5">
+					<div class="col-md-4 col-sm-4">
 
 						<h4 class="letter-spacing-1">REDES SOCIALES</h4>
 
@@ -265,29 +265,24 @@
 						<!-- Social Icons -->
 						<div class="clearfix">
 
-							<a href="#" class="social-icon social-icon-sm social-icon-border social-facebook float-left" data-toggle="tooltip" data-placement="top" title="Facebook">
+							<a target="_blank" href="https://www.facebook.com/" class="social-icon social-icon-sm social-icon-border social-facebook float-left" data-toggle="tooltip" data-placement="top" title="Facebook">
 								<i class="icon-facebook"></i>
 								<i class="icon-facebook"></i>
 							</a>
 
-							<a href="#" class="social-icon social-icon-sm social-icon-border social-twitter float-left" data-toggle="tooltip" data-placement="top" title="Twitter">
+							<a target="_blank" href="https://www.twitter.com/" class="social-icon social-icon-sm social-icon-border social-twitter float-left" data-toggle="tooltip" data-placement="top" title="Twitter">
 								<i class="icon-twitter"></i>
 								<i class="icon-twitter"></i>
 							</a>
 
-							<a href="#" class="social-icon social-icon-sm social-icon-border social-gplus float-left" data-toggle="tooltip" data-placement="top" title="Google plus">
-								<i class="icon-gplus"></i>
-								<i class="icon-gplus"></i>
+							<a target="_blank" href="https://www.youtube.com/" class="social-icon social-icon-sm social-icon-border social-youtube float-left" data-toggle="tooltip" data-placement="top" title="Youtube">
+								<i class="icon-youtube"></i>
+								<i class="icon-youtube"></i>
 							</a>
 
-							<a href="#" class="social-icon social-icon-sm social-icon-border social-linkedin float-left" data-toggle="tooltip" data-placement="top" title="Linkedin">
-								<i class="icon-linkedin"></i>
-								<i class="icon-linkedin"></i>
-							</a>
-
-							<a href="#" class="social-icon social-icon-sm social-icon-border social-rss float-left" data-toggle="tooltip" data-placement="top" title="Rss">
-								<i class="icon-rss"></i>
-								<i class="icon-rss"></i>
+							<a target="_blank" href="https://www.instagram.com/" class="social-icon social-icon-sm social-icon-border social-instagram float-left" data-toggle="tooltip" data-placement="top" title="Instagrams">
+								<i class="icon-instagram"></i>
+								<i class="icon-instagram"></i>
 							</a>
 
 						</div>
@@ -297,7 +292,7 @@
 					<!-- /REDES SOCIALES-->
 
 					<!-- GALERIA -->
-					<div class="col-md-4">
+					<div class="col-md-5">
 						<h4  class="letter-spacing-1">GALERIA DE FOTOS</h4>
 
 						<div class="footer-gallery lightbox" data-plugin-options='{"delegate": "a", "gallery": {"enabled": true}}'>
@@ -322,7 +317,7 @@
 			<div class="copyright">
 				<div class="container">
 
-					Copyright &copy; 2018 MERIVENTURA. Todos los derechos reservados.
+					Copyright &copy; 2019 MERIVENTURA. Todos los derechos reservados.
 				</div>
 			</div>
 

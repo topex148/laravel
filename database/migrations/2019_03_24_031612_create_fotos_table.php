@@ -25,7 +25,7 @@ class CreateFotosTable extends Migration
           $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
 
           $table->string('RIF_Prest')->nullable();
-          $table->foreign('RIF_Prest')->references('RIF')->on('prestadores')->onDelete('cascade');
+          
 
           $table->unsignedInteger('id_Zona')->nullable();
           $table->foreign('id_Zona')->references('id')->on('zonas')->onDelete('cascade');

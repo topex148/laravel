@@ -1,47 +1,21 @@
 @extends('layouts.menu')
 
 @section('content')
-<section id="slider">
 
-<div class="flexslider">
-  <ul class="slides">
+<!-- OWL SLIDER -->
+    <section id="slider">
 
-    <!-- Slide 1 -->
-    <li>
-      <a href="#">
-        <img src="img/img sliders/camping 1.png" alt="Slide 2">
-        <div class="flex-caption">CAMPING</div>
-      </a>
-    </li>
+      <div class="owl-carousel buttons-autohide controlls-over m-0" data-plugin-options='{"singleItem": true, "autoPlay": true, "navigation": true, "pagination": true, "transitionStyle":"fade"}'>
+        <div>
+          <img class="img-fluid" src="demo_files/images/panorama/1-min.jpg" alt="">
+        </div>
+        <div>
+          <img class="img-fluid" src="demo_files/images/panorama/2-min.jpg" alt="">
+        </div>
+      </div>
 
-    <!-- Slide 2 -->
-    <li>
-      <a href="#">
-        <img src="img/img sliders/ciclista 1.png" alt="Slide 3">
-        <div class="flex-caption">CICLISMO</div>
-      </a>
-    </li>
-
-    <!-- Slide 3 -->
-    <li>
-      <a href="#">
-        <img src="img/img sliders/montaña 1.png" alt="Slide 4">
-        <div class="flex-caption">MONTAÑA</div>
-      </a>
-    </li>
-
-    <!-- Slide 4 -->
-    <li>
-      <a href="#">
-        <img src="img/img sliders/senderismo 1.png" alt="Slide 5" height="1200" width="500">
-        <div class="flex-caption">SENDERISMO</div>
-      </a>
-    </li>
-
-  </ul>
-</div>
-
-</section>
+    </section>
+    <!-- /OWL SLIDER -->
 
 <!-- FEATURES -->
 			<section id="features">
@@ -60,17 +34,17 @@
 						@foreach ($actividades as $actividade)
 						<div class="col-md-3 col-xs-6">
               <div class="text-center">
-                <div class="owl-carousel owl-padding-3 buttons-autohide controlls-over" data-plugin-options='{"singleItem": false, "items": "5", "autoPlay": true, "navigation": true, "pagination": false}'>
+                	<div class="owl-carousel text-center owl-testimonial m-0" data-plugin-options='{"singleItem": true, "autoPlay": 4000, "navigation": false, "pagination": true, "transitionStyle":"fade"}'>
 								@foreach ($fotos as $foto)
 								@if (($foto->id_Activi) == ($actividade->id))
-								<div class="float">
-										<img  class="img-fluid rounded"src="{{asset('storage/imagen/foto/'.$foto->imagen)}}" style="width:75px; height:75px;">
-								</div>
+								<figure>
+										<img  class="img rounded"src="{{asset('storage/imagen/foto/'.$foto->imagen)}}" style="width:75px; height:75px;">
+								</figure>
 								@endif
 								@endforeach
                 </div>
 								<h4>{{$actividade->titulo}}</h4>
-								<p>{{$actividade->descripcion}}</p>
+							 <!-- <p>{{$actividade->descripcion}}</p>-->
 							</div>
 						</div>
 						@endforeach
@@ -85,54 +59,48 @@
 			<!-- /FEATURES -->
 
       <!-- PARALLAX -->
-      			<section class="parallax parallax-2" style="background-image: url('demo_files/images/1200x800/20-min.jpg');">
-      				<div class="overlay dark-8"><!-- dark overlay [1 to 9 opacity] --></div>
+      		<section class="parallax parallax-2 section-xs" style="background-image: url('demo_files/images/vision-min.jpg');">
+      				<div class="overlay dark-4"><!-- dark overlay [1 to 9 opacity] --></div>
 
       				<div class="container">
 
       					<div class="text-center">
       						<h3 class="m-0">Comparte Tus Ideas </h3>
       						<p class="font-lato fw-300 lead mt-0">No podemos resolver problemas usando el mismo tipo de pensamiento que usamos cuando los creamos.</p>
-      					</div>
 
-      					<ul class="mt-80 social-icons list-unstyled list-inline">
+
+      					<ul class="mt-40 social-icons list-unstyled list-inline">
       						<li>
-      							<a target="_blank" href="#">
+      							<a target="_blank" href="https://www.facebook.com/">
       								<i class="fa fa-facebook"></i>
       								<h4>Facebook</h4>
       								<span>Se Nuestro Amigo</span>
       							</a>
       						</li>
       						<li>
-      							<a target="_blank" href="#">
+      							<a target="_blank" href="https://www.twitter.com/">
       								<i class="fa fa-twitter"></i>
       								<h4>Twitter</h4>
       								<span>Síguenos</span>
       							</a>
       						</li>
       						<li>
-      							<a target="_blank" href="#">
+      							<a target="_blank" href="https://www.youtube.com/">
       								<i class="fa fa-youtube"></i>
       								<h4>Youtube</h4>
       								<span>Nuestro Canal</span>
       							</a>
       						</li>
       						<li>
-      							<a target="_blank" href="#">
+      							<a target="_blank" href="https://www.instagram.com/">
       								<i class="fa fa-instagram"></i>
       								<h4>Instagram</h4>
       								<span> Ve Nuestras Imágenes </span>
       							</a>
       						</li>
-      						<li>
-      							<a target="_blank" href="#">
-      								<i class="fa fa-linkedin"></i>
-      								<h4>Linkedin</h4>
-      								<span>Revisa Nuestra Identidad</span>
-      							</a>
-      						</li>
 
       					</ul>
+              </div>
 
       				</div>
 

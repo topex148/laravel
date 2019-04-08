@@ -193,7 +193,7 @@
 
 
 
-  <main class="py-4">
+	<!--   <main class="py-4">
       @if(session('info'))
         <div class="container">
           <div class="row justify-content-center">
@@ -205,7 +205,7 @@
          </div>
        </div>
       @endif
-  </main>
+  </main>-->
 
     @yield('content')
 
@@ -216,7 +216,7 @@
   	<div class="copyright">
   		<div class="container">
 
-  			Copyright &copy; 2018 MERIVENTURA. Todos los derechos reservados.
+  			Copyright &copy; 2019 MERIVENTURA. Todos los derechos reservados.
   		</div>
   	</div>
 

@@ -9,7 +9,8 @@
 
 					<div class="row">
 						<div class="col-lg-6 col-md-6 col-sm-6">
-								<div class="owl-carousel buttons-autohide controlls-over m-0 box-shadow-1" data-plugin-options='{"items": 1, "autoHeight": true, "navigation": true, "pagination": true, "transitionStyle":"fade", "progressBar":"true"}'>
+							<div class="text-center">
+								<div class="owl-carousel text-center owl-testimonial m-0" data-plugin-options='{"singleItem": true, "autoPlay": 4000, "navigation": false, "pagination": true, "transitionStyle":"fade"}'>
 						@foreach ($fotos as $foto)
 						@if (($notes->id) == ($foto->id_Atrac))
 
@@ -17,14 +18,15 @@
 
 							<!-- OWL SLIDER -->
 
-								<div>
-									<img class="img-fluid" src="{{asset('storage/imagen/foto/'.$foto->imagen)}}" alt="" style="width:400px; height:400px">
-								</div>
+								<figure>
+									<img class="img rounded" src="{{asset('storage/imagen/foto/'.$foto->imagen)}}" alt="" style="width:400px; height:400px">
+								</figure>
 
 							<!-- /OWL SLIDER -->
 
 						@endif
 						@endforeach
+						</div>
 						</div>
 						</div>
 
