@@ -11,6 +11,9 @@ use Conner\Tagging\Providers\TaggingServiceProvider;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+Route::get('/email', 'HomeController@email')->name('sendEmail');
+
 Route::get('/test', function()
 {
   $beautymail = app()->make(Snowfire\Beautymail\Beautymail::class);
