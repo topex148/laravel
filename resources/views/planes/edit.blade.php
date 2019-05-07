@@ -19,19 +19,52 @@
 
 							<h3>Verifica los datos antes de seleccionar <strong><em>Actualizar!</em></strong></h3>
 
-            <form action="/LaTesis/public/planes/{{$plane->id}}" method="POST" role="form">
+            <form enctype="multipart/form-data" action="/LaTesis/public/planes/{{$plane->id}}" method="POST" role="form">
 
               {{method_field('PATCH')}}
               {{csrf_field()}}
+
+
+							<div class="row">
+
+								<div class="col-md-6">
+									<label for="">Nombre</label>
+									<input required type="text"  maxlength="30" value="{{$plane->name}}" class="form-control" name="name" placeholder="Ingrese el Nombre">
+								</div>
+
+								<div class="col-md-6">
+									<label for="">Descripcion del Plan</label>
+									<input required type="text"  maxlength="500" value="{{$plane->descripcion}}" class="form-control" name="descripcion" placeholder="Ingrese la Descripcion del Plan">
+								</div>
+
+								</div>
+
+								<div class="row">
+
+									<div class="col-md-6">
+										<label for="">precio</label>
+										<input required type="number" value="{{$plane->precio}}"  name="precio"  placeholder="Ingrese el precio" >
+									</div>
+
+									<div class="col-md-6">
+										<!-- custom file upload -->
+									<label for="">Imagen del Plan</label>
+									<input class="custom-file-upload"  type="file" name="imagen" value="{{$plane-> imagen}}" data-btn-text="Seleccionar Archivo" />
+									<small class="text-muted block">Tamaño de Archivo Maximo: 10Mb (zip/pdf/jpg/png)</small>
+
+								</div>
+
+								</div>
+
 
 							<div class="row">
 
                 <div class="col-md-4">
                   <h5>Publicidad</h5>
-                      <select required type="text" value="{{$plane->Publicidad}}" class="form-control select2" name="Publicidad" placeholder="Ingrese la Publicidad" >
-                        <option value="">¿Poseé Publicidad?-->{{$plane->Publicidad}}</option>
-                            <option value="SI">Si</option>
-                            <option value="NO">No</option>
+                      <select required type="text" value="{{$plane->Publicidad}}" class="form-control select2" name="Publicidad" placeholder="Ingrese el plan al que pertenece" >
+                        <option value="{{$plane->Publicidad}}">{{$plane->Publicidad}}</option>
+                            <option value="monthly">Mensual</option>
+                            <option value="yearly">Anual</option>
                       </select>
                   </div>
 

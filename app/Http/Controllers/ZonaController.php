@@ -162,4 +162,24 @@ class ZonaController extends Controller
       return back()->with('info', 'Eliminado correctamente');
   }
 
+  public function invoice()
+  {
+
+      $actividades = $this->getzona();
+      $date = date('Y-m-d');
+      $invoice = "2222";
+      $view =  \View::make('pdf.zonas', compact('zonas', 'date', 'invoice'))->render();
+      $pdf = \App::make('dompdf.wrapper');
+      $pdf->loadHTML($view);
+      return $pdf->stream('invoice');
+      //return $pdf->download('invoice'); //para descargar
+  }
+
+  public function getzona()
+  {
+      $zonas = Zona::all();
+
+      return $zonas;
+  }
+
 }

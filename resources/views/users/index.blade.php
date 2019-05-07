@@ -13,6 +13,10 @@
                   <tr width="10px">
                     <td><strong>  Usuarios </strong></td>
                   </th>
+
+                  @can('users.invoice')
+                      <a href="{{route('users.invoice')}}" class="pull-right btn btn-primary btn-sm"><i class="fa fa-check"></i> Reporte </a>
+                  @endcan
                 </div>
 
                 <div class="panel-body">

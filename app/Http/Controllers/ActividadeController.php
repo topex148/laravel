@@ -203,5 +203,25 @@ class ActividadeController extends Controller
       return back()->with('info', 'Eliminado correctamente');
   }
 
+  public function invoice()
+  {
+
+      $actividades = $this->getactividades();
+      $date = date('Y-m-d');
+      $invoice = "2222";
+      $view =  \View::make('pdf.actividades', compact('actividades', 'date', 'invoice'))->render();
+      $pdf = \App::make('dompdf.wrapper');
+      $pdf->loadHTML($view);
+      return $pdf->stream('invoice');
+      //return $pdf->download('invoice'); //para descargar
+  }
+
+  public function getactividades()
+  {
+      $actividades = Actividade::all();
+
+      return $actividades;
+  }
+
 
   }

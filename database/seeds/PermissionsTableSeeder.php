@@ -38,6 +38,12 @@ class PermissionsTableSeeder extends Seeder
             'description' =>'Eliminar cualquier usuario del sistema',
                 ]);
 
+        Permission::create([
+            'name'        => 'Imprimir lista usuarios',
+            'slug'        => 'usuarios.invoice',
+            'description' => 'Muestra lista de usuarios en el sistema',
+                ]);
+
        //Roles
 
       Permission::create([
@@ -70,6 +76,12 @@ class PermissionsTableSeeder extends Seeder
             'description' =>'Eliminar cualquier rol del sistema',
             ]);
 
+      Permission::create([
+            'name'        => 'Imprimir lista roles',
+            'slug'        => 'roles.invoice',
+            'description' => 'Muestra lista de roles en el sistema',
+            ]);
+
         //Paquete
 
         Permission::create([
@@ -100,6 +112,12 @@ class PermissionsTableSeeder extends Seeder
               'name'        => 'Eliminar paquetes',
               'slug'        => 'packages.destroy',
               'description' => 'Eliminar cualquier paquete del sistema',
+              ]);
+
+        Permission::create([
+              'name'        => 'Imprimir lista paquetes',
+              'slug'        => 'packages.invoice',
+              'description' => 'Muestra lista de paquetes en el sistema',
               ]);
 
 
@@ -135,6 +153,12 @@ class PermissionsTableSeeder extends Seeder
               'description' => 'Eliminar cualquier actividad del sistema',
               ]);
 
+        Permission::create([
+              'name'        => 'Imprimir lista actividades',
+              'slug'        => 'actividades.invoice',
+              'description' => 'Muestra lista de actividades en el sistema',
+              ]);
+
         //Atractivo
 
         Permission::create([
@@ -165,6 +189,12 @@ class PermissionsTableSeeder extends Seeder
               'name'        => 'Eliminar atractivos',
               'slug'        => 'atractivos.destroy',
               'description' => 'Eliminar cualquier atractivo del sistema',
+              ]);
+
+        Permission::create([
+              'name'        => 'Imprimir lista atractivos',
+              'slug'        => 'atractivos.invoice',
+              'description' => 'Muestra lista de atractivos en el sistema',
               ]);
 
 
@@ -198,6 +228,12 @@ class PermissionsTableSeeder extends Seeder
               'name'        => 'Eliminar contactos',
               'slug'        => 'contactos.destroy',
               'description' => 'Eliminar cualquier contacto del sistema',
+              ]);
+
+        Permission::create([
+              'name'        => 'Imprimir lista contactos',
+              'slug'        => 'contactos.invoice',
+              'description' => 'Muestra lista de contactos en el sistema',
               ]);
 
         //Foto
@@ -264,6 +300,12 @@ class PermissionsTableSeeder extends Seeder
               'description' => 'Eliminar cualquier itinerario del sistema',
               ]);
 
+        Permission::create([
+              'name'        => 'Imprimir lista itinerarios',
+              'slug'        => 'itinerarios.invoice',
+              'description' => 'Muestra lista de itinerarios en el sistema',
+              ]);
+
         //Planes
 
         Permission::create([
@@ -294,6 +336,12 @@ class PermissionsTableSeeder extends Seeder
               'name'        => 'Eliminar planes',
               'slug'        => 'planes.destroy',
               'description' => 'Eliminar cualquier plan del sistema',
+              ]);
+
+        Permission::create([
+              'name'        => 'Imprimir lista planes',
+              'slug'        => 'planes.invoice',
+              'description' => 'Muestra lista de planes en el sistema',
               ]);
 
         //Prestadores
@@ -328,6 +376,12 @@ class PermissionsTableSeeder extends Seeder
               'description' => 'Eliminar cualquier prestador del sistema',
               ]);
 
+        Permission::create([
+              'name'        => 'Imprimir lista prestadores',
+              'slug'        => 'prestadores.invoice',
+              'description' => 'Muestra lista de prestadores en el sistema',
+              ]);
+
         //Turistas
 
         Permission::create([
@@ -360,6 +414,12 @@ class PermissionsTableSeeder extends Seeder
               'description' => 'Eliminar cualquier turista del sistema',
               ]);
 
+        Permission::create([
+              'name'        => 'Imprimir lista turistas',
+              'slug'        => 'turistas.invoice',
+              'description' => 'Muestra lista de turistas en el sistema',
+              ]);
+
         //Zonas
 
         Permission::create([
@@ -390,6 +450,12 @@ class PermissionsTableSeeder extends Seeder
               'name'        => 'Eliminar zonas',
               'slug'        => 'zonas.destroy',
               'description' => 'Eliminar cualquier zona del sistema',
+              ]);
+
+        Permission::create([
+              'name'        => 'Imprimir lista zonas',
+              'slug'        => 'zonas.invoice',
+              'description' => 'Muestra lista de zonas en el sistema',
               ]);
 
         //Prestador Perfil

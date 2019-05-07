@@ -17,6 +17,10 @@
                       <a href="{{route('roles.create')}}" class="pull-right btn btn-sm btn-primary"> Crear </a>
                   @endcan
 
+                  @can('roles.invoice')
+                      <a href="{{route('roles.invoice')}}" class="pull-right btn btn-primary btn-sm"><i class="fa fa-check"></i> Reporte </a>
+                  @endcan
+
                 </div>
 
                 <div class="panel-body">

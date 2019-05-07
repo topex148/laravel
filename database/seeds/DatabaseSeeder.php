@@ -1,5 +1,5 @@
 <?php
-
+use App\User;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -23,5 +23,7 @@ class DatabaseSeeder extends Seeder
          $this->call(PrestadoresTableSeeder::class);
          $this->call(TuristasTableSeeder::class);
          $this->call(ZonasTableSeeder::class);
+
+
     }
 }

@@ -7,6 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 class Plane extends Model
 {
   protected $fillable = [
-    'Fecha_Inicio', 'Fecha_Final', 'Publicidad',
+    'precio','name', 'descripcion', 'imagen', 'Fecha_Inicio', 'Fecha_Final', 'Publicidad',
     ];
 }

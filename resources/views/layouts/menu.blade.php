@@ -14,8 +14,11 @@
 		<meta name="Author" content="Dorin Grigoras [www.stepofweb.com]" />
 
 		<!-- mobile settings -->
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 		<meta name="viewport" content="width=device-width, maximum-scale=1, initial-scale=1, user-scalable=0" />
 		<!--[if IE]><meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'><![endif]-->
+
+		<script src="https://js.stripe.com/v3/"></script>
 
 		<!-- WEB FONTS : use %7C instead of | (pipe) -->
 		<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600%7CRaleway:300,400,500,600,700%7CLato:300,400,400italic,600,700" rel="stylesheet" type="text/css" />
@@ -32,6 +35,46 @@
 		<link href="{{ asset("assets/css/layout-shop.css") }}" rel="stylesheet" type="text/css" />
 		<link href="{{ asset("assets/css/color_scheme/green.css") }}" rel="stylesheet" type="text/css" id="color_scheme" />
 <!--Prueba final-->
+
+		<style>
+
+						/**
+				 * The CSS shown here will not be introduced in the Quickstart guide, but shows
+				 * how you can use CSS to style your Element's container.
+				 */
+				.StripeElement {
+				  box-sizing: border-box;
+
+				  height: 40px;
+
+				  padding: 10px 12px;
+
+				  border: 1px solid #ccd0d2;
+				  border-radius: 4px;
+				  background-color: white;
+
+				  box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+				  -webkit-transition: box-shadow 150ms ease;
+				  transition: box-shadow 150ms ease;
+				}
+
+				.StripeElement--focus {
+				  box-shadow: 0 1px 3px 0 #cfd7df;
+				}
+
+				.StripeElement--invalid {
+				  border-color: #fa755a;
+				}
+
+				.StripeElement--webkit-autofill {
+				  background-color: #fefde5 !important;
+				}
+
+				#card-errors {
+					color: #fa755a;
+				}
+
+		</style>
 
 </head>
 <body>
@@ -96,18 +139,18 @@
 
 									</li>
 
-									<li class="dropdown"><!-- ATRACTIVOS -->
-
-										<a  href="http://localhost/LaTesis/public/atractivoLista">
-											<span class="bordered">Atractivos</span>
-										</a>
-
-									</li>
-
 									<li class="dropdown"><!-- ZONAS -->
 
 										<a  href="http://localhost/LaTesis/public/zonaLista">
 											<span class="bordered">Zonas</span>
+										</a>
+
+									</li>
+
+									<li class="dropdown"><!-- ATRACTIVOS -->
+
+										<a  href="http://localhost/LaTesis/public/atractivoLista">
+											<span class="bordered">Atractivos</span>
 										</a>
 
 									</li>
@@ -128,6 +171,14 @@
 
 									</li>
 
+									<li class="dropdown"><!-- Planes -->
+
+										<a  href="http://localhost/LaTesis/public/plan">
+											<span class="bordered">Planes</span>
+										</a>
+
+									</li>
+
 									<li class="dropdown"><!-- GALERIA -->
 
 										<a  href="http://localhost/LaTesis/public/galeria">
@@ -140,6 +191,15 @@
 
 										<a  href="http://localhost/LaTesis/public/contacto">
 											<span class="bordered">Contacto</span>
+										</a>
+
+									</li>
+
+
+									<li class="dropdown"><!-- Factura STRIPE -->
+
+										<a  href="http://localhost/LaTesis/public/invoices">
+											<span class="bordered">Factura Stripe</span>
 										</a>
 
 									</li>
@@ -349,6 +409,91 @@
 
 		<!-- PAGE LEVEL SCRIPTS -->
 		<script type="text/javascript" src="{{ asset("assets/js/view/demo.shop.js") }}"></script>
+
+		<script>
+
+			(function(){
+				// Create a Stripe client.
+				var stripe = Stripe('{{ config('services.stripe.key')}}');
+
+				// Create an instance of Elements.
+				var elements = stripe.elements();
+
+				// Custom styling can be passed to options when creating an Element.
+				// (Note that this demo uses a wider set of styles than the guide below.)
+				var style = {
+				  base: {
+				    color: '#32325d',
+				    fontFamily: '"Raleway", Helvetica, sans-serif',
+				    fontSmoothing: 'antialiased',
+				    fontSize: '16px',
+				    '::placeholder': {
+				      color: '#aab7c4'
+				    }
+				  },
+				  invalid: {
+				    color: '#fa755a',
+				    iconColor: '#fa755a'
+				  }
+				};
+
+				// Create an instance of the card Element.
+				var card = elements.create('card', {
+					style: style,
+					hidePostalCode: true
+				});
+
+				// Add an instance of the card Element into the `card-element` <div>.
+				card.mount('#card-element');
+
+				// Handle real-time validation errors from the card Element.
+				card.addEventListener('change', function(event) {
+				  var displayError = document.getElementById('card-errors');
+				  if (event.error) {
+				    displayError.textContent = event.error.message;
+				  } else {
+				    displayError.textContent = '';
+				  }
+				});
+
+				// Handle form submission.
+				var form = document.getElementById('payment-form');
+				form.addEventListener('submit', function(event) {
+				  event.preventDefault();
+
+					var options = {
+						name:document.getElementById('name_on_card').value,
+					}
+
+				  stripe.createToken(card, options).then(function(result) {
+				    if (result.error) {
+				      // Inform the user if there was an error.
+				      var errorElement = document.getElementById('card-errors');
+				      errorElement.textContent = result.error.message;
+				    } else {
+				      // Send the token to your server.
+				      stripeTokenHandler(result.token);
+				    }
+				  });
+				});
+
+				// Submit the form with the token ID.
+				function stripeTokenHandler(token) {
+				  // Insert the token ID into the form so it gets submitted to the server
+				  var form = document.getElementById('payment-form');
+				  var hiddenInput = document.createElement('input');
+				  hiddenInput.setAttribute('type', 'hidden');
+				  hiddenInput.setAttribute('name', 'stripeToken');
+				  hiddenInput.setAttribute('value', token.id);
+				  form.appendChild(hiddenInput);
+
+				  // Submit the form
+
+				  form.submit();
+				}
+			})();
+
+		</script>
 
 </body>
 </html>

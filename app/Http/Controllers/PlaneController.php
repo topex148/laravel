@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Plane;
+use Storage;
 use Illuminate\Http\Request;
 
 class PlaneController extends Controller
@@ -21,7 +22,34 @@ class PlaneController extends Controller
 
   public function store(Request $request)
   {
-      $plane = Plane::create($request->all());
+
+    if($request->hasFile('imagen'))
+      {
+
+
+          $fileNameExt = $request->file('imagen')->getClientOriginalName();
+          $fileName = pathinfo($fileNameExt, PATHINFO_FILENAME);
+          $fileExt = $request->file('imagen')->getClientOriginalExtension();
+          $fileNameToStore = $fileName.'_'.time().'.'.$fileExt;
+          $pathToStore = $request->file('imagen')->storeAs('imagen/plan/',$fileNameToStore);
+      }
+
+      $post = new Plane;
+      if($request->hasFile('imagen')){
+                  $post->imagen = $fileNameToStore;
+              }
+      $post->name = request()->name;
+      $post->descripcion = request()->descripcion;
+      $post->precio = request()->precio;
+      $post->Publicidad = request()->Publicidad;
+      $post->Fecha_Inicio = request()->Fecha_Inicio;
+      $post->Fecha_Final = request()->Fecha_Final;
+
+      $post->save();
+
+    //  $prestadore = Prestadore::create($request->all());
+
+      //$plane = Plane::create($request->all());
 
       return redirect()->route('planes.index')
         ->with('info', 'Plan creado con exito');
@@ -37,9 +65,35 @@ class PlaneController extends Controller
       return view('planes.edit', compact ('plane'));
   }
 
-  public function update(Request $request, Plane $plane)
+  public function update(Request $request, $id)
   {
-      $plane->update($request->all());
+
+    $post = Plane::find($id);
+
+    if($request->hasFile('imagen'))
+      {
+          Storage::delete('imagen/plan/'.$post->imagen);
+
+          $fileNameExt = $request->file('imagen')->getClientOriginalName();
+          $fileName = pathinfo($fileNameExt, PATHINFO_FILENAME);
+          $fileExt = $request->file('imagen')->getClientOriginalExtension();
+          $fileNameToStore = $fileName.'_'.time().'.'.$fileExt;
+          $pathToStore = $request->file('imagen')->storeAs('imagen/plan',$fileNameToStore);
+      }
+
+
+      if($request->hasFile('imagen')){
+                  $post->imagen = $fileNameToStore;
+              }
+      $post->name = request()->name;
+      $post->descripcion = request()->descripcion;
+      $post->precio = request()->precio;
+      $post->Fecha_Inicio = request()->Fecha_Inicio;
+      $post->Fecha_Final = request()->Fecha_Final;
+      $post->Publicidad = request()->Publicidad;
+
+      $post->save();
+      //$plane->update($request->all());
 
       return redirect()->route('planes.index')
         ->with('info', 'Plan actualizado con exito');
@@ -47,8 +101,29 @@ class PlaneController extends Controller
 
   public function destroy(Plane $plane)
   {
+      Storage::delete('imagen/plan/'.$plane->imagen);
       $plane->delete();
 
       return back()->with('info', 'Eliminado correctamente');
+  }
+
+  public function invoice()
+  {
+
+      $planes = $this->getplanes();
+      $date = date('Y-m-d');
+      $invoice = "2222";
+      $view =  \View::make('pdf.planes', compact('planes', 'date', 'invoice'))->render();
+      $pdf = \App::make('dompdf.wrapper');
+      $pdf->loadHTML($view);
+      return $pdf->stream('invoice');
+      //return $pdf->download('invoice'); //para descargar
+  }
+
+  public function getplanes()
+  {
+      $planes = Plane::all();
+
+      return $planes;
   }
 }

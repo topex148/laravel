@@ -19,6 +19,10 @@
                       <a href="{{route('planes.create')}}" class="pull-right btn btn-primary btn-sm"><i class="fa fa-check"></i> Crear </a>
                   @endcan
 
+                  @can('planes.invoice')
+                      <a href="{{route('planes.invoice')}}" class="pull-right btn btn-primary btn-sm"><i class="fa fa-check"></i> Reporte </a>
+                  @endcan
+
                 </div>
 
                 <div class="panel-body">
@@ -26,8 +30,9 @@
                           <thead>
                             <tr>
                                 <th width="10px">ID</th>
-                                <th>Fecha Inicio</th>
-                                <th>Fecha Final</th>
+                                <th>Foto</th>
+                                <th>Nombre</th>
+                                <th>Plan</th>
                                 <th colspan="3">&nbsp;</th>
                             </tr>
                           </thead>
@@ -35,8 +40,11 @@
                               @foreach($planes as $plane)
                               <tr>
                                 <td>{{$plane->id}}</td>
-                                <td>{{$plane->Fecha_Inicio}}</td>
-                                <td>{{$plane->Fecha_Final}}</td>
+                                <td>
+                                  <img src="{{asset('storage/imagen/plan/'.$plane->imagen)}}" style="width:75px; height:75px; float:left; border-radius:50%; margin-right:25px;">
+                                </td>
+                                <td>{{$plane->name}}</td>
+                                <td>{{$plane->Publicidad}}</td>
                                 <td width="10px">
                                     @can('planes.show')
                                     <a href="{{route('planes.show', $plane->id)}}"

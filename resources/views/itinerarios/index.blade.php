@@ -19,6 +19,10 @@
                       <a href="{{route('itinerarios.create')}}" class="pull-right btn btn-primary btn-sm"><i class="fa fa-check"></i> Crear </a>
                   @endcan
 
+                  @can('itinerarios.invoice')
+                      <a href="{{route('itinerarios.invoice')}}" class="pull-right btn btn-primary btn-sm"><i class="fa fa-check"></i> Reporte </a>
+                  @endcan
+
                 </div>
 
                 <div class="panel-body">

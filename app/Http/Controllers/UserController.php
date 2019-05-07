@@ -87,4 +87,24 @@ class UserController extends Controller
 
         return back()->with('info', 'Eliminado correctamente');
     }
+
+    public function invoice()
+    {
+
+        $users = $this->getuser();
+        $date = date('Y-m-d');
+        $invoice = "2222";
+        $view =  \View::make('pdf.users', compact('users', 'date', 'invoice'))->render();
+        $pdf = \App::make('dompdf.wrapper');
+        $pdf->loadHTML($view);
+        return $pdf->stream('invoice');
+        //return $pdf->download('invoice'); //para descargar
+    }
+
+    public function getuser()
+    {
+        $users = User::all();
+
+        return $users;
+    }
 }

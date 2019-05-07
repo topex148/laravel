@@ -19,7 +19,12 @@ use App\Plane;
 use App\Registro;
 use App\Imagene;
 use App\Contacto;
+use App\User;
 use Mail;
+
+use Stripe\Stripe;
+use Stripe\Customer;
+use Stripe\Charge;
 
 class ControladorPrincipal extends Controller
 {
@@ -191,5 +196,6 @@ class ControladorPrincipal extends Controller
     $foto = Foto::all();
     return view("PaginasIniciales/galeria", ['fotos' => $foto]);
   }
+
 
 }

@@ -19,6 +19,10 @@
                       <a href="{{route('turistas.create')}}" class="pull-right btn btn-primary btn-sm"><i class="fa fa-check"></i> Crear </a>
                   @endcan
 
+                  @can('turistas.invoice')
+                      <a href="{{route('turistas.invoice')}}" class="pull-right btn btn-primary btn-sm"><i class="fa fa-check"></i> Reporte </a>
+                  @endcan
+
                 </div>
 
                 <div class="panel-body">

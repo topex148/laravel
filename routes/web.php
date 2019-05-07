@@ -11,6 +11,39 @@ use Conner\Tagging\Providers\TaggingServiceProvider;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('users/reporte', 'UserController@invoice')->name('users.invoice')
+      ->middleware('permission:users.invoice');
+
+Route::get('roles/reporte', 'RoleController@invoice')->name('roles.invoice')
+      ->middleware('permission:roles.invoice');
+
+Route::get('packages/reporte', 'PackageController@invoice')->name('packages.invoice')
+      ->middleware('permission:packages.invoice');
+
+Route::get('actividades/reporte', 'ActividadeController@invoice')->name('actividades.invoice')
+      ->middleware('permission:actividades.invoice');
+
+Route::get('atractivos/reporte', 'AtractivoController@invoice')->name('atractivos.invoice')
+      ->middleware('permission:atractivos.invoice');
+
+Route::get('contactos/reporte', 'ContactoController@invoice')->name('contactos.invoice')
+      ->middleware('permission:contactos.invoice');
+
+Route::get('itinerarios/reporte', 'ItinerarioController@invoice')->name('itinerarios.invoice')
+      ->middleware('permission:itinerarios.invoice');
+
+Route::get('planes/reporte', 'PlaneController@invoice')->name('planes.invoice')
+      ->middleware('permission:planes.invoice');
+
+Route::get('prestadores/reporte', 'PrestadoreController@invoice')->name('prestadores.invoice')
+      ->middleware('permission:prestadores.invoice');
+
+Route::get('turistas/reporte', 'TuristaController@invoice')->name('turistas.invoice')
+      ->middleware('permission:turistas.invoice');
+
+Route::get('zonas/reporte', 'ZonaController@invoice')->name('zonas.invoice')
+      ->middleware('permission:zonas.invoice');
+
 
 Route::get('/email', 'HomeController@email')->name('sendEmail');
 
@@ -51,6 +84,14 @@ Route::get('/servicioLista/{prestadore}/prestador', 'ControladorPrincipal@servic
 Route::get('/contacto', 'ControladorPrincipal@contacto');
 Route::post("/contacto", "ControladorPrincipal@contactoGuardar");
 Route::get('/galeria', 'ControladorPrincipal@galeria');
+Route::get('/plan', 'PaymentsController@planPromocion');
+Route::post('/plan/pago1', 'PaymentsController@subscribe1');
+Route::post('/plan/pago2', 'PaymentsController@subscribe2');
+Route::get('/plan/actualizar', 'PaymentsController@changePlan');
+
+
+Route::get('/invoices', 'PaymentsController@invoices');
+Route::get('/invoices/{invoice_id}', 'PaymentsController@invoice');
 
 //Final Paginas Iniciales
 
@@ -289,6 +330,9 @@ Route::middleware(['auth'])->group(function(){
   Route::get('prestadores/{prestadore}/edit', 'PrestadoreController@edit')->name('prestadores.edit')
         ->middleware('permission:prestadores.edit');
 
+  //Route::get('prestadores/reporte', 'PrestadoreController@invoice')->name('prestadores.invoice')
+    //    ->middleware('permission:prestadores.invoice');
+
   //Turistas
 
   Route::post('turistas/store', 'TuristaController@store')->name('turistas.store')
@@ -386,6 +430,7 @@ Route::middleware(['auth'])->group(function(){
 
   Route::delete('perfilPrestador/{itinerario}/deleteItinerario', 'PerfilPrestadorController@destroyItine')->name('itine.destroy')
         ->middleware('permission:itine.destroy');
+
 
   //Fotos Atractivos
 

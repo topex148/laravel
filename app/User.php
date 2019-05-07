@@ -2,30 +2,33 @@
 
 namespace App;
 
+use Laravel\Cashier\Billable;
 use App\Notifications\MyResetPassword;
 use Caffeinated\Shinobi\Traits\ShinobiTrait;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Laravel\Cashier\BillableTrait;
+use Laravel\Cashier\BillableInterface;
 
 class User extends Authenticatable
 {
     use Notifiable, ShinobiTrait;
-
+    use Billable;
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
 
-
+    protected $dates = ['trial_ends_at', 'subscription_ends_at'];
 
     protected $fillable = [
         'name', 'email', 'password', 'RIF_Prest',
     ];
 
     protected $events = [
-      'created' => Events\NewUser::class
+      'created' => Events\NewUser::class,
     ];
     /**
      * The attributes that should be hidden for arrays.

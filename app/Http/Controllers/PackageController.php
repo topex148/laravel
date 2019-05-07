@@ -92,4 +92,24 @@ class PackageController extends Controller
 
         return back()->with('info', 'Eliminado correctamente');
     }
+
+    public function invoice()
+    {
+
+        $paquetes = $this->getpaquete();
+        $date = date('Y-m-d');
+        $invoice = "2222";
+        $view =  \View::make('pdf.paquetes', compact('paquetes', 'date', 'invoice'))->render();
+        $pdf = \App::make('dompdf.wrapper');
+        $pdf->loadHTML($view);
+        return $pdf->stream('invoice');
+        //return $pdf->download('invoice'); //para descargar
+    }
+
+    public function getpaquete()
+    {
+        $paquetes = Package::all();
+
+        return $paquetes;
+    }
 }

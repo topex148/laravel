@@ -19,6 +19,10 @@
                       <a href="{{route('packages.create')}}" class="pull-right btn btn-primary btn-sm"><i class="fa fa-check"></i> Crear </a>
                   @endcan
 
+                  @can('packages.invoice')
+                      <a href="{{route('packages.invoice')}}" class="pull-right btn btn-primary btn-sm"><i class="fa fa-check"></i> Reporte </a>
+                  @endcan
+
                 </div>
 
                 <div class="panel-body">

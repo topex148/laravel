@@ -13,11 +13,16 @@
 
                   <tr width="10px">
                     <td><strong>  Prestadores </strong></td>
-                  </th>
+                  </tr>
 
                   @can('prestadores.create')
                       <a href="{{route('prestadores.create')}}" class="pull-right btn btn-primary btn-sm"><i class="fa fa-check"></i> Crear </a>
                   @endcan
+
+                  @can('prestadores.invoice')
+                      <a href="{{route('prestadores.invoice')}}" class="pull-right btn btn-primary btn-sm"><i class="fa fa-check"></i> Reporte </a>
+                  @endcan
+
 
                 </div>
 
@@ -71,7 +76,7 @@
                               @endforeach
                           </tbody>
                         </table>
-                        
+
                 </div>
             </div>
         </div>

@@ -10,9 +10,14 @@
 
 <meta charset="utf-8" />
 		<title>Smarty - Multipurpose + Admin</title>
-		<meta name="description" content="" />
-		<meta name="Author" content="Dorin Grigoras [www.stepofweb.com]" />
+		<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
+    <!-- CSRF Token -->
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
+		<link href="{{asset('css/app.css')}}" rel="stylesheet">
 		<!-- mobile settings -->
 		<meta name="viewport" content="width=device-width, maximum-scale=1, initial-scale=1, user-scalable=0" />
 		<!--[if IE]><meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'><![endif]-->
@@ -24,12 +29,13 @@
 		<link href="{{ asset("assets/plugins/bootstrap/css/bootstrap.min.css") }}" rel="stylesheet" type="text/css" />
 
 		<!-- THEME CSS -->
-		<link href="{{ asset("assets/css/essentials.css") }}" rel="stylesheet" type="text/css" />
 		<link href="{{ asset("assets/css/layout.css") }}" rel="stylesheet" type="text/css" />
+		<link href='{{ asset('assets/css/essentials.css') }}' rel="stylesheet" type="text/css" />
+
 
 		<!-- PAGE LEVEL SCRIPTS -->
 		<link href="{{ asset("assets/css/header-1.css") }}" rel="stylesheet" type="text/css" />
-		<link href="{{ asset("assets/css/layout-shop.css") }}" rel="stylesheet" type="text/css" />
+
 		<link href="{{ asset("assets/css/color_scheme/green.css") }}" rel="stylesheet" type="text/css" id="color_scheme" />
 <!--Prueba final-->
 
@@ -247,6 +253,8 @@
 
 		<!-- PAGE LEVEL SCRIPTS -->
 		<script type="text/javascript" src="{{ asset("assets/js/view/demo.shop.js") }}"></script>
+
+
 
 </body>
 </html>

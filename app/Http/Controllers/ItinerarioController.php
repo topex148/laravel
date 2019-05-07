@@ -60,4 +60,24 @@ class ItinerarioController extends Controller
 
       return back()->with('info', 'Eliminado correctamente');
   }
+
+  public function invoice()
+  {
+
+      $itinerarios = $this->getitinerarios();
+      $date = date('Y-m-d');
+      $invoice = "2222";
+      $view =  \View::make('pdf.itinerarios', compact('itinerarios', 'date', 'invoice'))->render();
+      $pdf = \App::make('dompdf.wrapper');
+      $pdf->loadHTML($view);
+      return $pdf->stream('invoice');
+      //return $pdf->download('invoice'); //para descargar
+  }
+
+  public function getitineratios()
+  {
+      $itinerarios = Itinerario::all();
+
+      return $itinerarios;
+  }
 }

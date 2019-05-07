@@ -114,4 +114,26 @@ class PrestadoreController extends Controller
 
       return back()->with('info', 'Eliminado correctamente');
   }
+
+  public function invoice()
+  {
+
+      $prestadores = $this->getprestador();
+      $date = date('Y-m-d');
+      $invoice = "2222";
+      $view =  \View::make('pdf.prestadores', compact('prestadores', 'date', 'invoice'))->render();
+      $pdf = \App::make('dompdf.wrapper');
+      $pdf->loadHTML($view);
+      return $pdf->stream('invoice');
+      //return $pdf->download('invoice'); //para descargar
+  }
+
+  public function getprestador()
+  {
+      $prestadores = Prestadore::all();
+
+      return $prestadores;
+  }
+
+
 }

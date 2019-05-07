@@ -11,6 +11,6 @@ class PlanesTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\Plane::class, 10)->create();
+        factory(App\Plane::class, 6)->create();
     }
 }

@@ -51,4 +51,24 @@ class TuristaController extends Controller
 
       return back()->with('info', 'Eliminado correctamente');
   }
+
+  public function invoice()
+  {
+
+      $turistas = $this->getturistas();
+      $date = date('Y-m-d');
+      $invoice = "2222";
+      $view =  \View::make('pdf.turistas', compact('turistas', 'date', 'invoice'))->render();
+      $pdf = \App::make('dompdf.wrapper');
+      $pdf->loadHTML($view);
+      return $pdf->stream('invoice');
+      //return $pdf->download('invoice'); //para descargar
+  }
+
+  public function getturistas()
+  {
+      $turistas = Turista::all();
+
+      return $turistas;
+  }
 }

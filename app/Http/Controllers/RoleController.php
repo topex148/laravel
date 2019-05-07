@@ -109,4 +109,24 @@ class RoleController extends Controller
 
         return back()->with('info', 'Eliminado correctamente');
     }
+
+    public function invoice()
+    {
+
+        $roles = $this->getrole();
+        $date = date('Y-m-d');
+        $invoice = "2222";
+        $view =  \View::make('pdf.roles', compact('roles', 'date', 'invoice'))->render();
+        $pdf = \App::make('dompdf.wrapper');
+        $pdf->loadHTML($view);
+        return $pdf->stream('invoice');
+        //return $pdf->download('invoice'); //para descargar
+    }
+
+    public function getrole()
+    {
+        $roles = Role::all();
+
+        return $roles;
+    }
 }
