@@ -74,7 +74,7 @@ class ItinerarioController extends Controller
       //return $pdf->download('invoice'); //para descargar
   }
 
-  public function getitineratios()
+  public function getitinerarios()
   {
       $itinerarios = Itinerario::all();
 

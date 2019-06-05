@@ -14,5 +14,6 @@ $factory->define(App\Prestadore::class, function (Faker $faker) {
         'Facebook' => $faker->freeEmail,
         'Twitter' => $faker->freeEmail,
         'Instagram' => $faker->freeEmail,
+        'Fecha_Final' => $faker->dateTimeBetween($startDate = '-10 years', $endDate = 'now', $timezone = null),
     ];
 });

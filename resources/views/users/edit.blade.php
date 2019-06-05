@@ -46,7 +46,7 @@
 											<select class="form-control" name="RIF_Prest" value="{{$user->RIF_Prest}}">
 													<option value="{{$user->RIF_Prest}}">--- Seleccione el RIF del prestador ---</option>
 													@foreach ($prestadores as $prestadore)
-														<option value="{{$prestadore->RIF}}">{{$prestadore->RIF}}</option>
+														<option value="{{$prestadore->RIF}}">{{$prestadore->RIF}} --- {{$prestadore->Nombre}}</option>
 													@endforeach
 											</select>
 									</div>

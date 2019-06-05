@@ -11,7 +11,7 @@ use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 use App\User;
 
-class NewUser
+class NewUser extends Event
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
     public $user;
@@ -26,13 +26,5 @@ class NewUser
         this->user = $user;
     }
 
-    /**
-     * Get the channels the event should broadcast on.
-     *
-     * @return \Illuminate\Broadcasting\Channel|array
-     */
-    public function broadcastOn()
-    {
-        return new PrivateChannel('channel-name');
-    }
+
 }

@@ -20,6 +20,7 @@ use App\Registro;
 use App\Imagene;
 use App\Contacto;
 use App\User;
+use App\Publicidade;
 use Mail;
 
 use Stripe\Stripe;
@@ -31,9 +32,10 @@ class ControladorPrincipal extends Controller
   public function inicio()
   {
     $foto = Foto::all();
+    $publicidade = Publicidade::all();
     $actividad = Actividade::all();
     $contacto = Contacto::all();
-    return view("PaginasIniciales/inicio", ['contactos' => $contacto, 'fotos' => $foto, 'actividades' => $actividad]);
+    return view("PaginasIniciales/inicio", ['contactos' => $contacto, 'fotos' => $foto, 'actividades' => $actividad, 'publicidades' => $publicidade]);
   }
 
   public function inicioContactoGuardar(Request $request)
@@ -99,9 +101,10 @@ class ControladorPrincipal extends Controller
 
   public function zonaLista(Request $request)
   {
+    $publicidade = Publicidade::all();
     $foto = Foto::all();
     $zona = Zona::all();
-    return view("PaginasIniciales/zonaLista", ['fotos' => $foto, 'zonas' => $zona]);
+    return view("PaginasIniciales/zonaLista", ['fotos' => $foto, 'zonas' => $zona, 'publicidades' => $publicidade]);
   }
 
   public function zona(Request $request , Zona $zona)
@@ -112,10 +115,11 @@ class ControladorPrincipal extends Controller
 
   public function actividadLista()
   {
+    $publicidade = Publicidade::all();
     $foto = Foto::all();
     $prestadore = Prestadore::all();
     $actividad = Actividade::all();
-    return view("PaginasIniciales/actividadLista", ['prestadores' => $prestadore, 'fotos' => $foto, 'actividades' => $actividad]);
+    return view("PaginasIniciales/actividadLista", ['prestadores' => $prestadore, 'fotos' => $foto, 'actividades' => $actividad, 'publicidades' => $publicidade]);
   }
 
   public function actividad()
@@ -126,9 +130,10 @@ class ControladorPrincipal extends Controller
 
   public function servicioLista(Request $request)
   {
+    $publicidade = Publicidade::all();
     $foto = Foto::all();
     $prestadore = Prestadore::all();
-    return view("PaginasIniciales/servicioLista", ['prestadores' => $prestadore, 'fotos' => $foto]);
+    return view("PaginasIniciales/servicioLista", ['prestadores' => $prestadore, 'fotos' => $foto, 'publicidades' => $publicidade]);
   }
 
   public function servicio(Request $request , Prestadore $prestadore)

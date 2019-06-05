@@ -2,6 +2,7 @@
 
 namespace App\Console;
 
+use DB;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
@@ -13,7 +14,9 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-        //
+        'App\Console\Commands\RegisteredUsers',
+        'App\Console\Commands\PauseUsers',
+        'App\Console\Commands\PausePrestadores',
     ];
 
     /**
@@ -22,11 +25,19 @@ class Kernel extends ConsoleKernel
      * @param  \Illuminate\Console\Scheduling\Schedule  $schedule
      * @return void
      */
-    protected function schedule(Schedule $schedule)
-    {
-        // $schedule->command('inspire')
-        //          ->hourly();
-    }
+    // protected function schedule(Schedule $schedule)
+     //{
+      //   $schedule->call(function () {
+        //     DB::table('publicidades')->delete();
+        // })->everyMinute();
+     //}
+
+     protected function schedule(Schedule $schedule)
+     {
+       $schedule->command('registered:users')->hourly();
+       $schedule->command('pause:users')->hourly();
+       $schedule->command('pause:prestadores')->hourly();
+     }
 
     /**
      * Register the commands for the application.

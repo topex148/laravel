@@ -52,6 +52,7 @@ class PrestadoreController extends Controller
       $post->Facebook = request()->Facebook;
       $post->Twitter = request()->Twitter;
       $post->Instagram = request()->Instagram;
+      $post->Fecha_Final = request()->Fecha_Final;
 
       $post->save();
 
@@ -99,6 +100,7 @@ class PrestadoreController extends Controller
       $post->Facebook = request()->Facebook;
       $post->Twitter = request()->Twitter;
       $post->Instagram = request()->Instagram;
+      $post->Fecha_Final = request()->Fecha_Final;
 
       $post->save();
       //$prestadore->update($request->all());
@@ -134,6 +136,29 @@ class PrestadoreController extends Controller
 
       return $prestadores;
   }
+
+  public function suspender(Prestadore $suspen)
+  {
+
+    $suspen = Prestadore::onlyTrashed()->get();
+
+    return view('prestadores.suspender',['prestadores' => $suspen]);
+  }
+
+
+  public function restaurar($RIF){
+      $prueba= Prestadore::onlyTrashed()->where('RIF', $RIF)->restore();
+      return redirect ('/prestadores/suspender');
+    }
+
+  public function delete($RIF){
+
+      //$pruebas= Publicidade::onlyTrashed()->where('id', $id);
+      //Storage::delete('imagen/publicidad/'.$pruebas->imagen);
+      $prueba= Prestadore::onlyTrashed()->where('RIF', $RIF)->forceDelete();
+
+      return redirect ('/prestadores/suspender');
+    }
 
 
 }

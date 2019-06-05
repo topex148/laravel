@@ -196,13 +196,7 @@
 									</li>
 
 
-									<li class="dropdown"><!-- Factura STRIPE -->
 
-										<a  href="http://localhost/LaTesis/public/invoices">
-											<span class="bordered">Factura Stripe</span>
-										</a>
-
-									</li>
 
 									@endif
 

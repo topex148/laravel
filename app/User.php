@@ -20,6 +20,10 @@ class User extends Authenticatable
      *
      * @var array
      */
+     protected $events = [
+       'created' => Events\NewUser::class
+     ];
+
 
     protected $dates = ['trial_ends_at', 'subscription_ends_at'];
 
@@ -27,9 +31,7 @@ class User extends Authenticatable
         'name', 'email', 'password', 'RIF_Prest',
     ];
 
-    protected $events = [
-      'created' => Events\NewUser::class,
-    ];
+
     /**
      * The attributes that should be hidden for arrays.
      *

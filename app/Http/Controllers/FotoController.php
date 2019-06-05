@@ -25,11 +25,14 @@ class FotoController extends Controller
 
   public function create()
   {
+
     $prestadores = Prestadore::all();
     $zonas = Zona::all();
     $atractivos = Atractivo::all();
     $actividades = Actividade::all();
     $fotos = Foto::all();
+
+    
     return view('fotos.create', compact('prestadores', 'zonas', 'atractivos', 'fotos', 'actividades'));
   }
 

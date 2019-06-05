@@ -165,7 +165,7 @@ class ZonaController extends Controller
   public function invoice()
   {
 
-      $actividades = $this->getzona();
+      $zonas = $this->getzona();
       $date = date('Y-m-d');
       $invoice = "2222";
       $view =  \View::make('pdf.zonas', compact('zonas', 'date', 'invoice'))->render();

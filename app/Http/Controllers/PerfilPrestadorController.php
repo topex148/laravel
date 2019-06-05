@@ -32,6 +32,20 @@ class PerfilPrestadorController extends Controller
       return view('perfilPrestador.index', compact ('user', 'itinerarios'), ['prestadores' => $prestadore, 'fotos' => $foto]);
   }
 
+  public function planes()
+  {
+
+    $plane = Plane::all();
+
+    return view("perfilPrestador.planes", [ 'planes' => $plane]);
+  }
+
+  public function planesExito()
+  {
+
+    return view("perfilPrestador.subscripcionExitosa");
+  }
+
   public function editPrestador(Prestadore $prestadore)
   {
       return view('perfilPrestador.editPrestador', compact ('prestadore'));

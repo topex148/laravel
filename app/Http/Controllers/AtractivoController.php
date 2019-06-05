@@ -208,7 +208,7 @@ class AtractivoController extends Controller
   public function invoice()
   {
 
-      $actividades = $this->getatractivos();
+      $atractivos = $this->getatractivos();
       $date = date('Y-m-d');
       $invoice = "2222";
       $view =  \View::make('pdf.atractivos', compact('atractivos', 'date', 'invoice'))->render();

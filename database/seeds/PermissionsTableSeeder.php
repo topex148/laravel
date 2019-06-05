@@ -236,37 +236,87 @@ class PermissionsTableSeeder extends Seeder
               'description' => 'Muestra lista de contactos en el sistema',
               ]);
 
-        //Foto
+        //Publicidad
 
         Permission::create([
-              'name'        => 'Navegar fotos',
-              'slug'        => 'fotos.index',
-              'description' => 'Lista y navega todas las fotos del sistema',
+              'name'        => 'Navegar publicidad',
+              'slug'        => 'publicidad.index',
+              'description' => 'Lista y navega todas la publicidad del sistema',
               ]);
 
         Permission::create([
-              'name'        => 'Ver detalle de foto',
-              'slug'        => 'fotos.show',
-              'description' => 'Ver en detalle cada foto del sistema',
+              'name'        => 'Ver detalle de publicidad',
+              'slug'        => 'publicidad.show',
+              'description' => 'Ver en detalle cada publicidad del sistema',
               ]);
 
         Permission::create([
-              'name'        => 'Creacion de fotos',
-              'slug'        => 'fotos.create',
-              'description' => 'Crear foto en el sistema',
+              'name'        => 'Creacion de publicidad',
+              'slug'        => 'publicidad.create',
+              'description' => 'Crear publicidad en el sistema',
               ]);
 
         Permission::create([
-              'name'        => 'Edicion de fotos',
-              'slug'        => 'fotos.edit',
-              'description' => 'Editar cualquier dato de una foto del sistema',
+              'name'        => 'Edicion de publicidad',
+              'slug'        => 'publicidad.edit',
+              'description' => 'Editar cualquier dato de una publicidad del sistema',
               ]);
 
         Permission::create([
-              'name'        => 'Eliminar fotos',
-              'slug'        => 'fotos.destroy',
-              'description' => 'Eliminar cualquier foto del sistema',
+              'name'        => 'Eliminar publicidad',
+              'slug'        => 'publicidad.destroy',
+              'description' => 'Eliminar cualquier publicidad del sistema',
               ]);
+
+        Permission::create([
+              'name'        => 'Suspender publicidad',
+              'slug'        => 'publicidad.suspender',
+              'description' => 'Suspender cualquier publicidad del sistema',
+              ]);
+
+        Permission::create([
+              'name'        => 'Restarurar publicidad',
+              'slug'        => 'publicidad.restaurar',
+              'description' => 'Restaurar cualquier publicidad del sistema',
+              ]);
+
+        Permission::create([
+              'name'        => 'Borrar publicidad',
+              'slug'        => 'publicidad.delete',
+              'description' => 'Borrar cualquier publicidad del sistema',
+              ]);
+
+              //Foto
+
+              Permission::create([
+                    'name'        => 'Navegar fotos',
+                    'slug'        => 'fotos.index',
+                    'description' => 'Lista y navega todas las fotos del sistema',
+                    ]);
+
+              Permission::create([
+                    'name'        => 'Ver detalle de foto',
+                    'slug'        => 'fotos.show',
+                    'description' => 'Ver en detalle cada foto del sistema',
+                    ]);
+
+              Permission::create([
+                    'name'        => 'Creacion de fotos',
+                    'slug'        => 'fotos.create',
+                    'description' => 'Crear foto en el sistema',
+                    ]);
+
+              Permission::create([
+                    'name'        => 'Edicion de fotos',
+                    'slug'        => 'fotos.edit',
+                    'description' => 'Editar cualquier dato de una foto del sistema',
+                    ]);
+
+              Permission::create([
+                    'name'        => 'Eliminar fotos',
+                    'slug'        => 'fotos.destroy',
+                    'description' => 'Eliminar cualquier foto del sistema',
+                    ]);
 
         //Itinerario
 
@@ -380,6 +430,24 @@ class PermissionsTableSeeder extends Seeder
               'name'        => 'Imprimir lista prestadores',
               'slug'        => 'prestadores.invoice',
               'description' => 'Muestra lista de prestadores en el sistema',
+              ]);
+
+        Permission::create([
+              'name'        => 'Suspender prestador',
+              'slug'        => 'prestadores.suspender',
+              'description' => 'Suspender cualquier prestador del sistema',
+              ]);
+
+        Permission::create([
+              'name'        => 'Restarurar prestador',
+              'slug'        => 'prestadores.restaurar',
+              'description' => 'Restaurar cualquier prestador del sistema',
+              ]);
+
+        Permission::create([
+              'name'        => 'Borrar prestador',
+              'slug'        => 'prestadores.delete',
+              'description' => 'Borrar cualquier prestador del sistema',
               ]);
 
         //Turistas

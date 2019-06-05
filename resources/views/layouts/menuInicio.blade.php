@@ -69,6 +69,14 @@
                     <li class="nav-item">
                       <a class="nav-link" href="{{route('users.index')}}"> Usuarios </a>
                     </li>
+
+										<li class="dropdown"><!-- Factura STRIPE -->
+
+											<a  href="http://localhost/LaTesis/public/invoices">
+												<span class="bordered">Factura Stripe</span>
+											</a>
+
+										</li>
                     @endcan
 
                     @can('roles.index')
@@ -107,6 +115,12 @@
                     </li>
                     @endcan
 
+										@can('publicidad.index')
+										<li class="nav-item">
+											<a class="nav-link" href="{{route('publicidad.index')}}"> Publicidad </a>
+										</li>
+										@endcan
+
                     @can('itinerarios.index')
                     <li class="nav-item">
                       <a class="nav-link" href="{{route('itinerarios.index')}}"> Itinerarios </a>
@@ -144,14 +158,12 @@
 										<a class="nav-link" href="{{route('prestador.index')}}"> Perfil Prestador </a>
 									</li>
 									@endcan
+									
 
-									<li class="dropdown"><!-- PAYPAL -->
-
-										<a  href="http://localhost/LaTesis/public/paywithpaypal">
-											<span class="bordered">PayPal</span>
-										</a>
-
+									<li class="nav-item">
+										<a class="nav-link" href="{{route('prestador.planes')}}"> Planes Prestador </a>
 									</li>
+
 
 									<!-- Fin Prueba menu Prestador -->
 

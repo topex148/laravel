@@ -44,7 +44,7 @@
           <tr>
             <th scope="row">{{$atractivo->id}}</th>
             <td>{{$atractivo->Nombre_Atractivo}}</td>
-            <td>{{$atractivo->Descripcion:Atractivo}}</td>
+            <td>{{$atractivo->Descripcion_Atractivo}}</td>
           </tr>
           @endforeach
         </tbody>

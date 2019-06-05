@@ -7,9 +7,12 @@ use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Mail;
 use App\Mail\NewUserWelcome;
+use App\User;
 
 class SendWelcomeEmail
 {
+
+  public $user;
     /**
      * Create the event listener.
      *
@@ -30,4 +33,15 @@ class SendWelcomeEmail
     {
         Mail::to($event->user->email)->send(new NewUserWelcome($event->user));
     }
-}
+
+  //  public function handle(NewUserRegistered $event)
+  //  {
+      //send the welcome email to the user
+    //    $user = $event->user;
+    //    Mail::send('emails.welcome', ['user' => $user], function ($message) use ($user) {
+      //    $message->from('hi@yourdomain.com', 'John Doe');
+      //    $message->subject('Welcome aboard '.$user->name.'!');
+      //    $message->to($user->email);
+      //  });
+    //  }
+    }

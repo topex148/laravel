@@ -43,9 +43,10 @@ class PaymentsController extends Controller
 
         try {
             Stripe::setApiKey(config('services.stripe.secret'));
-            $user = User::find(1);
+            $id = Auth::user()->id;
+            $user = User::find($id);
             $user->newSubscription('main', 'monthly')->create($request->stripeToken);
-            return 'Suscripción exitosa! Acabas de suscribirte al Plan Gold';
+            return redirect()->route('prestador.planesExito');
         } catch (\Exception $ex) {
             return $ex->getMessage();
         }
@@ -59,7 +60,8 @@ class PaymentsController extends Controller
             Stripe::setApiKey(config('services.stripe.secret'));
             $user = User::find(1);
             $user->newSubscription('main', 'yearly')->create($request->stripeToken);
-            return 'Suscripción exitosa! Acabas de suscribirte al Plan Gold';
+            return redirect()->route('prestador.planesExito');
+
         } catch (\Exception $ex) {
             return $ex->getMessage();
         }
@@ -77,7 +79,7 @@ class PaymentsController extends Controller
         ->skipTrial()
         ->swap($newPlan);
 
-        dd('Success!!');
+        dd('Éxito!!');
       }
 
       catch (\stripe\Error\Card $e){
@@ -86,12 +88,12 @@ class PaymentsController extends Controller
         $error = $err['message'];
 
         Log::critical(
-          "Could not update credit card of {$user->email}{$e->getMessage()}, $error"
+          "No se pudo actualizar la tarjeta de crédito de {$user->email}{$e->getMessage()}, $error"
         );
       }
 
       catch(\Exception $e){
-        dd("Something really bad");
+        dd("Algo esta realmente mal");
       }
 
     }

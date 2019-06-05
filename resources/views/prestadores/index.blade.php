@@ -34,6 +34,9 @@
                                 <th>Foto</th>
                                 <th>Nombre</th>
                                 <th>Telefono</th>
+                                <th>Ver</th>
+                                <th>Editar</th>
+                                <th>Suspender</th>
                                 <th colspan="3">&nbsp;</th>
                             </tr>
                           </thead>
@@ -67,7 +70,7 @@
                                     {!! Form::open(['route' => ['prestadores.destroy', $prestadore->RIF],
                                     'method' => 'DELETE'])!!}
                                         <button class="btn btn-danger btn-sm"><i class="fa fa-check"></i>
-                                          Eliminar
+                                          Suspender
                                         </button>
                                     {!! Form::close() !!}
                                     @endcan
@@ -82,4 +85,12 @@
         </div>
     </div>
 </div>
+
+<!-- BUTTON CALLOUT -->
+<a href="{{route('prestadores.suspender')}}" rel="nofollow" class="btn btn-xlg btn-warning fs-20 fullwidth m-0 rad-0 p-40">
+<span class="font-lato fs-30">
+Si quiere revisar los prestadores que han sido suspendidos!
+<strong>Presionar aqui &raquo;</strong>
+</span>
+</a>
 @endsection

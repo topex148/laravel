@@ -6,13 +6,11 @@
     <section id="slider">
 
       <div class="owl-carousel buttons-autohide controlls-over m-0" data-plugin-options='{"singleItem": true, "autoPlay": true, "navigation": true, "pagination": true, "transitionStyle":"fade"}'>
+        @foreach ($publicidades as $publicidad)
         <div>
-          <img class="img-fluid" src="demo_files/images/panorama/1-min.jpg" alt="">
+          <img class="img-fluid" src="{{asset('storage/imagen/publicidad/'.$publicidad->imagen)}}" style="width:1800px; height:450px;">
         </div>
-        <div>
-          <img class="img-fluid" src="demo_files/images/panorama/2-min.jpg" alt="">
-        </div>
-      </div>
+        @endforeach
 
     </section>
     <!-- /OWL SLIDER -->
@@ -124,31 +122,6 @@
             						<div class="col-md-8 col-sm-8">
 
             							<h3>Envíanos un mensaje o simplemente di <strong><em>Hola!</em></strong></h3>
-
-
-            							<!--
-            								MESSAGES
-
-            									How it works?
-            									The form data is posted to php/contact.php where the fields are verified!
-            									php.contact.php will redirect back here and will add a hash to the end of the URL:
-            										#alert_success 		= email sent
-            										#alert_failed		= email not sent - internal server error (404 error or SMTP problem)
-            										#alert_mandatory	= email not sent - required fields empty
-            										Hashes are handled by assets/js/contact.js
-
-            									Form data: required to be an array. Example:
-            										contact[email][required]  WHERE: [email] = field name, [required] = only if this field is required (PHP will check this)
-            										Also, add `required` to input fields if is a mandatory field.
-            										Example: <input required type="email" value="" class="form-control" name="contact[email][required]">
-
-            									PLEASE NOTE: IF YOU WANT TO ADD OR REMOVE FIELDS (EXCEPT CAPTCHA), JUST EDIT THE HTML CODE, NO NEED TO EDIT php/contact.php or javascript
-            												 ALL FIELDS ARE DETECTED DINAMICALY BY THE PHP
-
-            									WARNING! Do not change the `email` and `name`!
-            												contact[name][required] 	- should stay as it is because PHP is using it for AddReplyTo (phpmailer)
-            												contact[email][required] 	- should stay as it is because PHP is using it for AddReplyTo (phpmailer)
-            							-->
 
             							<!-- Alert Success -->
             							<div id="alert_success" class="alert alert-success mb-30">

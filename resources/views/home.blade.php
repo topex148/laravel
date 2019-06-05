@@ -26,7 +26,7 @@
 
         <p>Le damos la bienvenida a Meriventura, un empresa encargada de promocionar el Turismo de Montaña del Estado Mérida. </p>
 
-        <a href="{{route('sendEmail')}}" class="btn btn-block btn-primary"> Enviar Email </a>
+        <!--<a href="{{route('sendEmail')}}" class="btn btn-block btn-primary"> Enviar Email </a>-->
 
       </div>
 

@@ -74,24 +74,31 @@
 
 								<div class="row">
 
-									<div class="col-md-6">
+									<div class="col-md-4">
 										<h3>Nombre</h5>
 										<!-- date picker -->
 										<p><strong>{{ $prestadore->Nombre }}</strong> </p>
 
 									</div>
 
-									<div class="col-md-6">
+									<div class="col-md-4">
 										<h3>Imagen</h5>
 										<!-- date picker -->
 										<p><strong>{{ $prestadore->imagen }}</strong> </p>
 
 									</div>
 
+									<div class="col-md-4">
+										<h3>Fecha Final</h5>
+										<!-- date picker -->
+										<p><strong>{{ $prestadore->Fecha_Final }}</strong> </p>
+
+									</div>
+
 								</div>
 
 								</br>
-								
+
 								<div class="row">
 
 									<div class="col-md-4">

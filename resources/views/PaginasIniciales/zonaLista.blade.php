@@ -5,13 +5,11 @@
     <section id="slider">
 
       <div class="owl-carousel buttons-autohide controlls-over m-0" data-plugin-options='{"singleItem": true, "autoPlay": true, "navigation": true, "pagination": true, "transitionStyle":"fade"}'>
+        @foreach ($publicidades as $publicidad)
         <div>
-          <img class="img-fluid" src="demo_files/images/panorama/1-min.jpg" alt="">
+          <img class="img-fluid" src="{{asset('storage/imagen/publicidad/'.$publicidad->imagen)}}" style="width:1800px; height:450px;">
         </div>
-        <div>
-          <img class="img-fluid" src="demo_files/images/panorama/2-min.jpg" alt="">
-        </div>
-      </div>
+        @endforeach
 
     </section>
     <!-- /OWL SLIDER -->

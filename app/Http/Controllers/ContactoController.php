@@ -121,7 +121,7 @@ $post->save();
   public function invoice()
   {
 
-      $actividades = $this->getcontacto();
+      $contactos= $this->getcontacto();
       $date = date('Y-m-d');
       $invoice = "2222";
       $view =  \View::make('pdf.contactos', compact('contactos', 'date', 'invoice'))->render();

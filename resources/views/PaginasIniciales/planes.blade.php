@@ -59,21 +59,6 @@
 										<!-- /price -->
 									</div>
 
-									<form enctype="multipart/form-data" action="/LaTesis/public/plan/pago1" method="POST">
-											{{ csrf_field() }}
-											<script
-													src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-													name="plan"
-													value="monthly"
-													data-key="{{ config('services.stripe.key') }}"
-													data-amount="1000"
-													data-name="Subscribir"
-													data-description="Subscripcion mensual"
-													data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
-													data-locale="auto">
-											</script>
-									</form>
-
 								</div>
 								<!-- /item -->
 
@@ -106,21 +91,6 @@
 										</div>
 										<!-- /price -->
 									</div>
-
-									<form enctype="multipart/form-data" action="/LaTesis/public/plan/pago2" method="POST">
-											{{ csrf_field() }}
-											<script
-													src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-													name="plan"
-													value="yearly"
-													data-key="{{ config('services.stripe.key') }}"
-													data-amount="10000"
-													data-name="Subscribir"
-													data-description="Subscripcion anual"
-													data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
-													data-locale="auto">
-											</script>
-									</form>
 
 								</div>
 								<!-- /item -->
@@ -155,21 +125,6 @@
 										<!-- /price -->
 									</div>
 
-									<form enctype="multipart/form-data" action="/LaTesis/public/plan/pago1" method="POST">
-											{{ csrf_field() }}
-											<script
-													src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-													name="plan"
-													value="monthly"
-													data-key="{{ config('services.stripe.key') }}"
-													data-amount="1000"
-													data-name="Subscribir"
-													data-description="Subscripcion mensual"
-													data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
-													data-locale="auto">
-											</script>
-									</form>
-
 								</div>
 								<!-- /item -->
 
@@ -202,21 +157,6 @@
 										</div>
 										<!-- /price -->
 									</div>
-
-									<form enctype="multipart/form-data" action="/LaTesis/public/plan/pago2" method="POST">
-											{{ csrf_field() }}
-											<script
-													src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-													name="plan"
-													value="yearly"
-													data-key="{{ config('services.stripe.key') }}"
-													data-amount="10000"
-													data-name="Subscribir"
-													data-description="Subscripcion anual"
-													data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
-													data-locale="auto">
-											</script>
-									</form>
 
 								</div>
 								<!-- /item -->

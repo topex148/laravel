@@ -52,16 +52,24 @@
 
 
 
-								<div class="col-md-6">
+								<div class="col-md-4">
 									<label for="">Nombre</label>
 									<input required type="text"  maxlength="30" value="{{$prestadore->Nombre}}" class="form-control" name="Nombre" placeholder="Ingrese el Nombre">
 								</div>
 
-										<div class="col-md-6">
+										<div class="col-md-4">
 											<!-- custom file upload -->
 										<label for="">Imagen Perfil Prestador</label>
 										<input class="custom-file-upload"  value="{{$prestadore-> imagen}}" type="file" name="imagen"  data-btn-text="Seleccionar Archivo" />
 										<small class="text-muted block">Tamaño de Archivo Maximo: 10Mb (zip/pdf/jpg/png)</small>
+
+									</div>
+
+									<div class="col-md-4">
+										<h5>Fecha Final</h5>
+										<!-- date picker -->
+										<input type="text" value="{{$prestadore->Fecha_Final}}" class="form-control datepicker" name="Fecha_Final" data-format="yyyy-mm-dd" data-lang="en" data-RTL="false" placeholder="Ingrese la Fecha Final">
+
 
 									</div>
 
@@ -91,15 +99,15 @@
 							<div class="row">
 									<div class="col-md-4">
 										<label for="">Facebook</label>
-										<input required type="email" value="{{$prestadore->Facebook}}" class="form-control" name="Facebook" placeholder="Ingrese el Facebook" >
+										<input required type="text"  maxlength="500" value="{{$prestadore->Facebook}}" class="form-control" name="Facebook" placeholder="Ingrese el Facebook" >
 									</div>
 									<div class="col-md-4">
 										<label for="">Twitter</label>
-										<input required type="email" value="{{$prestadore->Twitter}}" class="form-control" name="Twitter" placeholder="Ingrese el Twitter">
+										<input required type="text"  maxlength="500" value="{{$prestadore->Twitter}}" class="form-control" name="Twitter" placeholder="Ingrese el Twitter">
 									</div>
 									<div class="col-md-4">
 										<label for="">Instagram</label>
-										<input required type="email" value="{{$prestadore->Instagram}}" class="form-control" name="Instagram" placeholder="Ingrese el Instagram" >
+										<input required type="text"  maxlength="500" value="{{$prestadore->Instagram}}" class="form-control" name="Instagram" placeholder="Ingrese el Instagram" >
 									</div>
 							</div>
 

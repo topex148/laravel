@@ -1,6 +1,7 @@
 <?php
 use Illuminate\Http\Request;
 use Conner\Tagging\Providers\TaggingServiceProvider;
+use App\Foto;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -11,6 +12,33 @@ use Conner\Tagging\Providers\TaggingServiceProvider;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+Route::get('/chat', function(){
+
+    return view('chat');
+});
+
+//Suspender Prestador
+
+Route::get('prestadores/suspender', 'PrestadoreController@suspender')->name('prestadores.suspender')
+      ->middleware('permission:prestadores.suspender');
+
+Route::get("/prestadores/suspender/{suspe}/{id}/Restaurar", "PrestadoreController@restaurar")->name('prestadores.restaurar')
+      ->middleware('permission:prestadores.restaurar');
+
+Route::get("/prestadores/suspender/{suspe}/{id}/Borrar", "PrestadoreController@delete")->name('prestadores.delete')
+      ->middleware('permission:prestadores.delete');
+
+//Suspender Publicidad
+
+Route::get('publicidad/suspender', 'PublicidadController@suspender')->name('publicidad.suspender')
+      ->middleware('permission:publicidad.suspender');
+
+Route::get("/publicidad/suspender/{suspe}/{id}/Restaurar", "PublicidadController@restaurar")->name('publicidad.restaurar')->middleware('permission:publicidad.restaurar');
+
+Route::get("/publicidad/suspender/{suspe}/{id}/Borrar", "PublicidadController@delete")->name('publicidad.delete')->middleware('permission:publicidad.delete');
+//Fin suspension publicidad
+
 Route::get('users/reporte', 'UserController@invoice')->name('users.invoice')
       ->middleware('permission:users.invoice');
 
@@ -261,6 +289,29 @@ Route::middleware(['auth'])->group(function(){
   Route::get('fotos/{foto}/edit', 'FotoController@edit')->name('fotos.edit')
         ->middleware('permission:fotos.edit');
 
+  //Publicidad
+
+  Route::post('publicidad/store', 'PublicidadController@store')->name('publicidad.store')
+        ->middleware('permission:publicidad.create');
+
+  Route::get('publicidad', 'PublicidadController@index')->name('publicidad.index')
+        ->middleware('permission:publicidad.index');
+
+  Route::get('publicidad/create', 'PublicidadController@create')->name('publicidad.create')
+        ->middleware('permission:publicidad.create');
+
+  Route::patch('publicidad/{publicidad}', 'PublicidadController@update')->name('publicidad.update')
+        ->middleware('permission:publicidad.edit');
+
+  Route::get('publicidad/{publicidad}', 'PublicidadController@show')->name('publicidad.show')
+        ->middleware('permission:publicidad.show');
+
+  Route::delete('publicidad/{publicidad}', 'PublicidadController@destroy')->name('publicidad.destroy')
+        ->middleware('permission:publicidad.destroy');
+
+  Route::get('publicidad/{publicidad}/edit', 'PublicidadController@edit')->name('publicidad.edit')
+        ->middleware('permission:publicidad.edit');
+
   //Itinerarios
 
   Route::post('itinerarios/store', 'ItinerarioController@store')->name('itinerarios.store')
@@ -383,6 +434,13 @@ Route::middleware(['auth'])->group(function(){
 
   Route::get('perfilPrestador', 'PerfilPrestadorController@index')->name('prestador.index')
         ->middleware('permission:prestador.index');
+
+  //Planes Prestador
+
+  Route::get('planesPrestador', 'PerfilPrestadorController@planes')->name('prestador.planes');
+
+  Route::get('planesPrestador/exitosa', 'PerfilPrestadorController@planesExito')->name('prestador.planesExito');
+    //    ->middleware('permission:prestador.index');
 
   //Editar Prestador
   Route::get('perfilPrestador/{prestadore}/edit', 'PerfilPrestadorController@editPrestador')->name('perfil.edit')

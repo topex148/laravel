@@ -21,17 +21,11 @@ class EventServiceProvider extends ServiceProvider
      */
     protected $listen = [
 
-        'App\Events\NewUser' => [
+            'App\Events\NewUserRegistered' => [
             'App\Listeners\SendWelcomeEmail',
-        ],
+            ],
 
-      //NewUser::class => [
-      //    SendWelcomeEmail::class,
-      //],
 
-      //  Registered::class => [
-        //    SendEmailVerificationNotification::class,
-        //],
     ];
 
 
