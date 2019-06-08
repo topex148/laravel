@@ -23,6 +23,10 @@
                       <a href="{{route('packages.invoice')}}" class="pull-right btn btn-primary btn-sm"><i class="fa fa-check"></i> Reporte </a>
                   @endcan
 
+                  @can('packages.invoice')
+                      <a href="{{route('packages.invoiceDownload')}}" class="pull-right btn btn-primary btn-sm"><i class="fa fa-check"></i>Descargar Reporte </a>
+                  @endcan
+
                 </div>
 
                 <div class="panel-body">
@@ -32,6 +36,9 @@
                                 <th width="10px">ID</th>
                                 <th>Fecha Inicio</th>
                                 <th>Fecha Final</th>
+                                <th>Ver</th>
+                                <th>Editar</th>
+                                <th>Eliminar</th>
                                 <th colspan="3">&nbsp;</th>
                             </tr>
                           </thead>

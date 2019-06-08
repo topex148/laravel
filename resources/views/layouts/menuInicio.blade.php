@@ -158,7 +158,7 @@
 										<a class="nav-link" href="{{route('prestador.index')}}"> Perfil Prestador </a>
 									</li>
 									@endcan
-									
+
 
 									<li class="nav-item">
 										<a class="nav-link" href="{{route('prestador.planes')}}"> Planes Prestador </a>
@@ -177,22 +177,84 @@
                             </li>
                         @endif
                     @else
-                        <li class="nav-item dropdown">
+                        <li class="dropdown active">
+
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                 {{ Auth::user()->name }} <span class="caret"></span>
                             </a>
 
-                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+														<ul class="dropdown-menu">
+
+															<li class="dropdown">
+																<a class="dropdown-toggle" href="#">
+																	INICIO
+																</a>
+																<ul class="dropdown-menu">
+																	<li><a href="http://localhost/LaTesis/public/inicio">Menu Principal</a></li>
+																	<li><a href="http://localhost/LaTesis/public/home">Menu Usuario</a></li>
+																</ul>
+															</li>
+
+															<li class="dropdown">
+															<a  href="http://localhost/LaTesis/public/nosotros">
+																<span class="bordered">Nosotros</span>
+															</a>
+															</li>
+
+															<li class="dropdown">
+															<a  href="http://localhost/LaTesis/public/zonaLista">
+																<span class="bordered">Zonas</span>
+															</a>
+															</li>
+
+															<li class="dropdown">
+															<a  href="http://localhost/LaTesis/public/atractivoLista">
+																<span class="bordered">Atractivos</span>
+															</a>
+															</li>
+
+															<li class="dropdown">
+															<a  href="http://localhost/LaTesis/public/actividadLista">
+																<span class="bordered">Actividades</span>
+															</a>
+															</li>
+
+															<li class="dropdown">
+															<a  href="http://localhost/LaTesis/public/servicioLista">
+																<span class="bordered">Servicios</span>
+															</a>
+															</li>
+
+															<li class="dropdown">
+															<a  href="http://localhost/LaTesis/public/plan">
+																<span class="bordered">Planes</span>
+															</a>
+															</li>
+
+															<li class="dropdown">
+															<a  href="http://localhost/LaTesis/public/galeria">
+																<span class="bordered">Galeria</span>
+															</a>
+															</li>
+
+															<li class="dropdown">
+															<a  href="http://localhost/LaTesis/public/contacto">
+																<span class="bordered">Contacto</span>
+															</a>
+															</li>
+
+															<li class="dropdown">
                                 <a class="dropdown-item" href="{{ route('logout') }}"
                                    onclick="event.preventDefault();
                                                  document.getElementById('logout-form').submit();">
                                     {{ __('Salir') }}
                                 </a>
+																</li>
 
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                     @csrf
                                 </form>
-                            </div>
+                            </ul>
                         </li>
                     @endguest
 

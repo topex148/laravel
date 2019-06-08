@@ -14,9 +14,10 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-        'App\Console\Commands\RegisteredUsers',
+
         'App\Console\Commands\PauseUsers',
         'App\Console\Commands\PausePrestadores',
+
     ];
 
     /**
@@ -34,7 +35,6 @@ class Kernel extends ConsoleKernel
 
      protected function schedule(Schedule $schedule)
      {
-       $schedule->command('registered:users')->hourly();
        $schedule->command('pause:users')->hourly();
        $schedule->command('pause:prestadores')->hourly();
      }

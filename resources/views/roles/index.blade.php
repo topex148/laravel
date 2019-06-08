@@ -21,6 +21,10 @@
                       <a href="{{route('roles.invoice')}}" class="pull-right btn btn-primary btn-sm"><i class="fa fa-check"></i> Reporte </a>
                   @endcan
 
+                  @can('roles.invoice')
+                      <a href="{{route('roles.invoiceDownload')}}" class="pull-right btn btn-primary btn-sm"><i class="fa fa-check"></i>Descargar Reporte </a>
+                  @endcan
+
                 </div>
 
                 <div class="panel-body">
@@ -29,6 +33,9 @@
                             <tr>
                                 <th width="10px">ID</th>
                                 <th>Role</th>
+                                <th>Ver</th>
+                                <th>Editar</th>
+                                <th>Eliminar</th>
                                 <th colspan="3">&nbsp;</th>
                             </tr>
                           </thead>

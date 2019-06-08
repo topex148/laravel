@@ -182,4 +182,17 @@ class ZonaController extends Controller
       return $zonas;
   }
 
+  public function invoiceDownload()
+  {
+
+      $zonas = $this->getzona();
+      $date = date('Y-m-d');
+      $invoice = "2222";
+      $view =  \View::make('pdf.zonas', compact('zonas', 'date', 'invoice'))->render();
+      $pdf = \App::make('dompdf.wrapper');
+      $pdf->loadHTML($view);
+      return $pdf->download('invoice');
+      //return $pdf->download('invoice'); //para descargar
+  }
+
 }

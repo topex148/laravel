@@ -49,6 +49,7 @@ class PrestadoreController extends Controller
       $post->Nombre = request()->Nombre;
       $post->DescripcionServicio = request()->DescripcionServicio;
       $post->DescripcionPrestador = request()->DescripcionPrestador;
+      $post->DescripcionActividad = request()->DescripcionActividad;
       $post->Facebook = request()->Facebook;
       $post->Twitter = request()->Twitter;
       $post->Instagram = request()->Instagram;
@@ -97,6 +98,7 @@ class PrestadoreController extends Controller
       $post->Nombre = request()->Nombre;
       $post->DescripcionServicio = request()->DescripcionServicio;
       $post->DescripcionPrestador = request()->DescripcionPrestador;
+      $post->DescripcionActividad = request()->DescripcionActividad;
       $post->Facebook = request()->Facebook;
       $post->Twitter = request()->Twitter;
       $post->Instagram = request()->Instagram;
@@ -126,7 +128,20 @@ class PrestadoreController extends Controller
       $view =  \View::make('pdf.prestadores', compact('prestadores', 'date', 'invoice'))->render();
       $pdf = \App::make('dompdf.wrapper');
       $pdf->loadHTML($view);
-      return $pdf->stream('invoice');
+      return $pdf->stream('prestadores.pdf');
+      //return $pdf->download('invoice'); //para descargar
+  }
+
+  public function invoiceDownload()
+  {
+
+      $prestadores = $this->getprestador();
+      $date = date('Y-m-d');
+      $invoice = "2222";
+      $view =  \View::make('pdf.prestadores', compact('prestadores', 'date', 'invoice'))->render();
+      $pdf = \App::make('dompdf.wrapper');
+      $pdf->loadHTML($view);
+      return $pdf->download('prestadores.pdf');
       //return $pdf->download('invoice'); //para descargar
   }
 

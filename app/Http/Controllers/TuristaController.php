@@ -61,9 +61,23 @@ class TuristaController extends Controller
       $view =  \View::make('pdf.turistas', compact('turistas', 'date', 'invoice'))->render();
       $pdf = \App::make('dompdf.wrapper');
       $pdf->loadHTML($view);
-      return $pdf->stream('invoice');
+      return $pdf->stream('turistas.pdf');
       //return $pdf->download('invoice'); //para descargar
   }
+
+  public function invoiceDownload()
+  {
+
+      $turistas = $this->getturistas();
+      $date = date('Y-m-d');
+      $invoice = "2222";
+      $view =  \View::make('pdf.turistas', compact('turistas', 'date', 'invoice'))->render();
+      $pdf = \App::make('dompdf.wrapper');
+      $pdf->loadHTML($view);
+      return $pdf->download('turistas.pdf');
+      //return $pdf->download('invoice'); //para descargar
+  }
+
 
   public function getturistas()
   {
@@ -71,4 +85,6 @@ class TuristaController extends Controller
 
       return $turistas;
   }
+
+
 }

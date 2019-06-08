@@ -212,7 +212,7 @@ class ActividadeController extends Controller
       $view =  \View::make('pdf.actividades', compact('actividades', 'date', 'invoice'))->render();
       $pdf = \App::make('dompdf.wrapper');
       $pdf->loadHTML($view);
-      return $pdf->stream('invoice');
+      return $pdf->stream('actividades.pdf');
       //return $pdf->download('invoice'); //para descargar
   }
 
@@ -221,6 +221,19 @@ class ActividadeController extends Controller
       $actividades = Actividade::all();
 
       return $actividades;
+  }
+
+  public function invoiceDownload()
+  {
+
+      $actividades = $this->getactividades();
+      $date = date('Y-m-d');
+      $invoice = "2222";
+      $view =  \View::make('pdf.actividades', compact('actividades', 'date', 'invoice'))->render();
+      $pdf = \App::make('dompdf.wrapper');
+      $pdf->loadHTML($view);
+      return $pdf->download('actividades.pdf');
+      //return $pdf->download('invoice'); //para descargar
   }
 
 

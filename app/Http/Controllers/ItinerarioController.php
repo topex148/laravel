@@ -70,7 +70,7 @@ class ItinerarioController extends Controller
       $view =  \View::make('pdf.itinerarios', compact('itinerarios', 'date', 'invoice'))->render();
       $pdf = \App::make('dompdf.wrapper');
       $pdf->loadHTML($view);
-      return $pdf->stream('invoice');
+      return $pdf->stream('itinerarios.pdf');
       //return $pdf->download('invoice'); //para descargar
   }
 
@@ -79,5 +79,18 @@ class ItinerarioController extends Controller
       $itinerarios = Itinerario::all();
 
       return $itinerarios;
+  }
+
+  public function invoiceDownload()
+  {
+
+      $itinerarios = $this->getitinerarios();
+      $date = date('Y-m-d');
+      $invoice = "2222";
+      $view =  \View::make('pdf.itinerarios', compact('itinerarios', 'date', 'invoice'))->render();
+      $pdf = \App::make('dompdf.wrapper');
+      $pdf->loadHTML($view);
+      return $pdf->download('itinerarios.pdf');
+      //return $pdf->download('invoice'); //para descargar
   }
 }

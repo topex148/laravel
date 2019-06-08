@@ -20,6 +20,7 @@ class CreatePrestadoresTable extends Migration
             $table->integer('RTN')->unique();
             $table->string('DescripcionServicio');
             $table->string('DescripcionPrestador');
+            $table->string('DescripcionActividad');
             $table->string('Nombre');
             $table->string('imagen');
             $table->string('Facebook');

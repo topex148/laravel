@@ -13,10 +13,15 @@ use App\Foto;
 |
 */
 
+Route::get('/', function () {
+    return view('welcome');
+});
+
 Route::get('/chat', function(){
 
     return view('chat');
 });
+
 
 //Suspender Prestador
 
@@ -42,59 +47,71 @@ Route::get("/publicidad/suspender/{suspe}/{id}/Borrar", "PublicidadController@de
 Route::get('users/reporte', 'UserController@invoice')->name('users.invoice')
       ->middleware('permission:users.invoice');
 
+Route::get('users/reporte/descarga', 'UserController@invoiceDownload')->name('users.invoiceDownload')
+      ->middleware('permission:users.invoice');
+
 Route::get('roles/reporte', 'RoleController@invoice')->name('roles.invoice')
+      ->middleware('permission:roles.invoice');
+
+Route::get('roles/reporte/descarga', 'RoleController@invoiceDownload')->name('roles.invoiceDownload')
       ->middleware('permission:roles.invoice');
 
 Route::get('packages/reporte', 'PackageController@invoice')->name('packages.invoice')
       ->middleware('permission:packages.invoice');
 
+Route::get('packages/reporte/descargar', 'PackageController@invoiceDownload')->name('packages.invoiceDownload')
+      ->middleware('permission:packages.invoice');
+
 Route::get('actividades/reporte', 'ActividadeController@invoice')->name('actividades.invoice')
+      ->middleware('permission:actividades.invoice');
+
+Route::get('actividades/reporte/descarga', 'ActividadeController@invoiceDownload')->name('actividades.invoiceDownload')
       ->middleware('permission:actividades.invoice');
 
 Route::get('atractivos/reporte', 'AtractivoController@invoice')->name('atractivos.invoice')
       ->middleware('permission:atractivos.invoice');
 
+Route::get('atractivos/reporte/descarga', 'AtractivoController@invoiceDownload')->name('atractivos.invoiceDownload')
+        ->middleware('permission:atractivos.invoice');
+
 Route::get('contactos/reporte', 'ContactoController@invoice')->name('contactos.invoice')
+      ->middleware('permission:contactos.invoice');
+
+Route::get('contactos/reporte/descarga', 'ContactoController@invoiceDownload')->name('contactos.invoiceDownload')
       ->middleware('permission:contactos.invoice');
 
 Route::get('itinerarios/reporte', 'ItinerarioController@invoice')->name('itinerarios.invoice')
       ->middleware('permission:itinerarios.invoice');
 
+Route::get('itinerarios/reporte/descarga', 'ItinerarioController@invoiceDownload')->name('itinerarios.invoiceDownload')
+      ->middleware('permission:itinerarios.invoice');
+
 Route::get('planes/reporte', 'PlaneController@invoice')->name('planes.invoice')
+      ->middleware('permission:planes.invoice');
+
+Route::get('planes/reporte/descarga', 'PlaneController@invoiceDownload')->name('planes.invoiceDownload')
       ->middleware('permission:planes.invoice');
 
 Route::get('prestadores/reporte', 'PrestadoreController@invoice')->name('prestadores.invoice')
       ->middleware('permission:prestadores.invoice');
 
+Route::get('prestadores/reporte/descarga', 'PrestadoreController@invoiceDownload')->name('prestadores.invoiceDownload')
+      ->middleware('permission:prestadores.invoice');
+
 Route::get('turistas/reporte', 'TuristaController@invoice')->name('turistas.invoice')
+      ->middleware('permission:turistas.invoice');
+
+Route::get('turistas/reporte/descarga', 'TuristaController@invoiceDownload')->name('turistas.invoiceDownload')
       ->middleware('permission:turistas.invoice');
 
 Route::get('zonas/reporte', 'ZonaController@invoice')->name('zonas.invoice')
       ->middleware('permission:zonas.invoice');
 
+Route::get('zonas/reporte/descarga', 'ZonaController@invoiceDownload')->name('zonas.invoiceDownload')
+      ->middleware('permission:zonas.invoice');
+
 
 Route::get('/email', 'HomeController@email')->name('sendEmail');
-
-Route::get('/test', function()
-{
-  $beautymail = app()->make(Snowfire\Beautymail\Beautymail::class);
-  $beautymail->send('emails.welcome', [], function($message)
-  {
-      $message
-    ->from('meriventura.c.a@gmail.com')
-    ->to('meriventura.c.a@gmail.com', 'John Smith')
-    ->subject('Welcome!');
-  });
-
-});
-
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::get('/paywithpaypal', array('as' => 'addmoney.paywithpaypal','uses' => 'AddMoneyController@payWithPaypal',));
-Route::post('/paypal', array('as' => 'addmoney.paypal','uses' => 'AddMoneyController@postPaymentWithpaypal',));
-Route::get('/paypal', array('as' => 'payment.status','uses' => 'AddMoneyController@getPaymentStatus',));
 
 //Paginas Iniciales
 
@@ -107,8 +124,10 @@ Route::get('/zonaLista', 'ControladorPrincipal@zonaLista');
 Route::get('/zonaLista/{zona}/zona', 'ControladorPrincipal@zona');
 Route::get('/actividadLista', 'ControladorPrincipal@actividadLista');
 Route::get('/actividad', 'ControladorPrincipal@actividad');
-Route::get('/servicioLista', 'ControladorPrincipal@servicioLista');
+Route::get('/servicioLista', 'ControladorPrincipal@servicioLista')->name('contacto.create');
 Route::get('/servicioLista/{prestadore}/prestador', 'ControladorPrincipal@servicio');
+Route::get('/servicioLista/{prestadore}/prestador/contactar', 'ControladorPrincipal@contactarP');
+Route::post('/servicioLista/{prestadore}/prestador/contactar', 'ControladorPrincipal@contactarG');
 Route::get('/contacto', 'ControladorPrincipal@contacto');
 Route::post("/contacto", "ControladorPrincipal@contactoGuardar");
 Route::get('/galeria', 'ControladorPrincipal@galeria');

@@ -54,17 +54,24 @@
 
 								<div class="row">
 
-									<div class="col-md-6">
+									<div class="col-md-4">
 										<h3>Descripcion Servicio</h5>
 										<!-- date picker -->
 										<p><strong>{{ $prestadore->DescripcionServicio }}</strong> </p>
 
 									</div>
 
-									<div class="col-md-6">
+									<div class="col-md-4">
 										<h3>Descripcion Prestador</h5>
 										<!-- date picker -->
 										<p><strong>{{ $prestadore->DescripcionPrestador }}</strong> </p>
+
+									</div>
+
+									<div class="col-md-4">
+										<h3>Descripcion de las Actividades</h5>
+										<!-- date picker -->
+										<p><strong>{{ $prestadore->DescripcionActividad }}</strong> </p>
 
 									</div>
 

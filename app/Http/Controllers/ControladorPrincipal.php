@@ -19,9 +19,12 @@ use App\Plane;
 use App\Registro;
 use App\Imagene;
 use App\Contacto;
+use App\ContactarPrestadore;
 use App\User;
 use App\Publicidade;
 use Mail;
+use App\Mail\NuevoContactoPrestador;
+use App\Mail\contactoMeriventura;
 
 use Stripe\Stripe;
 use Stripe\Customer;
@@ -142,6 +145,47 @@ class ControladorPrincipal extends Controller
     return view("PaginasIniciales/servicio", compact('prestadore'), ['fotos' => $foto]);
   }
 
+  public function contactarP(Request $request, Prestadore $prestadore)
+  {
+    $foto = Foto::all();
+    $idusuario = Auth::user();
+    $usuarios = User::all();
+    $contacto = ContactarPrestadore::all();
+    return view("contactoTurista/contacto", compact('prestadore'), ['user' => $usuarios, 'fotos' => $foto, 'contactos' => $contacto, 'usuarios' => $idusuario, 'prestadores' => $prestadore]);
+  }
+
+  public function contactarG(Request $request, $RIF)
+  {
+
+    $prestadores = Prestadore::find($RIF);
+    $post = new ContactarPrestadore;
+
+    $post->nombre = request()->nombre;
+    $post->correo = request()->correo;
+    $post->Telefono = request()->Telefono;
+    $post->Mensaje = request()->Mensaje;
+    $post->Asunto = request()->Asunto;
+    $post->name = request()->name;
+    $post->email = request()->email;
+    $post->RIF = $prestadores->RIF;
+
+    $post->save();
+
+        $objDemo = new \stdClass();
+        $objDemo->nombreTurista = $post->nombre;
+        $objDemo->correoTurista = $post->correo;
+        $objDemo->telefonoTurista = $post->Telefono;
+        $objDemo->nombrePrestador = $post->name;
+        $objDemo->Asunto = $post->Asunto;
+        $objDemo->Mensaje = $post->Mensaje;
+
+
+      Mail::to(Auth::user()->email)->send(new NuevoContactoPrestador($objDemo));
+
+       return redirect()->route('contacto.create')
+         ->with('info', 'Mensaje enviado con exito');
+   }
+
   public function contacto()
   {
     $foto = Foto::all();
@@ -175,22 +219,16 @@ class ControladorPrincipal extends Controller
 
     $post->save();
 
-   $subject = "Solicitud de Contacto";
-   $for = "meriventura.c.a@gmail.com";
-       Mail::send('email',$request->all(), function($msj) use($subject,$for){
-             $msj->from("meriventura.c.a@gmail.com","Meriventura");
-             $msj->subject($subject);
-             $msj->to($for);
-       });
+    $objDemo = new \stdClass();
+    $objDemo->nombreTurista = $post->nombre;
+    $objDemo->correoTurista = $post->correo;
+    $objDemo->telefonoTurista = $post->Telefono;
+    $objDemo->nombrePrestador = $post->name;
+    $objDemo->Asunto = $post->Area;
+    $objDemo->Mensaje = $post->Mensaje;
 
-//   $beautymail = app()->make(Snowfire\Beautymail\Beautymail::class);
-//   $beautymail->send('emails.welcome', [], function($message)
-//   {
-//       $message
-//     ->from('meriventura.c.a@gmail.com')
-//     ->to('meriventura.c.a@gmail.com', 'John Smith')
-//     ->subject('Welcome!');
-//   });
+
+  Mail::to('meriventura.c.a@gmail.com')->send(new contactoMeriventura($objDemo));
 
       return redirect ('/contacto')
         ->with('info', 'Mensaje enviado con exito');

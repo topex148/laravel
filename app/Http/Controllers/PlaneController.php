@@ -116,7 +116,7 @@ class PlaneController extends Controller
       $view =  \View::make('pdf.planes', compact('planes', 'date', 'invoice'))->render();
       $pdf = \App::make('dompdf.wrapper');
       $pdf->loadHTML($view);
-      return $pdf->stream('invoice');
+      return $pdf->stream('planes.pdf');
       //return $pdf->download('invoice'); //para descargar
   }
 
@@ -125,5 +125,18 @@ class PlaneController extends Controller
       $planes = Plane::all();
 
       return $planes;
+  }
+
+  public function invoiceDownload()
+  {
+
+      $planes = $this->getplanes();
+      $date = date('Y-m-d');
+      $invoice = "2222";
+      $view =  \View::make('pdf.planes', compact('planes', 'date', 'invoice'))->render();
+      $pdf = \App::make('dompdf.wrapper');
+      $pdf->loadHTML($view);
+      return $pdf->download('planes.pdf');
+      //return $pdf->download('invoice'); //para descargar
   }
 }

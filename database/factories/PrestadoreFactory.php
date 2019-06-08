@@ -9,11 +9,12 @@ $factory->define(App\Prestadore::class, function (Faker $faker) {
         'RTN' => $faker->unique()->numberBetween($min = 10000, $max = 90000),
         'DescripcionServicio' => $faker->sentence,
         'DescripcionPrestador' => $faker->sentence,
+        'DescripcionActividad' => $faker->sentence,
         'Nombre' => $faker->lastName,
         'imagen' => $faker->imageURL,
-        'Facebook' => $faker->freeEmail,
-        'Twitter' => $faker->freeEmail,
-        'Instagram' => $faker->freeEmail,
+        'Facebook' => $faker->URL,
+        'Twitter' => $faker->URL,
+        'Instagram' => $faker->URL,
         'Fecha_Final' => $faker->dateTimeBetween($startDate = '-10 years', $endDate = 'now', $timezone = null),
     ];
 });

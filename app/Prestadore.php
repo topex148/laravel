@@ -12,7 +12,7 @@ class Prestadore extends Model
   public $incrementing = false;
   protected $primaryKey = 'RIF';
   protected $fillable = [
-    'RIF', 'Telefono', 'RTN', 'DescripcionServicio', 'DescripcionPrestador',
+    'RIF', 'Telefono', 'RTN', 'DescripcionServicio', 'DescripcionPrestador','DescripcionActividad',
     'Nombre', 'imagen', 'Facebook', 'Twitter', 'Instagram','Fecha_Final',
     ];
 

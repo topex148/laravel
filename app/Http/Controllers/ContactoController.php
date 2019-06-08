@@ -127,7 +127,7 @@ $post->save();
       $view =  \View::make('pdf.contactos', compact('contactos', 'date', 'invoice'))->render();
       $pdf = \App::make('dompdf.wrapper');
       $pdf->loadHTML($view);
-      return $pdf->stream('invoice');
+      return $pdf->stream('contactos.pdf');
       //return $pdf->download('invoice'); //para descargar
   }
 
@@ -136,6 +136,19 @@ $post->save();
       $contactos = Contacto::all();
 
       return $contactos;
+  }
+
+  public function invoiceDownload()
+  {
+
+      $contactos= $this->getcontacto();
+      $date = date('Y-m-d');
+      $invoice = "2222";
+      $view =  \View::make('pdf.contactos', compact('contactos', 'date', 'invoice'))->render();
+      $pdf = \App::make('dompdf.wrapper');
+      $pdf->loadHTML($view);
+      return $pdf->download('contactos.pdf');
+      //return $pdf->download('invoice'); //para descargar
   }
 
 }

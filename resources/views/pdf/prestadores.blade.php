@@ -37,6 +37,7 @@
             <th scope="col">RIF</th>
             <th scope="col">Nombre</th>
             <th scope="col">Telefono</th>
+            <th scope="col">Fecha Final</th>
           </tr>
         </thead>
         <tbody>
@@ -45,6 +46,7 @@
             <th scope="row">{{$prestadore->RIF}}</th>
             <td>{{$prestadore->Nombre}}</td>
             <td>{{$prestadore->Telefono}}</td>
+            <td>{{$prestadore->Fecha_Final}}</td>
           </tr>
           @endforeach
         </tbody>

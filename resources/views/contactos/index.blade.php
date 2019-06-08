@@ -23,6 +23,10 @@
                       <a href="{{route('contactos.invoice')}}" class="pull-right btn btn-primary btn-sm"><i class="fa fa-check"></i> Reporte </a>
                   @endcan
 
+                  @can('contactos.invoice')
+                      <a href="{{route('contactos.invoiceDownload')}}" class="pull-right btn btn-primary btn-sm"><i class="fa fa-check"></i>Descargar Reporte </a>
+                  @endcan
+
                 </div>
 
                 <div class="panel-body">
@@ -33,6 +37,9 @@
                                 <th>Archivo</th>
                                 <th>Nombre</th>
                                 <th>Asunto</th>
+                                <th>Ver</th>
+                                <th>Editar</th>
+                                <th>Eliminar</th>
                                 <th colspan="3">&nbsp;</th>
                             </tr>
                           </thead>

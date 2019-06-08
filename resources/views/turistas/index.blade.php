@@ -23,6 +23,10 @@
                       <a href="{{route('turistas.invoice')}}" class="pull-right btn btn-primary btn-sm"><i class="fa fa-check"></i> Reporte </a>
                   @endcan
 
+                  @can('turistas.invoice')
+                      <a href="{{route('turistas.invoiceDownload')}}" class="pull-right btn btn-primary btn-sm"><i class="fa fa-check"></i>Descargar Reporte </a>
+                  @endcan
+
                 </div>
 
                 <div class="panel-body">
@@ -32,6 +36,9 @@
                                 <th width="10px">ID</th>
                                 <th>Pais de Procedencia</th>
                                 <th>Estado de Procedencia</th>
+                                <th>Ver</th>
+                                <th>Editar</th>
+                                <th>Eliminar</th>
                                 <th colspan="3">&nbsp;</th>
                             </tr>
                           </thead>

@@ -214,7 +214,7 @@ class AtractivoController extends Controller
       $view =  \View::make('pdf.atractivos', compact('atractivos', 'date', 'invoice'))->render();
       $pdf = \App::make('dompdf.wrapper');
       $pdf->loadHTML($view);
-      return $pdf->stream('invoice');
+      return $pdf->stream('atractivos.pdf');
       //return $pdf->download('invoice'); //para descargar
   }
 
@@ -223,6 +223,19 @@ class AtractivoController extends Controller
       $atractivos = Atractivo::all();
 
       return $atractivos;
+  }
+
+  public function invoiceDownload()
+  {
+
+      $atractivos = $this->getatractivos();
+      $date = date('Y-m-d');
+      $invoice = "2222";
+      $view =  \View::make('pdf.atractivos', compact('atractivos', 'date', 'invoice'))->render();
+      $pdf = \App::make('dompdf.wrapper');
+      $pdf->loadHTML($view);
+      return $pdf->download('atractivos.pdf');
+      //return $pdf->download('invoice'); //para descargar
   }
 
 }

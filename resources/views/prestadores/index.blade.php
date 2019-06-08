@@ -23,6 +23,10 @@
                       <a href="{{route('prestadores.invoice')}}" class="pull-right btn btn-primary btn-sm"><i class="fa fa-check"></i> Reporte </a>
                   @endcan
 
+                  @can('prestadores.invoice')
+                      <a href="{{route('prestadores.invoiceDownload')}}" class="pull-right btn btn-primary btn-sm"><i class="fa fa-check"></i> Descargar Reporte </a>
+                  @endcan
+
 
                 </div>
 

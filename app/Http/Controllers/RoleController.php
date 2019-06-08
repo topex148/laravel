@@ -119,7 +119,7 @@ class RoleController extends Controller
         $view =  \View::make('pdf.roles', compact('roles', 'date', 'invoice'))->render();
         $pdf = \App::make('dompdf.wrapper');
         $pdf->loadHTML($view);
-        return $pdf->stream('invoice');
+        return $pdf->stream('roles.pdf');
         //return $pdf->download('invoice'); //para descargar
     }
 
@@ -128,5 +128,18 @@ class RoleController extends Controller
         $roles = Role::all();
 
         return $roles;
+    }
+
+    public function invoiceDownload()
+    {
+
+        $roles = $this->getrole();
+        $date = date('Y-m-d');
+        $invoice = "2222";
+        $view =  \View::make('pdf.roles', compact('roles', 'date', 'invoice'))->render();
+        $pdf = \App::make('dompdf.wrapper');
+        $pdf->loadHTML($view);
+        return $pdf->download('roles.pdf');
+        //return $pdf->download('invoice'); //para descargar
     }
 }

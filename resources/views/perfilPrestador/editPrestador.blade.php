@@ -69,6 +69,14 @@
 
 							</div>
 
+							<div class="row">
+
+								<div class="col-md-12">
+									<label for="">Descripcion de las Actividades</label>
+									<input required type="text"  maxlength="500" value="{{$prestadore->DescripcionActividad}}" class="form-control" name="DescripcionActividad" placeholder="Ingrese la Descripcion de las Actividades">
+								</div>
+
+							</div>
 
 
 

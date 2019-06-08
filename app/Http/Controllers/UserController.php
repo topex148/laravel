@@ -97,7 +97,7 @@ class UserController extends Controller
         $view =  \View::make('pdf.users', compact('users', 'date', 'invoice'))->render();
         $pdf = \App::make('dompdf.wrapper');
         $pdf->loadHTML($view);
-        return $pdf->stream('invoice');
+        return $pdf->stream('usuarios.pdf');
         //return $pdf->download('invoice'); //para descargar
     }
 
@@ -106,5 +106,18 @@ class UserController extends Controller
         $users = User::all();
 
         return $users;
+    }
+
+    public function invoiceDownload()
+    {
+
+        $users = $this->getuser();
+        $date = date('Y-m-d');
+        $invoice = "2222";
+        $view =  \View::make('pdf.users', compact('users', 'date', 'invoice'))->render();
+        $pdf = \App::make('dompdf.wrapper');
+        $pdf->loadHTML($view);
+        return $pdf->download('usuarios.pdf');
+        //return $pdf->download('invoice'); //para descargar
     }
 }

@@ -19,7 +19,14 @@
 
   <!-- SIDE NAV -->
   <ul class="side-nav list-group mb-60" id="sidebar-nav">
-    <li class="list-group-item active"><a href='{{asset('servicioLista/'.$prestadore->RIF.'/prestador')}}'><i class="fa fa-eye"></i> PERFIL</a></li>
+    <li class="list-group-item active"><a href='{{asset('servicioLista/'.$prestadore->RIF.'/prestador')}}'><i class="fa fa-eye"></i> Perfil</a></li>
+    @if(Auth::guest())
+    <li class="list-group-item active"><a href='#'><i class="fa fa-comments-o"></i> Registrate para contactarme</a></li>
+    @endif
+
+    @if(Auth::check())
+    <li class="list-group-item active"><a href='{{asset('servicioLista/'.$prestadore->RIF.'/prestador/contactar')}}'><i class="fa fa-comments-o"></i> Contactar</a></li>
+    @endif
   </ul>
   <!-- /SIDE NAV -->
 
@@ -34,9 +41,9 @@
       <!-- <p>Estas son las redes sociales donde puedes contactar conmigo.</p>-->
 
       <ul class="list-unstyled m-0">
-        <li class="mb-10"><i class="fa fa-globe fw-20 hidden-xs-down hidden-sm"></i> <a href="http://www.stepofweb.com">www.stepofweb.com</a></li>
-        <li class="mb-10"><i class="fa fa-facebook fw-20 hidden-xs-down hidden-sm"></i> <a href="http://www.facebook.com/stepofweb">stepofweb</a></li>
-        <li class="mb-10"><i class="fa fa-twitter fw-20 hidden-xs-down hidden-sm"></i> <a href="http://www.twitter.com/stepofweb">@stepofweb</a></li>
+        <li class="mb-10"><i class="fa fa-instagram fw-20 hidden-xs-down hidden-sm"></i> <a href="{{$prestadore->Instagram}}">{{$prestadore->Instagram}}</a></li>
+        <li class="mb-10"><i class="fa fa-facebook fw-20 hidden-xs-down hidden-sm"></i> <a href="{{$prestadore->Facebook}}">{{$prestadore->Facebook}}</a></li>
+        <li class="mb-10"><i class="fa fa-twitter fw-20 hidden-xs-down hidden-sm"></i> <a href="{{$prestadore->Twitter}}">{{$prestadore->Twitter}}</a></li>
       </ul>
     </div>
 
@@ -102,18 +109,7 @@
           <div class="h-250 slimscroll" data-always-visible="true" data-size="5px" data-position="right" data-opacity="0.4" disable-body-scroll="true">
 
             <div class="clearfix mb-10">
-                <h3 class="fs-20 m-0 b-0 p-0 bold">Senderismo</h3>
-                <p>Fabulas definitiones ei pri per recteque hendrerit scriptorem in errem scribentur mel fastidii propriae philosophia cu mea. Utinam ipsum everti necessitatibus at fuisset splendide.</p>
-            </div>
-
-            <div class="clearfix mb-10">
-                <h3 class="fs-20 m-0 b-0 p-0 bold">Ciclismo de montaña</h3>
-                <p>Fabulas definitiones ei pri per recteque hendrerit scriptorem in errem scribentur mel fastidii propriae philosophia cu mea. Utinam ipsum everti necessitatibus at fuisset splendide.</p>
-            </div>
-
-            <div class="clearfix mb-10">
-                <h3 class="fs-20 m-0 b-0 p-0 bold">Canopy</h3>
-                <p>Fabulas definitiones ei pri per recteque hendrerit scriptorem in errem scribentur mel fastidii propriae philosophia cu mea. Utinam ipsum everti necessitatibus at fuisset splendide.</p>
+                <p>{{$prestadore->DescripcionActividad}}</p>
             </div>
 
           </div>
@@ -126,19 +122,6 @@
 
   </div>
 
-
-  <form method="post" action="#" class="box-light mt-20"><!-- .box-light OR .box-dark -->
-    <div class="box-inner">
-      <h4 class="uppercase">DEJA UN MENSAJE A <strong>{{$prestadore->Nombre}}</strong></h4>
-
-      <textarea required class="form-control word-count" data-maxlength="100" rows="5" placeholder="Escribe tu mensaje aqui..."></textarea>
-      <div class="text-muted text-right mt-3 fs-12 mb-10">
-        <span>0/100</span> Palabras
-      </div>
-
-      <button type="submit" class="btn btn-primary"><i class="fa fa-check"></i> ENVIAR MENSAJE</button>
-    </div>
-  </form>
 
 </div>
 

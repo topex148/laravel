@@ -20,6 +20,7 @@ use App\Plane;
 use App\Registro;
 use App\Imagene;
 use App\Contacto;
+use App\ContactarPrestadore;
 use Mail;
 
 class PerfilPrestadorController extends Controller
@@ -27,9 +28,10 @@ class PerfilPrestadorController extends Controller
   public function index(User $user)
   {
       $prestadore = Prestadore::all();
+      $contacto = ContactarPrestadore::all();
       $foto = Foto::all();
       $itinerarios = Itinerario::paginate();
-      return view('perfilPrestador.index', compact ('user', 'itinerarios'), ['prestadores' => $prestadore, 'fotos' => $foto]);
+      return view('perfilPrestador.index', compact ('user', 'itinerarios'), ['contactos' => $contacto, 'prestadores' => $prestadore, 'fotos' => $foto]);
   }
 
   public function planes()
@@ -73,6 +75,7 @@ class PerfilPrestadorController extends Controller
     $post->Nombre = request()->Nombre;
     $post->DescripcionServicio = request()->DescripcionServicio;
     $post->DescripcionPrestador = request()->DescripcionPrestador;
+    $post->DescripcionActividad = request()->DescripcionActividad;
     $post->Facebook = request()->Facebook;
     $post->Twitter = request()->Twitter;
     $post->Instagram = request()->Instagram;

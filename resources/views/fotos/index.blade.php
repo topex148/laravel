@@ -29,6 +29,9 @@
                                 <th>Foto</th>
                                 <th>Titulo</th>
                                 <th>Descripcion</th>
+                                <th>Ver</th>
+                                <th>Editar</th>
+                                <th>Eliminar</th>
                                 <th colspan="3">&nbsp;</th>
                             </tr>
                           </thead>

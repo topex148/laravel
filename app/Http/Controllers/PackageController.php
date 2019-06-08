@@ -102,7 +102,7 @@ class PackageController extends Controller
         $view =  \View::make('pdf.paquetes', compact('paquetes', 'date', 'invoice'))->render();
         $pdf = \App::make('dompdf.wrapper');
         $pdf->loadHTML($view);
-        return $pdf->stream('invoice');
+        return $pdf->stream('paquetes.pdf');
         //return $pdf->download('invoice'); //para descargar
     }
 
@@ -111,5 +111,18 @@ class PackageController extends Controller
         $paquetes = Package::all();
 
         return $paquetes;
+    }
+
+    public function invoiceDownload()
+    {
+
+        $paquetes = $this->getpaquete();
+        $date = date('Y-m-d');
+        $invoice = "2222";
+        $view =  \View::make('pdf.paquetes', compact('paquetes', 'date', 'invoice'))->render();
+        $pdf = \App::make('dompdf.wrapper');
+        $pdf->loadHTML($view);
+        return $pdf->download('paquetes.pdf');
+        //return $pdf->download('invoice'); //para descargar
     }
 }

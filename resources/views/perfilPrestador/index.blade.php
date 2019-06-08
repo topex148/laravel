@@ -41,9 +41,9 @@
       <!-- <p>Estas son las redes sociales donde puedes contactar conmigo.</p>-->
 
       <ul class="list-unstyled m-0">
-        <li class="mb-10"><i class="fa fa-globe fw-20 hidden-xs-down hidden-sm"></i> <a href="http://www.stepofweb.com">www.stepofweb.com</a></li>
-        <li class="mb-10"><i class="fa fa-facebook fw-20 hidden-xs-down hidden-sm"></i> <a href="http://www.facebook.com/stepofweb">stepofweb</a></li>
-        <li class="mb-10"><i class="fa fa-twitter fw-20 hidden-xs-down hidden-sm"></i> <a href="http://www.twitter.com/stepofweb">@stepofweb</a></li>
+        <li class="mb-10"><i class="fa fa-instagram fw-20 hidden-xs-down hidden-sm"></i> <a href="{{$prestadore->Instagram}}">{{$prestadore->Instagram}}</a></li>
+        <li class="mb-10"><i class="fa fa-facebook fw-20 hidden-xs-down hidden-sm"></i> <a href="{{$prestadore->Facebook}}">{{$prestadore->Facebook}}</a></li>
+        <li class="mb-10"><i class="fa fa-twitter fw-20 hidden-xs-down hidden-sm"></i> <a href="{{$prestadore->Twitter}}">{{$prestadore->Twitter}}</a></li>
       </ul>
     </div>
 
@@ -109,18 +109,7 @@
           <div class="h-250 slimscroll" data-always-visible="true" data-size="5px" data-position="right" data-opacity="0.4" disable-body-scroll="true">
 
             <div class="clearfix mb-10">
-                <h3 class="fs-20 m-0 b-0 p-0 bold">Senderismo</h3>
-                <p>Fabulas definitiones ei pri per recteque hendrerit scriptorem in errem scribentur mel fastidii propriae philosophia cu mea. Utinam ipsum everti necessitatibus at fuisset splendide.</p>
-            </div>
-
-            <div class="clearfix mb-10">
-                <h3 class="fs-20 m-0 b-0 p-0 bold">Ciclismo de montaña</h3>
-                <p>Fabulas definitiones ei pri per recteque hendrerit scriptorem in errem scribentur mel fastidii propriae philosophia cu mea. Utinam ipsum everti necessitatibus at fuisset splendide.</p>
-            </div>
-
-            <div class="clearfix mb-10">
-                <h3 class="fs-20 m-0 b-0 p-0 bold">Canopy</h3>
-                <p>Fabulas definitiones ei pri per recteque hendrerit scriptorem in errem scribentur mel fastidii propriae philosophia cu mea. Utinam ipsum everti necessitatibus at fuisset splendide.</p>
+                <p>{{$prestadore->DescripcionActividad}}</p>
             </div>
 
           </div>
@@ -207,6 +196,9 @@
                                   <th>Foto</th>
                                   <th>Titulo</th>
                                   <th>Descripcion</th>
+                                  <th>Ver</th>
+                                  <th>Editar</th>
+                                  <th>Eliminar</th>
                                   <th colspan="3">&nbsp;</th>
                               </tr>
                             </thead>
@@ -287,6 +279,9 @@
                                   <th width="10px">ID</th>
                                   <th>Fecha Inicio</th>
                                   <th>Fecha Final</th>
+                                  <th>Ver</th>
+                                  <th>Editar</th>
+                                  <th>Eliminar</th>
                                   <th colspan="3">&nbsp;</th>
                               </tr>
                             </thead>
@@ -316,6 +311,74 @@
                                   <td width="10px">
                                       @can('itine.destroy')
                                       {!! Form::open(['route' => ['itine.destroy', $itinerario->id],
+                                      'method' => 'DELETE'])!!}
+                                          <button class="btn btn-danger btn-sm"><i class="fa fa-check"></i>
+                                            Eliminar
+                                          </button>
+                                      {!! Form::close() !!}
+                                      @endcan
+                                  </td>
+                                </tr>
+                                @endif
+                                @endforeach
+                            </tbody>
+                          </table>
+
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <header class="text-center mb-60">
+      <h2>Lista de Contactos</h2>
+      <p class="lead font-lato">Esta es con los mensajes dirigidos a ti de parte de los turistas.</p>
+    </header>
+      <div class="row justify-content-center">
+          <div class="col-md-8">
+              <div class="card">
+                  <div class="card-header">
+
+                    <tr width="10px">
+                      <td><strong>  Contactos </strong></td>
+                    </th>
+
+
+                  </div>
+
+                  <div class="panel-body">
+                          <table class="table table-striped table-hover">
+                            <thead>
+                              <tr>
+                                  <th width="10px">ID</th>
+                                  <th>Nombre</th>
+                                  <th>Correo</th>
+                                  <th>Ver</th>
+                                  <th>Eliminar</th>
+                                  <th colspan="3">&nbsp;</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                                @foreach($contactos as $contacto)
+                                @if (($contacto->RIF) == (\Auth::user()->RIF_Prest))
+                                <tr>
+                                  <td>{{$contacto->id}}</td>
+                                  <td>{{$contacto->nombre}}</td>
+                                  <td>{{$contacto->correo}}</td>
+                                  <td width="10px">
+                                      @can('itine.show')
+                                      <a href="{{route('itine.show', $contacto->id)}}"
+                                        class="btn btn-primary btn-sm"><i class="fa fa-check"></i>
+                                          Ver
+                                      </a>
+                                      @endcan
+                                  </td>
+                                  <td width="10px">
+                                      @can('itine.destroy')
+                                      {!! Form::open(['route' => ['itine.destroy', $contacto->id],
                                       'method' => 'DELETE'])!!}
                                           <button class="btn btn-danger btn-sm"><i class="fa fa-check"></i>
                                             Eliminar
