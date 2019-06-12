@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Publicidade;
+use App\Prestadore;
 use File;
 use Storage;
 use Auth;
@@ -23,15 +24,14 @@ class PublicidadController extends Controller
   public function create()
   {
     $publicidade = Publicidade::all();
-    return view('publicidad.create', compact( 'publicidade'));
+    $prestadores = Prestadore::all();
+    return view('publicidad.create', compact( 'publicidade', 'prestadores'));
   }
 
   public function store(Request $request)
   {
     $now = Carbon::now();
     $post = new Publicidade;
-
-
 
     if($request->hasFile('imagen'))
       {
@@ -49,6 +49,7 @@ class PublicidadController extends Controller
 
         $post->title = request()->title;
         $post->Fecha_Final = request()->Fecha_Final;
+        $post->RIF_Prest = request()->RIF_Prest;
 
         $post->save();
 
@@ -59,12 +60,14 @@ class PublicidadController extends Controller
 
   public function show(Publicidade $publicidad)
   {
-      return view('publicidad.show', compact ('publicidad'));
+      $prestadores = Prestadore::all();
+      return view('publicidad.show', compact ('publicidad', 'prestadores'));
   }
 
   public function edit(Publicidade $publicidad)
   {
-      return view('publicidad.edit', compact ('publicidad'));
+      $prestadores = Prestadore::all();
+      return view('publicidad.edit', compact ('publicidad', 'prestadores'));
   }
 
   public function update(Request $request,  $id)
@@ -89,6 +92,7 @@ class PublicidadController extends Controller
 
                   $post->title = request()->title;
                   $post->Fecha_Final = request()->Fecha_Final;
+                  $post->RIF_Prest = request()->RIF_Prest;
 
                   $post->save();
 

@@ -10,7 +10,7 @@ class Publicidade extends Model
   use SoftDeletes;
   protected $dates = ['deleted_at'];
   protected $fillable = [
-    'title', 'Fecha_Final', 'imagen',
+    'title', 'Fecha_Final', 'imagen', 'RIF_Prest',
     ];
 
 }

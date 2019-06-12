@@ -25,12 +25,12 @@
               {{csrf_field()}}
 
 							<div class="row">
-                  <div class="col-md-4">
+                  <div class="col-md-6">
                     <label for="">Titulo</label>
                     <input required type="text" value="{{$publicidad->title}}" class="form-control" name="title" placeholder="Ingrese el Titulo" >
                   </div>
 
-									<div class="col-md-4">
+									<div class="col-md-6">
 
 									<label for="">Imagen</label>
 									<input class="custom-file-upload"  type="file" name="imagen"  value="{{$publicidad -> imagen}}"  data-btn-text="Seleccionar Archivo" />
@@ -38,15 +38,27 @@
 
 								</div>
 
-								<div class="col-md-4">
+              </div>
+
+							<div class="row">
+
+
+								<div class="col-md-6">
 									<h5>Fecha Final</h5>
 									<!-- date picker -->
 									<input type="text" value="{{$publicidad->Fecha_Final}}" class="form-control datepicker" name="Fecha_Final" data-format="yyyy-mm-dd" data-lang="en" data-RTL="false" placeholder="Ingrese la Fecha Final">
 
-
 								</div>
 
-              </div>
+								<div class="col-md-6"><!-- select -->
+									<label for="">RIF Prestador</label>
+										<select class="form-control" name="RIF_Prest" value="{{$publicidad->RIF_Prest}}">
+												<option value="{{$publicidad->RIF_Prest}}">--- {{$publicidad->RIF_Prest}} ---</option>
+												@foreach ($prestadores as $prestadore)
+													<option value="{{$prestadore->RIF}}">{{$prestadore->RIF}}---{{$prestadore->Nombre}}</option>
+												@endforeach
+										</select>
+								</div>
 
 
 							<!--	</fieldset>-->

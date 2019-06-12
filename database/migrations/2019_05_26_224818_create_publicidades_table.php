@@ -17,7 +17,8 @@ class CreatePublicidadesTable extends Migration
           $table->increments('id');
           $table->string('title');
           $table->string('imagen');
-          $table->date('Fecha_Final')->nullable();
+          $table->date('Fecha_Final');
+          $table->string('RIF_Prest');
           $table->softDeletes();
           $table->timestamps();
         });

@@ -1,10 +1,11 @@
 @extends('layouts.menu')
 
 @section('content')
-<!-- /OWL SLIDER -->
+</br>
+<div class="row justify-content-center">
+<div class="col-md-10">
 <div class="box-light"><!-- .box-light OR .box-dark -->
-
-  <div class="row">
+<div class="row">
 
 <div class="col-md-12 col-sm-6">
 
@@ -32,59 +33,87 @@
         </header>
         <!-- /FLIP BOX -->
 
+      </br>
+      <div class="box-inner">
+        <div class="text-center mb-60">
+          <h2>Ubicacion</h2>
+          <p class="lead font-lato">En esta parte podras conseguir informacion sobre la ubicacion del atractivo.</p>
+        </div>
 
-<!-- 4 -->
-<section>
 
   <div class="container">
-    <div class="row">
+  <div class="row">
 
-<div class="col-lg-9 col-md-9 col-sm-8">
-    <h4>Ubicacion:</h4>
-    <p>{{$atractivo->Ubicacion}}</p>
-</div>
-<div class="col-lg-3 col-md-3 col-sm-4">
-    @foreach ($zonas as $zona)
-    @if (($atractivo->zona_id) == ($zona->id))
-    <h4>Pertenece a la Zona {{$atractivo->zona_id}}: {{$zona->nombre}}</h4>
-    <a  href='{{asset('zonaLista/'.$atractivo->zona_id.'/zona')}}' class="btn btn-primary"> CONOCE LA ZONA </a>
+      <div class="col-md-6 col-sm-6 col-xs-12">
+        <div class="card">
+          <div class="card-block">
+          <h4>Ubicacion:</h4>
+          <p>{{$atractivo->Ubicacion}}</p>
+        </div>
+        </div>
+      </div>
 
-    @endif
-    @endforeach
-</div>
+      @foreach ($zonas as $zona)
+      @if (($atractivo->zona_id) == ($zona->id))
+      <div class="col-md-6 col-sm-6 col-xs-12">
+        <div class="card">
+
+          <div class="owl-carousel buttons-autohide controlls-over m-0" data-plugin-options='{"singleItem": true, "autoPlay": true, "navigation": true, "pagination": true, "transitionStyle":"fade"}'>
+
+          @foreach ($fotos as $foto)
+          @if (($foto->id_Zona) == ($zona->id))
+          <a>
+            <img  src="{{asset('storage/imagen/foto/'.$foto->imagen)}}" alt="">
+          </a>
+          @endif
+          @endforeach
+
+          </div>
+
+          <div class="card-block">
+            <a href='{{asset('zonaLista/'.$atractivo->id.'/zona')}}' class="text-black fs-20 mb-20 block">Zona {{$atractivo->zona_id}}: {{$zona->nombre}} </a>
+            <p class="fs-15 mb-20">{{$zona->Descripcion_Zona}}</p>
+            <a href='{{asset('zonaLista/'.$atractivo->id.'/zona')}}' class="text-muted fs-15">VER ZONA</a>
+          </div>
 
 
-  </div>
-  </div>
 
-  <div class="container">
-
-    <br></br>
-    <br></br>
-
-    <h4>Galeria de Imagenes</h4>
-    <div class="masonry-gallery columns-4 clearfix lightbox " data-img-big="4" data-plugin-options='{"delegate": "a", "gallery": {"enabled": true}}'>
-
-      @foreach ($fotos as $foto)
-      @if (($atractivo->id) == ($foto->id_Atrac))
-      <a class="image-hover" href="{{asset('storage/imagen/foto/'.$foto->imagen)}}">
-        <img src="{{asset('storage/imagen/foto/'.$foto->imagen)}}" alt="..." >
-      </a>
+        </div>
+      </div>
       @endif
       @endforeach
 
-    </div>
+  </div>
+  </div>
+
+  </div>
+</div>
+
+<div class="container">
+
+  <br></br>
+
+  <h4>Galeria de Imagenes</h4>
+  <div class="masonry-gallery columns-4 clearfix lightbox " data-img-big="4" data-plugin-options='{"delegate": "a", "gallery": {"enabled": true}}'>
+
+    @foreach ($fotos as $foto)
+    @if (($atractivo->id) == ($foto->id_Atrac))
+    <a class="image-hover" href="{{asset('storage/imagen/foto/'.$foto->imagen)}}">
+      <img src="{{asset('storage/imagen/foto/'.$foto->imagen)}}" alt="..." >
+    </a>
+    @endif
+    @endforeach
 
   </div>
 
-
-
-</section>
-<!-- 4/ -->
-
 </div>
 
 </div>
 </div>
 
+</div>
+</div>
+</div>
+</div>
+</br>
 @endsection

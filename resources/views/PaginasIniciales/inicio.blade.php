@@ -8,7 +8,9 @@
       <div class="owl-carousel buttons-autohide controlls-over m-0" data-plugin-options='{"singleItem": true, "autoPlay": true, "navigation": true, "pagination": true, "transitionStyle":"fade"}'>
         @foreach ($publicidades as $publicidad)
         <div>
+          <a href="{{asset('servicioLista/'.$publicidad->RIF_Prest.'/prestador')}}">
           <img class="img-fluid" src="{{asset('storage/imagen/publicidad/'.$publicidad->imagen)}}" style="width:1800px; height:450px;">
+          </a>
         </div>
         @endforeach
 

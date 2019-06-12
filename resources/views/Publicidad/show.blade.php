@@ -20,28 +20,45 @@
 
 								<div class="row">
 
-									<div class="col-md-4">
+									<div class="col-md-6">
 									<td>
 										<h3>Publicidad</h5>
 										<img src="{{asset('storage/imagen/publicidad/'.$publicidad->imagen)}}" style="width:150px; height:150px; float:left; border-radius:50%; margin-right:25px;">
 									</td>
 									</div>
 
-                  <div class="col-md-4">
+                  <div class="col-md-6">
                     <h3>Titulo</h5>
                     <!-- date picker -->
                     <p><strong>{{ $publicidad->title }}</strong> </p>
 
                   </div>
 
-									<div class="col-md-4">
+								</div>
+
+
+								<div class="row">
+
+									<div class="col-md-6">
 										<h3>Fecha Final</h5>
 										<!-- date picker -->
 										<p><strong>{{ $publicidad->Fecha_Final }}</strong> </p>
 
 									</div>
 
+                  <div class="col-md-6">
+                    <h3>Prestador</h5>
+                    <!-- date picker -->
+										@foreach ($prestadores as $prestadore)
+										@if (($publicidad->RIF_Prest) == ($prestadore->RIF))
+                    <p><strong>{{ $publicidad->RIF_Prest }}---{{$prestadore->Nombre}}</strong> </p>
+										@endif
+										@endforeach
+
+                  </div>
+
 								</div>
+
 
               </div>
 

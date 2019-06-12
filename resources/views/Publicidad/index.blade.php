@@ -28,6 +28,7 @@
                                 <th width="10px">ID</th>
                                 <th>Banner</th>
                                 <th>Fecha Final</th>
+                                <th>RIF Prestador</th>
                                 <th>Ver</th>
                                 <th>Editar</th>
                                 <th>Suspender</th>
@@ -42,6 +43,7 @@
                                   <img src="{{asset('storage/imagen/publicidad/'.$publicidad->imagen)}}" style="width:75px; height:75px; float:left; border-radius:50%; margin-right:25px;">
                                 </td>
                                 <td>{{$publicidad->Fecha_Final}}</td>
+                                <td>{{$publicidad->RIF_Prest}}</td>
                                 <td width="10px">
                                     @can('publicidad.show')
                                     <a href="{{route('publicidad.show', $publicidad->id)}}"

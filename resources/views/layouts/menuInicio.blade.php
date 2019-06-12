@@ -137,6 +137,10 @@
                     <li class="nav-item">
                       <a class="nav-link" href="{{route('prestadores.index')}}"> Prestadores </a>
                     </li>
+
+										<li class="nav-item">
+                      <a class="nav-link" href="{{route('prestadores.home')}}"> Planilla Registro </a>
+                    </li>
                     @endcan
 
                     @can('turistas.index')

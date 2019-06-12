@@ -6,6 +6,7 @@ use App\Prestadore;
 use App\Itinerario;
 use App\Foto;
 use Storage;
+use App\planillaRegistro;
 use Illuminate\Http\Request;
 
 class PrestadoreController extends Controller
@@ -175,5 +176,32 @@ class PrestadoreController extends Controller
       return redirect ('/prestadores/suspender');
     }
 
+    public function home()
+    {
+
+        $contactos = planillaRegistro::all();
+
+        return view('planillas.home', compact('contactos'));
+    }
+
+    public function ver(planillaRegistro $contacto)
+    {
+        return view('planillas.show', compact ('contacto'));
+    }
+
+    public function descarga(planillaRegistro $contacto){
+      $dato = $contacto->imagen;
+      $path = public_path('storage/pdf/prestador/'. $dato);
+      return response()->download($path);
+
+    }
+
+    public function eliminar(planillaRegistro $contacto)
+    {
+        Storage::delete('pdf/prestador/'.$contacto->imagen);
+        $contacto->delete();
+
+        return back()->with('info', 'Eliminado correctamente');
+    }
 
 }

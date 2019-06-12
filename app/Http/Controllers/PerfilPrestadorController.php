@@ -21,7 +21,9 @@ use App\Registro;
 use App\Imagene;
 use App\Contacto;
 use App\ContactarPrestadore;
+use App\planillaRegistro;
 use Mail;
+use App\Mail\Planilla;
 
 class PerfilPrestadorController extends Controller
 {
@@ -240,6 +242,50 @@ class PerfilPrestadorController extends Controller
       $itinerario->delete();
 
       return back()->with('info', 'Eliminado correctamente');
+  }
+
+  public function descargar(){
+
+    $path = storage_path('pdf/prestadorRegistro.pdf');
+    return response()->download($path);
+
+  }
+
+  public function upload(Request $request)
+  {
+
+    $usuario = Auth::user();
+
+    if($request->hasFile('imagen'))
+      {
+          $fileNameExt = $request->file('imagen')->getClientOriginalName();
+          $fileName = pathinfo($fileNameExt, PATHINFO_FILENAME);
+          $fileExt = $request->file('imagen')->getClientOriginalExtension();
+          $fileNameToStore = $fileName.'_'.time().'.'.$fileExt;
+          $pathToStore = $request->file('imagen')->storeAs('pdf/prestador/',$fileNameToStore);
+      }
+
+
+      $post = new planillaRegistro;
+      if($request->hasFile('imagen')){
+                  $post->imagen = $fileNameToStore;
+              }
+
+        $post->usuarioNombre= $usuario->name;
+        $post->usuarioId = $usuario->id;
+        $post->usuarioCorreo = $usuario->email;
+        $post->save();
+
+        $objDemo = new \stdClass();
+        $objDemo->nombreTurista = $post->usuarioNombre;
+        $objDemo->correoTurista = $post->usuarioCorreo;
+
+
+      Mail::to('meriventura.c.a@gmail.com')->send(new Planilla($objDemo));
+
+
+      return redirect()->route('home')
+        ->with('info', 'Informacion enviada con exito');
   }
 
 

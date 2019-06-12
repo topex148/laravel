@@ -68,14 +68,16 @@ class ControladorPrincipal extends Controller
     $post->save();
 
 
-    $subject = "Solicitud de Contacto";
-    $for = "meriventura.c.a@gmail.com";
-          Mail::send('email',$request->all(), function($msj) use($subject,$for){
-              $msj->from("meriventura.c.a@gmail.com","Meriventura");
-              $msj->subject($subject);
-              $msj->to($for);
-          });
-      //$contacto = Contacto::create($request->all());
+    $objDemo = new \stdClass();
+    $objDemo->nombreTurista = $post->nombre;
+    $objDemo->correoTurista = $post->correo;
+    $objDemo->telefonoTurista = $post->Telefono;
+    $objDemo->nombrePrestador = $post->name;
+    $objDemo->Asunto = $post->Area;
+    $objDemo->Mensaje = $post->Mensaje;
+
+
+  Mail::to('meriventura.c.a@gmail.com')->send(new contactoMeriventura($objDemo));
 
       return redirect ('/inicio')
         ->with('info', 'Mensaje enviado con exito');
@@ -89,10 +91,11 @@ class ControladorPrincipal extends Controller
 
   public function atractivoLista(Request $request)
   {
+    $publicidade = Publicidade::all();
     $foto = Foto::all();
     $atractivo = Atractivo::all();
     $zona = Zona::all();
-    return view("PaginasIniciales/atractivoLista", ['fotos' => $foto, 'zonas' => $zona, 'atractivos' => $atractivo]);
+    return view("PaginasIniciales/atractivoLista", ['fotos' => $foto, 'zonas' => $zona, 'atractivos' => $atractivo, 'publicidades' => $publicidade]);
   }
 
   public function atractivo(Request $request , Atractivo $atractivo)
@@ -113,7 +116,8 @@ class ControladorPrincipal extends Controller
   public function zona(Request $request , Zona $zona)
   {
     $foto = Foto::all();
-    return view("PaginasIniciales/zona", compact('zona'), ['fotos' => $foto]);
+    $atractivo = Atractivo::all();
+    return view("PaginasIniciales/zona", compact('zona'), ['fotos' => $foto,  'atractivos' => $atractivo]);
   }
 
   public function actividadLista()
@@ -159,14 +163,22 @@ class ControladorPrincipal extends Controller
 
     $prestadores = Prestadore::find($RIF);
     $post = new ContactarPrestadore;
+    $usuarios= Auth::user();
+    $user= User::all();
+
+    foreach ($user as $usuario) {
+      if (($usuario->RIF_Prest) == ($prestadores->RIF)) {
+        $post->email = $usuario->email;
+      }
+    }
 
     $post->nombre = request()->nombre;
     $post->correo = request()->correo;
     $post->Telefono = request()->Telefono;
     $post->Mensaje = request()->Mensaje;
     $post->Asunto = request()->Asunto;
-    $post->name = request()->name;
-    $post->email = request()->email;
+    $post->name = $prestadores->Nombre;
+
     $post->RIF = $prestadores->RIF;
 
     $post->save();
@@ -182,8 +194,7 @@ class ControladorPrincipal extends Controller
 
       Mail::to(Auth::user()->email)->send(new NuevoContactoPrestador($objDemo));
 
-       return redirect()->route('contacto.create')
-         ->with('info', 'Mensaje enviado con exito');
+       return back()->with('info', 'Mensaje enviado con exito');
    }
 
   public function contacto()
@@ -238,6 +249,32 @@ class ControladorPrincipal extends Controller
   {
     $foto = Foto::all();
     return view("PaginasIniciales/galeria", ['fotos' => $foto]);
+  }
+
+  public function createItine(Request $request, Prestadore $prestadore)
+  {
+
+      $foto = Foto::all();
+      $paquetes = Package::all();
+      return view('contactoTurista.itinerario', compact('prestadore', 'paquetes'), ['fotos' => $foto]);
+  }
+
+
+  public function storeItine(Request $request, $RIF)
+  {
+      $post = new Itinerario;
+      $prestadore = Prestadore::find($RIF);
+      $usuarios= Auth::user();
+
+      $post->id_Cliente_1 = $usuarios->id;
+      $post->RIF_4 = $prestadore->RIF;
+      $post->id_P_3 = request()->id_P_3;
+      $post->Fecha_Inicio = request()->Fecha_Inicio;
+      $post->Fecha_Final = request()->Fecha_Final;
+
+      $post->save();
+
+      return back()->with('info', 'Itinerario creado con exito');
   }
 
 

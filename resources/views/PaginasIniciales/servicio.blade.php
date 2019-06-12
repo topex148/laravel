@@ -22,10 +22,12 @@
     <li class="list-group-item active"><a href='{{asset('servicioLista/'.$prestadore->RIF.'/prestador')}}'><i class="fa fa-eye"></i> Perfil</a></li>
     @if(Auth::guest())
     <li class="list-group-item active"><a href='#'><i class="fa fa-comments-o"></i> Registrate para contactarme</a></li>
+    <li class="list-group-item active"><a href="#"><i class="fa fa-tasks"></i> Registrate para generar itinerario</a></li>
     @endif
 
     @if(Auth::check())
     <li class="list-group-item active"><a href='{{asset('servicioLista/'.$prestadore->RIF.'/prestador/contactar')}}'><i class="fa fa-comments-o"></i> Contactar</a></li>
+    <li class="list-group-item active"><a href='{{asset('servicioLista/'.$prestadore->RIF.'/prestador/itinerario')}}'><i class="fa fa-tasks"></i> Generar Itinerario</a></li>
     @endif
   </ul>
   <!-- /SIDE NAV -->

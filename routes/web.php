@@ -17,11 +17,19 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/chat', function(){
+//Prestador Contacto
 
-    return view('chat');
-});
+Route::get('prestadores/contacto', 'PrestadoreController@home')->name('prestadores.home')
+      ->middleware('permission:prestadores.index');
 
+Route::get('prestadores/contacto/{contacto}', 'PrestadoreController@ver')->name('prestadores.ver')
+      ->middleware('permission:prestadores.show');
+
+Route::get('prestadores/contacto/descargar/{contacto}', 'PrestadoreController@descarga')->name('prestadores.descargar')
+      ->middleware('permission:prestadores.edit');
+
+Route::delete('prestadores/contacto/{contacto}', 'PrestadoreController@eliminar')->name('prestadores.eliminar')
+      ->middleware('permission:prestadores.destroy');
 
 //Suspender Prestador
 
@@ -128,6 +136,8 @@ Route::get('/servicioLista', 'ControladorPrincipal@servicioLista')->name('contac
 Route::get('/servicioLista/{prestadore}/prestador', 'ControladorPrincipal@servicio');
 Route::get('/servicioLista/{prestadore}/prestador/contactar', 'ControladorPrincipal@contactarP');
 Route::post('/servicioLista/{prestadore}/prestador/contactar', 'ControladorPrincipal@contactarG');
+Route::get('/servicioLista/{prestadore}/prestador/itinerario', 'ControladorPrincipal@createItine');
+Route::post('/servicioLista/{prestadore}/prestador/itinerario', 'ControladorPrincipal@storeItine');
 Route::get('/contacto', 'ControladorPrincipal@contacto');
 Route::post("/contacto", "ControladorPrincipal@contactoGuardar");
 Route::get('/galeria', 'ControladorPrincipal@galeria');
@@ -403,6 +413,8 @@ Route::middleware(['auth'])->group(function(){
   //Route::get('prestadores/reporte', 'PrestadoreController@invoice')->name('prestadores.invoice')
     //    ->middleware('permission:prestadores.invoice');
 
+
+
   //Turistas
 
   Route::post('turistas/store', 'TuristaController@store')->name('turistas.store')
@@ -459,6 +471,10 @@ Route::middleware(['auth'])->group(function(){
   Route::get('planesPrestador', 'PerfilPrestadorController@planes')->name('prestador.planes');
 
   Route::get('planesPrestador/exitosa', 'PerfilPrestadorController@planesExito')->name('prestador.planesExito');
+
+  Route::get('planesPrestador/exitosa/descargar', 'PerfilPrestadorController@descargar')->name('prestador.planilla');
+
+  Route::post('planesPrestador/exitosa/descargar', 'PerfilPrestadorController@upload')->name('prestador.upload');
     //    ->middleware('permission:prestador.index');
 
   //Editar Prestador
