@@ -11,6 +11,6 @@ class ItinerariosTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\Itinerario::class, 10)->create();
+        factory(App\Itinerario::class, 5)->create();
     }
 }

@@ -11,6 +11,6 @@ class AtractivosTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\Atractivo::class, 10)->create();
+        factory(App\Atractivo::class, 5)->create();
     }
 }
