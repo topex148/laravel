@@ -44,7 +44,7 @@
 									<div class="row">
 									<div class="col-md-6">
 										<!-- custom file upload -->
-										<label for="">Imagen</label>
+										<h5>Imagen</h5>
 										<input class="custom-file-upload"  required type="file" name="imagen"  data-btn-text="Seleccionar Archivo" />
 										<small class="text-muted block">Tamaño de Archivo Maximo: 10Mb (zip/pdf/jpg/png)</small>
 									</div>
@@ -58,55 +58,6 @@
 										</div>
 
 									</div>
-
-								<div class="row">
-
-								<div class="col-md-6"><!-- select -->
-									<label for="">RIF Prestador</label>
-										<select class="form-control" name="RIF_Prest" value="{{old('RIF_Prest')}}">
-												<option value="">--- Seleccione el RIF del prestador ---</option>
-												@foreach ($prestadores as $prestadore)
-													<option value="{{$prestadore->RIF}}">{{$prestadore->RIF}}</option>
-												@endforeach
-										</select>
-								</div>
-
-								<div class="col-md-6"><!-- select -->
-									<label for="">ID Atractivo</label>
-										<select class="form-control" name="id_Atrac" value="{{old('id_Atrac')}}">
-												<option value="">--- Seleccione el id del atractivo ---</option>
-												@foreach ($atractivos as $atractivo)
-													<option value="{{$atractivo->id}}">{{$atractivo->id}}</option>
-												@endforeach
-										</select>
-								</div>
-
-
-								</div>
-
-								<div class="row">
-
-								<div class="col-md-6"><!-- select -->
-									<label for="">ID Zona</label>
-										<select class="form-control" name="id_Zona" value="{{old('id_Zona')}}">
-												<option value="">--- Seleccione el id de la zona ---</option>
-												@foreach ($zonas as $zona)
-													<option value="{{$zona->id}}">{{$zona->id}}</option>
-												@endforeach
-										</select>
-								</div>
-
-								<div class="col-md-6"><!-- select -->
-									<label for="">ID Actividad</label>
-										<select class="form-control" name="id_Activi" value="{{old('id_Activi')}}">
-												<option value="">--- Seleccione el id de la actividad ---</option>
-												@foreach ($actividades as $actividade)
-													<option value="{{$actividade->id}}">{{$actividade->id}}</option>
-												@endforeach
-										</select>
-								</div>
-
-								</div>
 
 
 							<!--	</fieldset>-->

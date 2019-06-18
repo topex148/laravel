@@ -27,6 +27,22 @@ class UsersTableSeeder extends Seeder
           'special'    => 'all-access',
       ]);
 
+      Role::create([
+        'name'       => 'Prestador',
+        'slug'       => 'prestador',
+        'description' => 'Algunos permisos',
+        'special'    => 'no-access',
+
+      ]);
+
+      Role::create([
+        'name'       => 'Turista',
+        'slug'       => 'turista',
+        'description' => 'Ningun permisos',
+        'special'    => 'no-access',
+      ]);
+
+
       $user = new User();
       $user->name = 'Admin';
       $user->email = 'admin@example.com';

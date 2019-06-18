@@ -8,10 +8,6 @@
 		<!--<link href="assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" /> -->
     <link href="{{ asset("assets/css/layout.css") }}" rel="stylesheet" type="text/css" />
 
-
-
-
-
   </head>
   <body>
 
@@ -35,16 +31,26 @@
         <thead>
           <tr>
             <th scope="col">ID</th>
+            <th scope="col">Nombre</th>
             <th scope="col">Pais</th>
             <th scope="col">Estado</th>
+            <th scope="col">Genero</th>
+            <th scope="col">Edad</th>
           </tr>
         </thead>
         <tbody>
           @foreach($turistas as $turista)
           <tr>
             <th scope="row">{{$turista->id}}</th>
+            @foreach($usuarios as $usuario)
+            @if($turista->userId == $usuario->id)
+            <td>{{$usuario->name}}</td>
+            @endif
+            @endforeach
             <td>{{$turista->Pais_P}}</td>
             <td>{{$turista->Estado_P}}</td>
+            <td>{{$turista->genero}}</td>
+            <td>{{$turista->edad}}</td>
           </tr>
           @endforeach
         </tbody>

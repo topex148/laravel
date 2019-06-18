@@ -1,7 +1,7 @@
 @extends('layouts.menuInicio')
 
 @section('content')
-@if (($foto->RIF_Prest) == (\Auth::user()->RIF_Prest))
+@if (($foto->RIF_Prest) == ($prestador->RIF))
 <!-- CONTACT -->
 			<section id="contact">
 				<div class="container">
@@ -86,7 +86,7 @@
 
 			@endif
 
-			@if (($foto->RIF_Prest) != (\Auth::user()->RIF_Prest))
+			@if (($foto->RIF_Prest) != ($prestador->RIF))
 			<!-- -->
 			<section>
 				<div class="container">

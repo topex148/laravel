@@ -128,7 +128,7 @@
 									<!-- 		<span class="bordered">INICIO</span> -->
 									<!-- 	</a> -->
 								<!-- 	</li> -->
-								@if(Auth::guest())
+
 
 
 									<li class="dropdown"><!-- NOSOTROS -->
@@ -198,7 +198,7 @@
 
 
 
-									@endif
+
 
 									<!--	@if (session('statut') == 'user')
 
@@ -225,60 +225,14 @@
 											<ul class="dropdown-menu">
 
 												<li class="dropdown">
-													<a class="dropdown-toggle" href="#">
-														INICIO
-													</a>
-													<ul class="dropdown-menu">
-														<li><a href="http://localhost/LaTesis/public/inicio">Menu Principal</a></li>
-														<li><a href="http://localhost/LaTesis/public/home">Menu Usuario</a></li>
-													</ul>
-												</li>
-
-												<li class="dropdown">
-												<a  href="http://localhost/LaTesis/public/nosotros">
-													<span class="bordered">Nosotros</span>
+												<a  href="http://localhost/LaTesis/public/inicio">
+													<span class="bordered">Menu Principal</span>
 												</a>
 												</li>
 
 												<li class="dropdown">
-												<a  href="http://localhost/LaTesis/public/zonaLista">
-													<span class="bordered">Zonas</span>
-												</a>
-												</li>
-
-												<li class="dropdown">
-												<a  href="http://localhost/LaTesis/public/atractivoLista">
-													<span class="bordered">Atractivos</span>
-												</a>
-												</li>
-
-												<li class="dropdown">
-												<a  href="http://localhost/LaTesis/public/actividadLista">
-													<span class="bordered">Actividades</span>
-												</a>
-												</li>
-
-												<li class="dropdown">
-												<a  href="http://localhost/LaTesis/public/servicioLista">
-													<span class="bordered">Servicios</span>
-												</a>
-												</li>
-
-												<li class="dropdown">
-												<a  href="http://localhost/LaTesis/public/plan">
-													<span class="bordered">Planes</span>
-												</a>
-												</li>
-
-												<li class="dropdown">
-												<a  href="http://localhost/LaTesis/public/galeria">
-													<span class="bordered">Galeria</span>
-												</a>
-												</li>
-
-												<li class="dropdown">
-												<a  href="http://localhost/LaTesis/public/contacto">
-													<span class="bordered">Contacto</span>
+												<a  href="http://localhost/LaTesis/public/home">
+													<span class="bordered">Menu Usuario</span>
 												</a>
 												</li>
 

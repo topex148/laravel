@@ -36,6 +36,24 @@
 
 								</div>
 
+								<div class="row">
+
+									<div class="col-md-6">
+										<h3>Genero</h5>
+										<!-- date picker -->
+										<p><strong>{{ $turista->genero }}</strong> </p>
+
+									</div>
+
+									<div class="col-md-6">
+										<h3>Edad</h5>
+										<!-- date picker -->
+										<p><strong>{{ $turista->edad }}</strong> </p>
+
+									</div>
+
+								</div>
+
               </div>
 
 					</div>

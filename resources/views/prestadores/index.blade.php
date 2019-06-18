@@ -15,9 +15,6 @@
                     <td><strong>  Prestadores </strong></td>
                   </tr>
 
-                  @can('prestadores.create')
-                      <a href="{{route('prestadores.create')}}" class="pull-right btn btn-primary btn-sm"><i class="fa fa-check"></i> Crear </a>
-                  @endcan
 
                   @can('prestadores.invoice')
                       <a href="{{route('prestadores.invoice')}}" class="pull-right btn btn-primary btn-sm"><i class="fa fa-check"></i> Reporte </a>
@@ -39,7 +36,6 @@
                                 <th>Nombre</th>
                                 <th>Telefono</th>
                                 <th>Ver</th>
-                                <th>Editar</th>
                                 <th>Suspender</th>
                                 <th colspan="3">&nbsp;</th>
                             </tr>
@@ -58,14 +54,6 @@
                                     <a href="{{route('prestadores.show', $prestadore->RIF)}}"
                                       class="btn btn-primary btn-sm"><i class="fa fa-check"></i>
                                         Ver
-                                    </a>
-                                    @endcan
-                                </td>
-                                <td width="10px">
-                                    @can('prestadores.edit')
-                                    <a href="{{route('prestadores.edit', $prestadore->RIF)}}"
-                                      class="btn btn-primary btn-sm"><i class="fa fa-check"></i>
-                                        Editar
                                     </a>
                                     @endcan
                                 </td>

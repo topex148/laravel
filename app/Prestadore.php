@@ -13,7 +13,7 @@ class Prestadore extends Model
   protected $primaryKey = 'RIF';
   protected $fillable = [
     'RIF', 'Telefono', 'RTN', 'DescripcionServicio', 'DescripcionPrestador','DescripcionActividad',
-    'Nombre', 'imagen', 'Facebook', 'Twitter', 'Instagram','Fecha_Final',
+    'Nombre', 'imagen', 'Facebook', 'Twitter', 'Instagram','Fecha_Final','userId',
     ];
 
     public function itinerario(){

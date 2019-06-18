@@ -88,7 +88,7 @@
 <div class="container">
   <header class="text-center mb-60">
     <h2>Lista de Fotos</h2>
-    <p class="lead font-lato">Esta es la lista de los fotos registradas en el sistema.</p>
+    <p class="lead font-lato">Esta es la lista de los fotos registradas en el sistema perteneciente a las zonas.</p>
   </header>
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -111,6 +111,7 @@
                             <tr>
                                 <th width="10px">ID</th>
                                 <th>Foto</th>
+                                <th>Zona</th>
                                 <th>Titulo</th>
                                 <th>Descripcion</th>
                                 <th colspan="3">&nbsp;</th>
@@ -124,6 +125,7 @@
                                 <td>
                                   <img src="{{asset('storage/imagen/foto/'.$foto->imagen)}}" style="width:75px; height:75px; float:left; border-radius:50%; margin-right:25px;">
                                 </td>
+                                <td>{{$foto->id_Zona}}</td>
                                 <td>{{$foto->title}}</td>
                                 <td>{{$foto->descripcion}}</td>
                                 <td width="10px">

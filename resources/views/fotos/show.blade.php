@@ -61,37 +61,6 @@
 
 								</div>
 
-								<div class="row">
-
-									<div class="col-md-3">
-										<h3>RIF Prestador</h5>
-										<!-- date picker -->
-										<p><strong>{{ $foto->RIF_Prest }}</strong> </p>
-
-									</div>
-
-									<div class="col-md-3">
-										<h3>ID de la Zona</h5>
-										<!-- date picker -->
-										<p><strong>{{ $foto->id_Zona }}</strong> </p>
-
-									</div>
-
-									<div class="col-md-3">
-										<h3>ID del Atractivo</h5>
-										<!-- date picker -->
-										<p><strong>{{ $foto->id_Atrac }}</strong> </p>
-
-									</div>
-
-									<div class="col-md-3">
-										<h3>ID de la Actividad</h5>
-										<!-- date picker -->
-										<p><strong>{{ $foto->id_Activi }}</strong> </p>
-
-									</div>
-
-								</div>
 
               </div>
 

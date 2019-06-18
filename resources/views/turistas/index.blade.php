@@ -15,10 +15,6 @@
                     <td><strong>  Turistas </strong></td>
                   </th>
 
-                  @can('turistas.create')
-                      <a href="{{route('turistas.create')}}" class="pull-right btn btn-primary btn-sm"><i class="fa fa-check"></i> Crear </a>
-                  @endcan
-
                   @can('turistas.invoice')
                       <a href="{{route('turistas.invoice')}}" class="pull-right btn btn-primary btn-sm"><i class="fa fa-check"></i> Reporte </a>
                   @endcan
@@ -34,10 +30,12 @@
                           <thead>
                             <tr>
                                 <th width="10px">ID</th>
+                                <th>Nombre</th>
                                 <th>Pais de Procedencia</th>
                                 <th>Estado de Procedencia</th>
+                                <th>Genero</th>
+                                <th>Edad</th>
                                 <th>Ver</th>
-                                <th>Editar</th>
                                 <th>Eliminar</th>
                                 <th colspan="3">&nbsp;</th>
                             </tr>
@@ -46,21 +44,20 @@
                               @foreach($turistas as $turista)
                               <tr>
                                 <td>{{$turista->id}}</td>
+                                @foreach($usuarios as $usuario)
+                                @if($turista->userId == $usuario->id)
+                                <td>{{$usuario->name}}</td>
+                                @endif
+                                @endforeach
                                 <td>{{$turista->Pais_P}}</td>
                                 <td>{{$turista->Estado_P}}</td>
+                                <td>{{$turista->genero}}</td>
+                                <td>{{$turista->edad}}</td>
                                 <td width="10px">
                                     @can('turistas.show')
                                     <a href="{{route('turistas.show', $turista->id)}}"
                                       class="btn btn-primary btn-sm"><i class="fa fa-check"></i>
                                         Ver
-                                    </a>
-                                    @endcan
-                                </td>
-                                <td width="10px">
-                                    @can('turistas.edit')
-                                    <a href="{{route('turistas.edit', $turista->id)}}"
-                                      class="btn btn-primary btn-sm"><i class="fa fa-check"></i>
-                                        Editar
                                     </a>
                                     @endcan
                                 </td>

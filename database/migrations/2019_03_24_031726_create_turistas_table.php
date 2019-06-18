@@ -15,8 +15,12 @@ class CreateTuristasTable extends Migration
     {
         Schema::create('turistas', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('userId');
+            $table->integer('edad');
             $table->string('Pais_P');
             $table->string('Estado_P');
+            $table->string('genero');
+
             $table->timestamps();
         });
     }

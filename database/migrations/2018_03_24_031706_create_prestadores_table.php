@@ -26,6 +26,7 @@ class CreatePrestadoresTable extends Migration
             $table->string('Facebook');
             $table->string('Twitter');
             $table->string('Instagram');
+            $table->integer('userId');
             $table->date('Fecha_Final')->nullable();
             $table->softDeletes();
             $table->timestamps();

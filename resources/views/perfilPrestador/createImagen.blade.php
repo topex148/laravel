@@ -42,24 +42,13 @@
                   </div>
 
 									<div class="row">
-									<div class="col-md-6">
+									<div class="col-md-12">
 										<!-- custom file upload -->
 										<label for="">Imagen</label>
 										<input class="custom-file-upload"  required type="file" name="imagen"  data-btn-text="Seleccionar Archivo" />
 										<small class="text-muted block">Tamaño de Archivo Maximo: 10Mb (zip/pdf/jpg/png)</small>
 									</div>
 
-									<div class="col-md-6"><!-- select -->
-										<label for="">RIF Prestador</label>
-											<select class="form-control" name="RIF_Prest" value="{{old('RIF_Prest')}}">
-													<option value="">--- Seleccione el RIF del prestador ---</option>
-													@foreach ($prestadores as $prestadore)
-													@if (($prestadore->RIF) == (\Auth::user()->RIF_Prest))
-														<option value="{{$prestadore->RIF}}">{{$prestadore->RIF}}</option>
-													@endif
-													@endforeach
-											</select>
-									</div>
 
 									</div>
 

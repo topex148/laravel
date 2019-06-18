@@ -182,10 +182,6 @@
     		</div>
     	</div><!-- /PRELOADER -->
 
-    	<!--<script src="js/jquery-3.3.1.min.js"></script>-->
-    	<script src="{{ asset("js/popper.min.js") }}"></script>
-    	<script src="{{ asset("js/bootstrap.min.js") }}"></script>
-
 
     	<!-- JAVASCRIPT FILES -->
     		<script type="text/javascript">var plugin_path = '{{ asset('assets/plugins/') }}/';</script>
@@ -194,6 +190,9 @@
 
     		<!-- PAGE LEVEL SCRIPTS -->
     		<script type="text/javascript" src="{{ asset("assets/js/view/demo.shop.js") }}"></script>
+
+        <!-- STYLESWITCHER - REMOVE -->
+    		<script async type="text/javascript" src="{{ asset("demo_files/styleswitcher/styleswitcher.js") }}"></script>
 
 </body>
 </html>

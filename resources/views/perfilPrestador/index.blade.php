@@ -3,7 +3,7 @@
 @section('content')
 
 @foreach ($prestadores as $prestadore)
-@if (($prestadore->RIF) == (\Auth::user()->RIF_Prest))
+@if (($prestadore->userId) == (\Auth::user()->id))
 <!-- -->
 <section>
   <div class="container">
@@ -130,9 +130,10 @@
     </div>
   </div>
 </section>
-@endif
-@endforeach
+
+
 <!-- / -->
+
 
 
   <!-- POPULAR POSTS -->
@@ -151,7 +152,7 @@
 
 
                   @foreach ($fotos as $foto)
-                  @if (($foto->RIF_Prest) == (\Auth::user()->RIF_Prest))
+                  @if (($foto->RIF_Prest) == ($prestadore->RIF))
                   <a class="image-hover" href="{{asset('storage/imagen/foto/'.$foto->imagen)}}">
                     <img src="{{asset('storage/imagen/foto/'.$foto->imagen)}}" />
                   </a>
@@ -204,7 +205,7 @@
                             </thead>
                             <tbody>
                                 @foreach($fotos as $foto)
-                                @if (($foto->RIF_Prest) == (\Auth::user()->RIF_Prest))
+                                @if (($foto->RIF_Prest) == ($prestadore->RIF))
                                 <tr>
                                   <td>{{$foto->id}}</td>
                                   <td>
@@ -287,7 +288,7 @@
                             </thead>
                             <tbody>
                                 @foreach($itinerarios as $itinerario)
-                                @if (($itinerario->RIF_4) == (\Auth::user()->RIF_Prest))
+                                @if (($itinerario->RIF_4) == ($prestadore->RIF))
                                 <tr>
                                   <td>{{$itinerario->id}}</td>
                                   <td>{{$itinerario->Fecha_Inicio}}</td>
@@ -363,7 +364,7 @@
                             </thead>
                             <tbody>
                                 @foreach($contactos as $contacto)
-                                @if (($contacto->RIF) == (\Auth::user()->RIF_Prest))
+                                @if (($contacto->RIF) == ($prestadore->RIF))
                                 <tr>
                                   <td>{{$contacto->id}}</td>
                                   <td>{{$contacto->nombre}}</td>
@@ -398,5 +399,8 @@
       </div>
   </div>
 </section>
+@endif
+
+@endforeach
 
 @endsection

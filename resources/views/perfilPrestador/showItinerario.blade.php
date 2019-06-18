@@ -1,7 +1,7 @@
 @extends('layouts.menuInicio')
 
 @section('content')
-@if (($itinerario->RIF_4) == (\Auth::user()->RIF_Prest))
+@if (($itinerario->RIF_4) == ($prestador->RIF))
 <!-- CONTACT -->
 			<section id="contact">
 				<div class="container">
@@ -75,7 +75,7 @@
       <!-- BUTTON CALLOUT -->
       @endif
 
-      @if (($itinerario->RIF_4) != (\Auth::user()->RIF_Prest))
+      @if (($itinerario->RIF_4) != ($prestador->RIF))
       <!-- -->
       <section>
         <div class="container">

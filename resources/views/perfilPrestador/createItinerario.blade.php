@@ -29,26 +29,8 @@
 									<div class="row">
 
 
-																			<div class="col-md-4"><!-- select -->
-																				<label for="">RIF</label>
-																					<select required class="form-control" name="RIF_4" value="{{old('RIF_4')}}">
-																							<option value="">--- Seleccione el RIF del prestador ---</option>
-																							@foreach ($prestadores as $prestadore)
-                                              @if (($prestadore->RIF) == (\Auth::user()->RIF_Prest))
-																								<option value="{{$prestadore->RIF}}">RIF {{$prestadore->RIF}}: {{$prestadore->Nombre}}</option>
-                                              @endif
-                                              @endforeach
-																					</select>
-																			</div>
 
-																			<!--
-																			<div class="col-md-4">
-																				<label for="">Ingrese el id del Paquete</label>
-																				<input required type="text" maxlength="4" value="{{old('id_P_3')}}" class="form-control" name="id_P_3" placeholder="Ingrese el id del Paquete" >
-																			</div>
-																			-->
-
-																			<div class="col-md-4"><!-- select -->
+																			<div class="col-md-6"><!-- select -->
 																				<label for="">Id de paquete</label>
 																					<select required class="form-control" name="id_P_3" value="{{old('id_P_3')}}">
 																							<option value="">--- Seleccione el id del paquete ---</option>
@@ -64,7 +46,7 @@
 																			</div>
 																		-->
 
-																		<div class="col-md-4"><!-- select -->
+																		<div class="col-md-6"><!-- select -->
 																			<label for="">Numero de cliente</label>
 																				<select required class="form-control" name="id_Cliente_1" value="{{old('id_Cliente_1')}}">
 																						<option value="">--- Seleccione el numero de cliente ---</option>

@@ -7,7 +7,7 @@
 
 					<header class="text-center mb-60">
 						<h2>Formulario Prestador</h2>
-						<p class="lead font-lato">Ingresa los datos del Prestador.</p>
+						<p class="lead font-lato">Ingresa sus datos como Prestador.</p>
 						<hr />
 					</header>
 
@@ -20,7 +20,7 @@
 							<h3>Verifica los datos antes de seleccionar <strong><em>Registrar!</em></strong></h3>
 
 
-							<form enctype="multipart/form-data" action="/LaTesis/public/prestadores/store" method="POST" role="form">
+							<form enctype="multipart/form-data" action="/LaTesis/public/registro/prestador" method="POST" role="form">
 
                 {{csrf_field()}}
 
@@ -53,26 +53,16 @@
 
 									<div class="row">
 
-
-
-                    <div class="col-md-4">
+                    <div class="col-md-6">
                       <label for="">Nombre</label>
                       <input required type="text"  maxlength="30" value="{{old('Nombre')}}" class="form-control" name="Nombre" placeholder="Ingrese el Nombre">
                     </div>
 
-												<div class="col-md-4">
+												<div class="col-md-6">
 													<!-- custom file upload -->
 												<label for="">Imagen Perfil Prestador</label>
 												<input class="custom-file-upload"  required type="file" name="imagen"  data-btn-text="Seleccionar Archivo" />
 												<small class="text-muted block">Tamaño de Archivo Maximo: 10Mb (zip/pdf/jpg/png)</small>
-
-											</div>
-
-											<div class="col-md-4">
-												<h5>Fecha Final</h5>
-												<!-- date picker -->
-												<input type="text" value="{{old('Fecha_Final')}}" class="form-control datepicker" name="Fecha_Final" data-format="yyyy-mm-dd" data-lang="en" data-RTL="false" placeholder="Ingrese la Fecha Final">
-
 
 											</div>
 
@@ -146,7 +136,7 @@
 			</section>
 			<!-- /CONTACT -->
 			<!-- BUTTON CALLOUT -->
-			<a href="/LaTesis/public/prestadores" rel="nofollow" class="btn btn-xlg btn-warning fs-20 fullwidth m-0 rad-0 p-40">
+			<a href="/LaTesis/public/registro" rel="nofollow" class="btn btn-xlg btn-warning fs-20 fullwidth m-0 rad-0 p-40">
 				<span class="font-lato fs-30">
 
 					<strong>Regresar &raquo;</strong>

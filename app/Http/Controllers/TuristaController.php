@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Turista;
+use App\User;
 use Illuminate\Http\Request;
 
 class TuristaController extends Controller
@@ -10,40 +11,17 @@ class TuristaController extends Controller
   public function index()
   {
       $turistas = Turista::paginate();
+      $usuarios = User::all();
 
-      return view('turistas.index', compact('turistas'));
+      return view('turistas.index', compact('turistas', 'usuarios'));
   }
 
-  public function create()
-  {
-      return view('turistas.create');
-  }
-
-  public function store(Request $request)
-  {
-      $turista = Turista::create($request->all());
-
-      return redirect()->route('turistas.index')
-        ->with('info', 'Turista creado con exito');
-  }
 
   public function show(Turista $turista)
   {
       return view('turistas.show', compact ('turista'));
   }
 
-  public function edit(Turista $turista)
-  {
-      return view('turistas.edit', compact ('turista'));
-  }
-
-  public function update(Request $request, Turista $turista)
-  {
-      $turista->update($request->all());
-
-      return redirect()->route('turistas.index')
-        ->with('info', 'Turista actualizado con exito');
-  }
 
   public function destroy(Turista $turista)
   {
@@ -56,9 +34,9 @@ class TuristaController extends Controller
   {
 
       $turistas = $this->getturistas();
+      $usuarios = $this->getusuarios();
       $date = date('Y-m-d');
-      $invoice = "2222";
-      $view =  \View::make('pdf.turistas', compact('turistas', 'date', 'invoice'))->render();
+      $view =  \View::make('pdf.turistas', compact('turistas', 'usuarios', 'date'))->render();
       $pdf = \App::make('dompdf.wrapper');
       $pdf->loadHTML($view);
       return $pdf->stream('turistas.pdf');
@@ -69,9 +47,9 @@ class TuristaController extends Controller
   {
 
       $turistas = $this->getturistas();
+      $usuarios = $this->getusuarios();
       $date = date('Y-m-d');
-      $invoice = "2222";
-      $view =  \View::make('pdf.turistas', compact('turistas', 'date', 'invoice'))->render();
+      $view =  \View::make('pdf.turistas', compact('turistas','usuarios', 'date'))->render();
       $pdf = \App::make('dompdf.wrapper');
       $pdf->loadHTML($view);
       return $pdf->download('turistas.pdf');
@@ -84,6 +62,13 @@ class TuristaController extends Controller
       $turistas = Turista::all();
 
       return $turistas;
+  }
+
+  public function getusuarios()
+  {
+      $usuarios = User::all();
+
+      return $usuarios;
   }
 
 

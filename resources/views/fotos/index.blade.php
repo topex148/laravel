@@ -4,7 +4,7 @@
 <div class="container">
   <header class="text-center mb-60">
     <h2>Lista de Fotos</h2>
-    <p class="lead font-lato">Esta es la lista de los fotos registradas en el sistema.</p>
+    <p class="lead font-lato">Esta es la lista de los fotos registradas en el sistema perteneciente a la galeria.</p>
   </header>
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -37,6 +37,7 @@
                           </thead>
                           <tbody>
                               @foreach($fotos as $foto)
+                              @if (($foto->Galeria) != (NULL))
                               <tr>
                                 <td>{{$foto->id}}</td>
                                 <td>
@@ -71,6 +72,7 @@
                                     @endcan
                                 </td>
                               </tr>
+                              @endif
                               @endforeach
                           </tbody>
                         </table>

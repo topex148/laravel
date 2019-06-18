@@ -123,7 +123,7 @@ Route::get('/email', 'HomeController@email')->name('sendEmail');
 
 //Paginas Iniciales
 
-Route::get('/inicio', 'ControladorPrincipal@inicio');
+Route::get('/inicio', 'ControladorPrincipal@inicio')->name('inicio');
 Route::post("/inicio", "ControladorPrincipal@inicioContactoGuardar");
 Route::get('/nosotros', 'ControladorPrincipal@nosotros');
 Route::get('/atractivoLista', 'ControladorPrincipal@atractivoLista');
@@ -157,6 +157,12 @@ Route::get('/invoices/{invoice_id}', 'PaymentsController@invoice');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/registro', 'HomeController@registro')->name('registro');
+Route::get('/registro/prestador', 'HomeController@registroPrestador')->name('registroPrestador');
+Route::post('/registro/prestador', 'HomeController@storePrestador')->name('Prestador');
+Route::get('/registro/turista', 'HomeController@registroTurista')->name('registroTurista');
+Route::post('/registro/turista', 'HomeController@storeTurista')->name('Turista');
+
 
 //Route
 
@@ -389,17 +395,8 @@ Route::middleware(['auth'])->group(function(){
 
   //Prestadores
 
-  Route::post('prestadores/store', 'PrestadoreController@store')->name('prestadores.store')
-        ->middleware('permission:prestadores.create');
-
   Route::get('prestadores', 'PrestadoreController@index')->name('prestadores.index')
         ->middleware('permission:prestadores.index');
-
-  Route::get('prestadores/create', 'PrestadoreController@create')->name('prestadores.create')
-        ->middleware('permission:prestadores.create');
-
-  Route::patch('prestadores/{prestadore}', 'PrestadoreController@update')->name('prestadores.update')
-        ->middleware('permission:prestadores.edit');
 
   Route::get('prestadores/{prestadore}', 'PrestadoreController@show')->name('prestadores.show')
         ->middleware('permission:prestadores.show');
@@ -407,27 +404,12 @@ Route::middleware(['auth'])->group(function(){
   Route::delete('prestadores/{prestadore}', 'PrestadoreController@destroy')->name('prestadores.destroy')
         ->middleware('permission:prestadores.destroy');
 
-  Route::get('prestadores/{prestadore}/edit', 'PrestadoreController@edit')->name('prestadores.edit')
-        ->middleware('permission:prestadores.edit');
-
-  //Route::get('prestadores/reporte', 'PrestadoreController@invoice')->name('prestadores.invoice')
-    //    ->middleware('permission:prestadores.invoice');
-
-
 
   //Turistas
 
-  Route::post('turistas/store', 'TuristaController@store')->name('turistas.store')
-        ->middleware('permission:turistas.create');
 
   Route::get('turistas', 'TuristaController@index')->name('turistas.index')
         ->middleware('permission:turistas.index');
-
-  Route::get('turistas/create', 'TuristaController@create')->name('turistas.create')
-        ->middleware('permission:turistas.create');
-
-  Route::patch('turistas/{turista}', 'TuristaController@update')->name('turistas.update')
-        ->middleware('permission:turistas.edit');
 
   Route::get('turistas/{turista}', 'TuristaController@show')->name('turistas.show')
         ->middleware('permission:turistas.show');
@@ -435,8 +417,6 @@ Route::middleware(['auth'])->group(function(){
   Route::delete('turistas/{turista}', 'TuristaController@destroy')->name('turistas.destroy')
         ->middleware('permission:turistas.destroy');
 
-  Route::get('turistas/{turista}/edit', 'TuristaController@edit')->name('turistas.edit')
-        ->middleware('permission:turistas.edit');
 
   //Zonas
 

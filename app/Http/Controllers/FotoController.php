@@ -32,7 +32,7 @@ class FotoController extends Controller
     $actividades = Actividade::all();
     $fotos = Foto::all();
 
-    
+
     return view('fotos.create', compact('prestadores', 'zonas', 'atractivos', 'fotos', 'actividades'));
   }
 
@@ -60,7 +60,6 @@ class FotoController extends Controller
         $post->Galeria = request()->Galeria;
         $post->title = request()->title;
         $post->descripcion = request()->descripcion;
-        $post->RIF_Prest = request()->RIF_Prest;
         $post->id_Zona = request()->id_Zona;
         $post->id_Atrac = request()->id_Atrac;
         $post->id_Activi = request()->id_Activi;
@@ -107,13 +106,8 @@ class FotoController extends Controller
           if($request->hasFile('imagen')){
                       $post->imagen = $fileNameToStore;
                   }
-                  $post->Galeria = request()->Galeria;
                   $post->title = request()->title;
                   $post->descripcion = request()->descripcion;
-                  $post->RIF_Prest = request()->RIF_Prest;
-                  $post->id_Zona = request()->id_Zona;
-                  $post->id_Atrac = request()->id_Atrac;
-                  $post->id_Activi = request()->id_Activi;
 
                   $post->save();
 

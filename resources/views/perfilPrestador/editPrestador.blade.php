@@ -2,7 +2,7 @@
 
 @section('content')
 
-@if (($prestadore->RIF) == (\Auth::user()->RIF_Prest))
+@if (($prestadore->userId) == (\Auth::user()->id))
 <!-- CONTACT -->
 			<section id="contact">
 				<div class="container">
@@ -129,7 +129,7 @@
       <!-- BUTTON CALLOUT -->
 @endif
 
-@if (($prestadore->RIF) != (\Auth::user()->RIF_Prest))
+@if (($prestadore->userId) != (\Auth::user()->id))
 <!-- -->
 <section>
   <div class="container">

@@ -47,7 +47,7 @@ class PerfilPrestadorController extends Controller
   public function planesExito()
   {
 
-    return view("perfilPrestador.subscripcionExitosa");
+    return view("perfilPrestador.exito");
   }
 
   public function editPrestador(Prestadore $prestadore)
@@ -92,19 +92,23 @@ class PerfilPrestadorController extends Controller
 
   public function create()
   {
-    $prestadores = Prestadore::all();
+
     $zonas = Zona::all();
     $atractivos = Atractivo::all();
     $actividades = Actividade::all();
     $fotos = Foto::all();
-    return view('perfilPrestador.createImagen', compact('prestadores', 'zonas', 'atractivos', 'fotos', 'actividades'));
+    return view('perfilPrestador.createImagen', compact( 'zonas', 'atractivos', 'fotos', 'actividades'));
   }
 
   public function store(Request $request)
   {
 
-  //  $foto = new Foto(request()->all());
-    //\Auth::user()->fotos()->save($foto);
+    $prestadores = Prestadore::all();
+    foreach ($prestadores as $prestadore) {
+      if (($prestadore->userId) == (\Auth::user()->id)) {
+        $prestador=$prestadore;
+      }
+    }
 
     if($request->hasFile('imagen'))
       {
@@ -124,7 +128,7 @@ class PerfilPrestadorController extends Controller
 
         $post->title = request()->title;
         $post->descripcion = request()->descripcion;
-        $post->RIF_Prest = request()->RIF_Prest;
+        $post->RIF_Prest = $prestador->RIF;
         $post->user_id = \Auth::user()->id;
 
         $post->save();
@@ -136,17 +140,28 @@ class PerfilPrestadorController extends Controller
 
   public function show(Foto $foto)
   {
-      return view('perfilPrestador.showImagen', compact ('foto'));
+    $prestadores = Prestadore::all();
+    foreach ($prestadores as $prestadore) {
+      if (($prestadore->userId) == (\Auth::user()->id)) {
+        $prestador=$prestadore;
+      }
+    }
+      return view('perfilPrestador.showImagen', compact ('foto', 'prestador'));
   }
 
   public function edit(Foto $foto)
   {
     $prestadores = Prestadore::all();
+    foreach ($prestadores as $prestadore) {
+      if (($prestadore->userId) == (\Auth::user()->id)) {
+        $prestador=$prestadore;
+      }
+    }
     $zonas = Zona::all();
     $atractivos = Atractivo::all();
     $actividades = Actividade::all();
 
-      return view('perfilPrestador.editImagen', compact ('foto', 'prestadores', 'zonas', 'atractivos', 'actividades'));
+      return view('perfilPrestador.editImagen', compact ('foto', 'prestador', 'zonas', 'atractivos', 'actividades'));
   }
 
   public function update(Request $request,  $id)
@@ -193,17 +208,33 @@ class PerfilPrestadorController extends Controller
 
   public function createItine()
   {
-      $prestadores = Prestadore::all();
       $paquetes = Package::all();
       $turistas = Turista::all();
-      return view('perfilPrestador.createItinerario', compact('prestadores', 'paquetes', 'turistas'));
+      return view('perfilPrestador.createItinerario', compact( 'paquetes', 'turistas'));
   }
 
 
   public function storeItine(Request $request)
   {
 
-      $itinerario = Itinerario::create($request->all());
+      $prestadores = Prestadore::all();
+      foreach ($prestadores as $prestadore) {
+        if (($prestadore->userId) == (\Auth::user()->id)) {
+          $prestador=$prestadore;
+        }
+      }
+
+
+
+        $post = new Itinerario;
+
+          $post->RIF_4 = $prestador->RIF;
+          $post->id_P_3 = request()->id_P_3;
+          $post->id_Cliente_1 = request()->id_Cliente_1;
+          $post->Fecha_Inicio = request()->Fecha_Inicio;
+          $post->Fecha_Final = request()->Fecha_Final;
+
+          $post->save();
 
       return redirect()->route('prestador.index')
         ->with('info', 'Itinerario creado con exito');
@@ -212,7 +243,13 @@ class PerfilPrestadorController extends Controller
 
   public function showItine(Request $request ,Itinerario $itinerario)
   {
-      return view('perfilPrestador.showItinerario', compact ('itinerario'));
+    $prestadores = Prestadore::all();
+    foreach ($prestadores as $prestadore) {
+      if (($prestadore->userId) == (\Auth::user()->id)) {
+        $prestador=$prestadore;
+      }
+    }
+      return view('perfilPrestador.showItinerario', compact ('itinerario', 'prestador'));
   }
 
 
@@ -220,10 +257,15 @@ class PerfilPrestadorController extends Controller
   {
 
       $prestadores = Prestadore::all();
+      foreach ($prestadores as $prestadore) {
+        if (($prestadore->userId) == (\Auth::user()->id)) {
+          $prestador=$prestadore;
+        }
+      }
       $paquetes = Package::all();
       $turistas = Turista::all();
 
-      return view('perfilPrestador.editItinerario', compact ('itinerario', 'prestadores', 'paquetes', 'turistas'));
+      return view('perfilPrestador.editItinerario', compact ('itinerario', 'prestador', 'paquetes', 'turistas'));
   }
 
 
