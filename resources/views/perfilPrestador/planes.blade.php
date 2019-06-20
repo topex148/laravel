@@ -17,6 +17,32 @@
 
 			<!-- /FEATURES -->
 
+			<div class="container">
+
+
+				<div class="row">
+
+					@foreach($suscripciones as $suscripcione)
+					@if(($suscripcione->user_id) == ($id))
+					<div class="col-md-4 col-sm-6 col-xs-12">
+					<div class="card">
+					<div class="card-block">
+						<a class="text-black fs-20 mb-20 block">Plan: {{$suscripcione->name}}</a>
+						<p class="fs-15 mb-20">En estos momentos te encuentras afiliado a este plan.</p>
+						@foreach($prestadores as $prestadore)
+						@if(($prestadore->userId) == ($id))
+						<a class="text-muted fs-15">Finaliza el: {{$prestadore->Fecha_Final}}</a>
+						@endif
+						@endforeach
+					</div>
+					</div>
+					</div>
+					@endif
+					@endforeach
+
+				</div>
+			</div>
+
 			<!-- FEATURED -->
 
 				<div class="container">
@@ -149,19 +175,19 @@
 										<!-- price -->
 										<div class="shop-item-price">
 
-											$10
+											$5
 										</div>
 										<!-- /price -->
 									</div>
 
-									<form enctype="multipart/form-data" action="/LaTesis/public/plan/pago1" method="POST">
+									<form enctype="multipart/form-data" action="/LaTesis/public/plan/pago3" method="POST">
 											{{ csrf_field() }}
 											<script
 													src="https://checkout.stripe.com/checkout.js" class="stripe-button"
 													name="plan"
-													value="monthly"
+													value="mes"
 													data-key="{{ config('services.stripe.key') }}"
-													data-amount="1000"
+													data-amount="500"
 													data-name="Subscribir"
 													data-description="Subscripcion mensual"
 													data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
@@ -197,19 +223,19 @@
 										<!-- price -->
 										<div class="shop-item-price">
 
-											$100
+											$50
 										</div>
 										<!-- /price -->
 									</div>
 
-									<form enctype="multipart/form-data" action="/LaTesis/public/plan/pago2" method="POST">
+									<form enctype="multipart/form-data" action="/LaTesis/public/plan/pago4" method="POST">
 											{{ csrf_field() }}
 											<script
 													src="https://checkout.stripe.com/checkout.js" class="stripe-button"
 													name="plan"
-													value="yearly"
+													value="año"
 													data-key="{{ config('services.stripe.key') }}"
-													data-amount="10000"
+													data-amount="5000"
 													data-name="Subscribir"
 													data-description="Subscripcion anual"
 													data-image="https://stripe.com/img/documentation/checkout/marketplace.png"

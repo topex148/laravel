@@ -16,6 +16,7 @@ use App\Package;
 use App\Foto;
 use App\Zona;
 use App\Atractivo;
+use App\Subscription;
 use App\Plane;
 use App\Registro;
 use App\Imagene;
@@ -39,9 +40,12 @@ class PerfilPrestadorController extends Controller
   public function planes()
   {
 
+    $id = Auth::user()->id;
+    $prestadore = Prestadore::all();
+    $suscripcione = Subscription::all();
     $plane = Plane::all();
 
-    return view("perfilPrestador.planes", [ 'planes' => $plane]);
+    return view("perfilPrestador.planes", compact ('id'), [ 'planes' => $plane, 'suscripciones' => $suscripcione, 'prestadores' => $prestadore]);
   }
 
   public function planesExito()

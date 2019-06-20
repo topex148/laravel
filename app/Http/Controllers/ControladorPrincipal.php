@@ -277,5 +277,41 @@ class ControladorPrincipal extends Controller
       return back()->with('info', 'Itinerario creado con exito');
   }
 
+  public function pruebaM()
+  {
+
+    $id = Auth::user()->id;
+    $prueba= Prestadore::onlyTrashed()->where('userId', $id)->restore();
+
+      $prestadores = Prestadore::all();
+      foreach ($prestadores as $prestadore){
+        if (($prestadore->userId) == (Auth::user()->id)) {
+          $post = Prestadore::find($prestadore->RIF);
+          $post->Fecha_Final = date('Y-m-d',strtotime(date("Y-m-d", time()) . " + 1 month"));
+          $post->save();
+          return 'exito';
+        }
+      }
+
+  }
+
+  public function pruebaY()
+  {
+
+    $id = Auth::user()->id;
+    $prueba= Prestadore::onlyTrashed()->where('userId', $id)->restore();
+
+      $prestadores = Prestadore::all();
+      foreach ($prestadores as $prestadore){
+        if (($prestadore->userId) == (Auth::user()->id)) {
+          $post = Prestadore::find($prestadore->RIF);
+          $post->Fecha_Final = date('Y-m-d',strtotime(date("Y-m-d", time()) . " + 1 year"));
+          $post->save();
+          return 'exito';
+        }
+      }
+
+  }
+
 
 }

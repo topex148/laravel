@@ -31,7 +31,7 @@ class UsersTableSeeder extends Seeder
         'name'       => 'Prestador',
         'slug'       => 'prestador',
         'description' => 'Algunos permisos',
-        'special'    => 'no-access',
+  
 
       ]);
 

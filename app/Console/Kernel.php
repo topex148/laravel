@@ -35,8 +35,8 @@ class Kernel extends ConsoleKernel
 
      protected function schedule(Schedule $schedule)
      {
-       $schedule->command('pause:users')->hourly();
-       $schedule->command('pause:prestadores')->hourly();
+       $schedule->command('pause:users')->everyMinute();
+       $schedule->command('pause:prestadores')->everyMinute();
      }
 
     /**

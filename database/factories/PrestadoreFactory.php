@@ -16,6 +16,6 @@ $factory->define(App\Prestadore::class, function (Faker $faker) {
         'Twitter' => $faker->URL,
         'Instagram' => $faker->URL,
         'userId' => $faker->unique()->numberBetween($min = 6, $max = 50),
-        'Fecha_Final' => $faker->dateTimeBetween($startDate = '-10 years', $endDate = 'now', $timezone = null),
+        'Fecha_Final' => $faker->dateTimeBetween($startDate = 'now', $endDate = '10 years', $timezone = null),
     ];
 });

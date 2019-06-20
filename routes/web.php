@@ -13,23 +13,15 @@ use App\Foto;
 |
 */
 
+//prueba monidifcacion fecha año y mes
+Route::get('pruebaM', 'ControladorPrincipal@pruebaM');
+Route::get('pruebaY', 'ControladorPrincipal@pruebaY');
+//fin
+
 Route::get('/', function () {
     return view('welcome');
 });
 
-//Prestador Contacto
-
-Route::get('prestadores/contacto', 'PrestadoreController@home')->name('prestadores.home')
-      ->middleware('permission:prestadores.index');
-
-Route::get('prestadores/contacto/{contacto}', 'PrestadoreController@ver')->name('prestadores.ver')
-      ->middleware('permission:prestadores.show');
-
-Route::get('prestadores/contacto/descargar/{contacto}', 'PrestadoreController@descarga')->name('prestadores.descargar')
-      ->middleware('permission:prestadores.edit');
-
-Route::delete('prestadores/contacto/{contacto}', 'PrestadoreController@eliminar')->name('prestadores.eliminar')
-      ->middleware('permission:prestadores.destroy');
 
 //Suspender Prestador
 
@@ -144,6 +136,8 @@ Route::get('/galeria', 'ControladorPrincipal@galeria');
 Route::get('/plan', 'PaymentsController@planPromocion');
 Route::post('/plan/pago1', 'PaymentsController@subscribe1');
 Route::post('/plan/pago2', 'PaymentsController@subscribe2');
+Route::post('/plan/pago3', 'PaymentsController@subscribe3');
+Route::post('/plan/pago4', 'PaymentsController@subscribe4');
 Route::get('/plan/actualizar', 'PaymentsController@changePlan');
 
 
@@ -162,6 +156,9 @@ Route::get('/registro/prestador', 'HomeController@registroPrestador')->name('reg
 Route::post('/registro/prestador', 'HomeController@storePrestador')->name('Prestador');
 Route::get('/registro/turista', 'HomeController@registroTurista')->name('registroTurista');
 Route::post('/registro/turista', 'HomeController@storeTurista')->name('Turista');
+Route::get('/suscripcion', 'SuscripcionController@index')->name('suscripcion');
+Route::get('/suscripcion/{user}', 'SuscripcionController@show')->name('suscripcion.show')
+      ->middleware('permission:users.show');
 
 
 //Route

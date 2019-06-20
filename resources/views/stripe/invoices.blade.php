@@ -16,7 +16,7 @@
       <table class="table table-bordered table-striped table-vertical-middle">
       <thead>
         <tr>
-          <th class="fw-30">Fecha</th>
+          <th class="fw-30">Fecha Inicio</th>
           <th>Precio</th>
           <th>Descargar</th>
         </tr>

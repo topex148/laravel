@@ -13,6 +13,7 @@ use App\Turista;
 use App\Actividade;
 use App\Package;
 use App\Foto;
+use App\Subscription;
 use App\Zona;
 use App\Atractivo;
 use App\Plane;
@@ -41,11 +42,25 @@ class PaymentsController extends Controller
     public function subscribe1(Request $request)
     {
 
+
+
         try {
             Stripe::setApiKey(config('services.stripe.secret'));
             $id = Auth::user()->id;
             $user = User::find($id);
-            $user->newSubscription('main', 'monthly')->create($request->stripeToken);
+            $user->newSubscription('AlojamientoMensual', 'monthly')->create($request->stripeToken);
+
+            $prestadores = Prestadore::all();
+            $prueba= Prestadore::onlyTrashed()->where('userId', $id)->restore();
+
+            foreach ($prestadores as $prestadore){
+              if (($prestadore->userId) == (Auth::user()->id)) {
+                $post = Prestadore::find($prestadore->RIF);
+                $post->Fecha_Final = date('Y-m-d',strtotime(date("Y-m-d", time()) . " + 1 month"));
+                $post->save();
+              }
+            }
+
             return redirect()->route('prestador.planesExito');
         } catch (\Exception $ex) {
             return $ex->getMessage();
@@ -56,10 +71,58 @@ class PaymentsController extends Controller
     public function subscribe2(Request $request)
     {
 
+
+
         try {
             Stripe::setApiKey(config('services.stripe.secret'));
-            $user = User::find(1);
-            $user->newSubscription('main', 'yearly')->create($request->stripeToken);
+            $id = Auth::user()->id;
+            $user = User::find($id);
+            $user->newSubscription('AlojamientoAnual', 'yearly')->create($request->stripeToken);
+
+            $prestadores = Prestadore::all();
+            $prueba= Prestadore::onlyTrashed()->where('userId', $id)->restore();
+
+            foreach ($prestadores as $prestadore){
+              if (($prestadore->userId) == (Auth::user()->id)) {
+                $post = Prestadore::find($prestadore->RIF);
+                $post->Fecha_Final = date('Y-m-d',strtotime(date("Y-m-d", time()) . " + 1 year"));
+                $post->save();
+              }
+            }
+
+            return redirect()->route('prestador.planesExito');
+
+        } catch (\Exception $ex) {
+            return $ex->getMessage();
+        }
+
+    }
+
+    public function subscribe3(Request $request)
+    {
+
+        try {
+            Stripe::setApiKey(config('services.stripe.secret'));
+            $id = Auth::user()->id;
+            $user = User::find($id);
+            $user->newSubscription('PublicidadMensual', 'mes')->create($request->stripeToken);
+
+            return redirect()->route('prestador.planesExito');
+        } catch (\Exception $ex) {
+            return $ex->getMessage();
+        }
+
+    }
+
+    public function subscribe4(Request $request)
+    {
+
+        try {
+            Stripe::setApiKey(config('services.stripe.secret'));
+            $id = Auth::user()->id;
+            $user = User::find($id);
+            $user->newSubscription('PublicidadAnual', 'año')->create($request->stripeToken);
+
             return redirect()->route('prestador.planesExito');
 
         } catch (\Exception $ex) {
@@ -104,7 +167,9 @@ class PaymentsController extends Controller
     {
         try {
             Stripe::setApiKey(config('services.stripe.secret'));
-            $user = User::find(1);
+            $id = Auth::user()->id;
+
+            $user = User::find($id);
             $foto = Foto::all();
             $invoices = $user->invoices();
             return view('stripe/invoices', compact('invoices'), ['fotos' => $foto]);
@@ -117,11 +182,12 @@ class PaymentsController extends Controller
     {
         try {
             Stripe::setApiKey(config('services.stripe.secret'));
-            $user = User::find(1);
+            $id = Auth::user()->id;
+            $user = User::find($id);
 
             return $user->downloadInvoice($invoice_id, [
-                    'vendor'  => 'Your Company',
-                    'product' => 'Your Product',
+                    'vendor'  => 'Meriventura',
+                    'product' => 'Subscripcion Alojamiento',
             ]);
         } catch (\Exception $ex) {
             return $ex->getMessage();
