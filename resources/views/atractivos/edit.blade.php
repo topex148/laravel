@@ -27,7 +27,7 @@
 
 							<div class="row">
 
-								<div class="col-md-6"><!-- select -->
+								<div class="col-md-4"><!-- select -->
 									<label for="">ID Zona</label>
 									<select class="form-control" name="zona_id" value="{{$atractivo->zona_id}}">
 										<option value="{{$atractivo->zona_id}}">Zona-{{$atractivo->zona_id}}</option>
@@ -38,12 +38,23 @@
 
 									</div>
 
-									<div class="col-md-6">
+									<div class="col-md-4">
 										<h5>Nombre del Atractivo</h5>
 										<!-- date picker -->
 										<input type="text" value="{{$atractivo->Nombre_Atractivo}}" class="form-control" name="Nombre_Atractivo"  placeholder="Ingrese el Nombre del Atractivo">
 
 									</div>
+
+									<div class="col-md-4"><!-- select -->
+										<h5>Id de paquete</h5>
+											<select class="form-control" name="id_P_3" value="{{old('id_P_3')}}">
+													<option value="">--- Selecccionar para cambiar ---</option>
+													@foreach ($paquetes as $paquete)
+														<option value="{{$paquete->id}}">Paquete Número: {{$paquete->id}}</option>
+													@endforeach
+											</select>
+									</div>
+
 							</div>
 
 							<div class="row">

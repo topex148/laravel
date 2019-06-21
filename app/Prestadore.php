@@ -28,4 +28,8 @@ class Prestadore extends Model
       return $this->hasMany(User::class);
     }
 
+    public function packages(){
+      return $this->belongsToMany(Package::class);
+    }
+
 }

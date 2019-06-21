@@ -32,16 +32,52 @@
 											<div class="col-md-6">
 	                      <h5>Fecha de Inicio</h5>
 	                      <!-- date picker -->
-	                      <input type="text" value="{{old('Fecha_Inicio')}}" class="form-control datepicker" name="Fecha_Inicio" data-format="yyyy-mm-dd" data-lang="en" data-RTL="false" placeholder="Ingrese la Fecha de Inicio">
+	                      <input required type="text" value="{{old('Fecha_Inicio')}}" class="form-control datepicker" name="Fecha_Inicio" data-format="yyyy-mm-dd" data-lang="en" data-RTL="false" placeholder="Ingrese la Fecha de Inicio">
 
 	                    </div>
 
-	                    <div class="col-md-6">
+	                    <div  required class="col-md-6">
 	                      <h5>Fecha Final</h5>
 	                      <!-- date picker -->
 	                      <input type="text" value="{{old('Fecha_Final')}}" class="form-control datepicker" name="Fecha_Final" data-format="yyyy-mm-dd" data-lang="en" data-RTL="false" placeholder="Ingrese la Fecha Final">
 
 	                    </div>
+
+
+									</div>
+
+									<div class="row">
+
+											<div class="col-md-4"><!-- select -->
+												<h5>Id de actividad</h5>
+													<select class="form-control" name="id_Actividad" value="{{old('id_Actividad')}}">
+															<option value="">--- Seleccione el id de la actividad ---</option>
+															@foreach ($actividades as $actividade)
+																<option value="{{$actividade->id}}">Actividad Número: {{$actividade->id}}</option>
+															@endforeach
+													</select>
+											</div>
+
+											<div class="col-md-4"><!-- select -->
+												<h5>Id de atractivo</h5>
+													<select class="form-control" name="id_Atractivo" value="{{old('id_Atractivo')}}">
+															<option value="">--- Seleccione el id del atractivo ---</option>
+															@foreach ($atractivos as $atractivo)
+																<option value="{{$atractivo->id}}">Actividad Número: {{$atractivo->id}}</option>
+															@endforeach
+													</select>
+											</div>
+
+											<div class="col-md-4"><!-- select -->
+												<h5>RIF del Prestador</h5>
+													<select class="form-control" name="RIF" value="{{old('RIF')}}">
+															<option value="">--- Seleccione el RIF del prestador ---</option>
+															@foreach ($prestadores as $prestadore)
+																<option value="{{$prestadore->RIF}}">Prestador Número: {{$prestadore->RIF}}</option>
+															@endforeach
+													</select>
+											</div>
+
 									</div>
 
 

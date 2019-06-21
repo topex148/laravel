@@ -6,6 +6,7 @@ use App\Prestadore;
 use App\Itinerario;
 use App\Foto;
 use Storage;
+use App\Package;
 use App\planillaRegistro;
 use Illuminate\Http\Request;
 

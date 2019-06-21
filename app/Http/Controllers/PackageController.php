@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Package;
+use App\Actividade;
+use App\Atractivo;
+use App\Prestadore;
 use Illuminate\Http\Request;
 
 class PackageController extends Controller
@@ -26,7 +29,10 @@ class PackageController extends Controller
      */
     public function create()
     {
-        return view('packages.create');
+        $actividades = Actividade::all();
+        $atractivos = Atractivo::all();
+        $prestadore = Prestadore::all();
+        return view('packages.create', compact ('actividades', 'atractivos'), ['prestadores' => $prestadore]);
     }
 
     /**
@@ -38,6 +44,15 @@ class PackageController extends Controller
     public function store(Request $request)
     {
         $package = Package::create($request->all());
+
+        $id = request()->id_Actividad;
+        $package->actividades()->sync($id);
+
+        $idAtrac = request()->id_Atractivo;
+        $package->atractivos()->sync($idAtrac);
+
+        $RifPrestador = request()->RIF;
+        $package->prestadores()->sync($RifPrestador);
 
         return redirect()->route('packages.index')
           ->with('info', 'Paquete creado con exito');
@@ -62,7 +77,11 @@ class PackageController extends Controller
      */
     public function edit(Package $package)
     {
-        return view('packages.edit', compact ('package'));
+        $actividades = Actividade::all();
+        $atractivos = Atractivo::all();
+        $prestadore = Prestadore::all();
+
+        return view('packages.edit', compact('package', 'actividades', 'atractivos'), ['prestadores' => $prestadore]);
     }
 
     /**
@@ -75,6 +94,15 @@ class PackageController extends Controller
     public function update(Request $request, Package $package)
     {
         $package->update($request->all());
+
+        $id = request()->id_Actividad;
+        $package->actividades()->sync($id);
+
+        $idAtrac = request()->id_Atractivo;
+        $package->atractivos()->sync($idAtrac);
+
+        $RifPrestador = request()->RIF;
+        $package->prestadores()->sync($RifPrestador);
 
         return redirect()->route('packages.index')
           ->with('info', 'Paquete actualizado con exito');

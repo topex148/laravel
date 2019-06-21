@@ -17,4 +17,8 @@ class Atractivo extends Model
     public function foto(){
       return $this->hasMany(Foto::class);
     }
+
+    public function packages(){
+      return $this->belongsToMany(Package::class);
+    }
 }

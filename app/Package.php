@@ -14,4 +14,16 @@ class Package extends Model
   return $this->hasMany(Itinerario::class);
   }
 
+  public function atractivos(){
+    return $this->belongsToMany(Atractivo::class);
+  }
+
+  public function actividades(){
+    return $this->belongsToMany(Actividade::class);
+  }
+
+  public function prestadores(){
+    return $this->belongsToMany(Prestadore::class);
+  }
+
 }

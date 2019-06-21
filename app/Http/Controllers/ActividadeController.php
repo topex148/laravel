@@ -8,6 +8,7 @@ use Auth;
 use App\Atractivo;
 use App\Zona;
 use App\Foto;
+use App\Package;
 use File;
 use Storage;
 use Illuminate\Http\Request;
@@ -35,7 +36,8 @@ class ActividadeController extends Controller
    */
   public function create()
   {
-      return view('actividades.create');
+      $paquetes = Package::all();
+      return view('actividades.create', compact( 'paquetes'));
   }
 
   /**
@@ -47,6 +49,9 @@ class ActividadeController extends Controller
   public function store(Request $request)
   {
       $actividade = Actividade::create($request->all());
+
+      $id = request()->id_P_3;
+      $actividade->packages()->sync($id);
 
       return redirect()->route('actividades.index')
         ->with('info', 'Actividad creada con exito');
@@ -71,7 +76,9 @@ class ActividadeController extends Controller
    */
   public function edit(Actividade $actividade)
   {
-      return view('actividades.edit', compact ('actividade'));
+      $paquetes = Package::all();
+
+      return view('actividades.edit', compact ('actividade', 'paquetes'));
   }
 
   /**
@@ -84,6 +91,9 @@ class ActividadeController extends Controller
   public function update(Request $request, Actividade $actividade)
   {
       $actividade->update($request->all());
+
+      $id = request()->id_P_3;
+      $actividade->packages()->sync($id);
 
       return redirect()->route('actividades.index')
         ->with('info', 'Actividad actualizada con exito');

@@ -8,6 +8,7 @@ use Auth;
 use App\Atractivo;
 use App\Zona;
 use App\Foto;
+use App\Package;
 use File;
 use Storage;
 use Illuminate\Http\Request;
@@ -35,7 +36,8 @@ class AtractivoController extends Controller
   public function create()
   {
       $zonas = Zona::all();
-      return view('atractivos.create',  compact('zonas'));
+      $paquetes = Package::all();
+      return view('atractivos.create',  compact('zonas', 'paquetes'));
   }
 
   /**
@@ -47,6 +49,9 @@ class AtractivoController extends Controller
   public function store(Request $request)
   {
       $atractivo = Atractivo::create($request->all());
+
+      $id = request()->id_P_3;
+      $atractivo->packages()->sync($id);
 
       return redirect()->route('atractivos.index')
         ->with('info', 'Atractivo creado con exito');
@@ -71,8 +76,9 @@ class AtractivoController extends Controller
    */
   public function edit(Request $request , Atractivo $atractivo)
   {
+      $paquetes = Package::all();
       $zonas = Zona::all();
-      return view('atractivos.edit', compact ('atractivo', 'zonas'));
+      return view('atractivos.edit', compact ('atractivo', 'zonas', 'paquetes'));
   }
 
   /**
@@ -85,6 +91,9 @@ class AtractivoController extends Controller
   public function update(Request $request, Atractivo $atractivo)
   {
       $atractivo->update($request->all());
+
+      $id = request()->id_P_3;
+      $atractivo->packages()->sync($id);
 
       return redirect()->route('atractivos.index')
         ->with('info', 'Atractivo actualizado con exito');
