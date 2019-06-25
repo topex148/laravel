@@ -71,28 +71,28 @@
 									<div class="row">
 											<div class="col-md-4">
 												<label for="">Nombre completo *</label>
-												<input required type="text" value="{{old('nombre')}}" class="form-control" name="nombre" placeholder="Ingrese su Nombre">
+												<input id="nombre" required type="text" value="{{old('nombre')}}" class="form-control" name="nombre" placeholder="Ingrese su Nombre">
 											</div>
 											<div class="col-md-4">
 												<label for="">Dirección E-mail *</label>
-												<input required type="email" value="{{old('correo')}}" class="form-control" name="correo" placeholder="Ingrese su Correo">
+												<input id="correo" required type="email" value="{{old('correo')}}" class="form-control" name="correo" placeholder="Ingrese su Correo">
 											</div>
 											<div class="col-md-4">
 												<label for="">Teléfono </label>
 												<div class="fancy-form">
 												<i class="fa fa-phone-square"></i>
-												<input required type="text"  maxlength="10" class="form-control masked" data-format="(999) 999-9999" data-placeholder="X" value="{{old('Telefono')}}"  name="Telefono" placeholder="Ingrese su Numero de Telefono">
+												<input id="Telefono" required type="text"  maxlength="10" class="form-control masked" data-format="(999) 999-9999" data-placeholder="X" value="{{old('Telefono')}}"  name="Telefono" placeholder="Ingrese su Numero de Telefono">
 											</div>
 											</div>
 									</div>
 									<div class="row">
 											<div class="col-md-8">
 												<label for="">Asunto *</label>
-												<input required type="text" value="{{old('Asunto')}}" class="form-control" name="Asunto" placeholder="Ingrese el Asunto">
+												<input id="Asunto" required type="text" value="{{old('Asunto')}}" class="form-control" name="Asunto" placeholder="Ingrese el Asunto">
 											</div>
 											<div class="col-md-4">
 												<label for="">Área </label>
-												<select  required class="form-control pointer"  name="Area" value="{{old('Area')}}">
+												<select id="Area" required class="form-control pointer"  name="Area" value="{{old('Area')}}">
 													<option value="">--- Seleccionar ---</option>
 													<option value="Turista">Turista</option>
 													<option value="Prestador de Servicio">Prestador de Servicio</option>
@@ -103,14 +103,14 @@
 									<div class="row">
 											<div class="col-md-12">
 												<label for="contact:message">Mensaje *</label>
-												<textarea required maxlength="10000" rows="8"  value="{{old('Mensaje')}}" class="form-control" name="Mensaje" placeholder="Ingrese el Mensaje"></textarea>
+												<textarea id="Mensaje" required maxlength="10000" rows="8"  value="{{old('Mensaje')}}" class="form-control" name="Mensaje" placeholder="Ingrese el Mensaje"></textarea>
 											</div>
 									</div>
 									<div class="row">
 										<div class="col-md-12">
 											<!-- custom file upload -->
 										<label for="">Archivo</label>
-										<input class="custom-file-upload"  type="file" name="archivo"  data-btn-text="Seleccionar Archivo" />
+										<input id="archivo" class="custom-file-upload"  type="file" name="archivo"  data-btn-text="Seleccionar Archivo" />
 										<small class="text-muted block">Tamaño de Archivo Maximo: 10Mb (zip/pdf/jpg/png)</small>
 
 									</div>

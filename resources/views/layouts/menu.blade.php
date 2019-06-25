@@ -400,11 +400,12 @@
 
 
 	<!-- PRELOADER -->
-	<div id="preloader">
+<!--	<div id="preloader">
 		<div class="inner">
 			<span class="loader"></span>
 		</div>
-	</div><!-- /PRELOADER -->
+	</div> --><!-- /PRELOADER -->
+
 
 
 	<!--<script src="js/jquery-3.3.1.min.js"></script>-->
