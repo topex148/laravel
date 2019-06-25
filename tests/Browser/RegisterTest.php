@@ -20,10 +20,12 @@ class RegisterTest extends DuskTestCase
             $browser->visit('/register')
                     ->assertSee('Registrar')
                     ->value('#name', 'Joe Schmoe')
-                    ->value('#email', 'joe@example.com')
+                    ->value('#email', 'joess@example.com')
                     ->value('#password', '12345678')
                     ->value('#password-confirm', '12345678')
-                    ->press('Registrar');
+                    ->screenshot('register')
+                    ->press('Registrar')
+                    ->screenshot('registro');
 
         });
     }

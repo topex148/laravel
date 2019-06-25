@@ -130,7 +130,7 @@ Route::get('/servicioLista/{prestadore}/prestador/contactar', 'ControladorPrinci
 Route::post('/servicioLista/{prestadore}/prestador/contactar', 'ControladorPrincipal@contactarG');
 Route::get('/servicioLista/{prestadore}/prestador/itinerario', 'ControladorPrincipal@createItine');
 Route::post('/servicioLista/{prestadore}/prestador/itinerario', 'ControladorPrincipal@storeItine');
-Route::get('/contacto', 'ControladorPrincipal@contacto');
+Route::get('/contacto', 'ControladorPrincipal@contacto')->name('contactos');
 Route::post("/contacto", "ControladorPrincipal@contactoGuardar");
 Route::get('/galeria', 'ControladorPrincipal@galeria');
 Route::get('/plan', 'PaymentsController@planPromocion');

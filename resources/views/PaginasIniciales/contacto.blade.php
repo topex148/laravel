@@ -120,7 +120,7 @@
 
 								<div class="row">
 									<div class="col-md-12">
-										<button type="submit" class="btn btn-primary"><i class="fa fa-check"></i> ENVIAR MENSAJE</button>
+										<button id="submit" type="submit" class="btn btn-primary"><i class="fa fa-check"></i> ENVIAR MENSAJE</button>
 									</div>
 								</div>
 							</form>

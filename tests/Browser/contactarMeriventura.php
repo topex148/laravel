@@ -22,10 +22,11 @@ class contactarMeriventura extends DuskTestCase
                     ->value('#correo', 'joe@example.com')
                     ->value('#Telefono', '(999) 999-9999')
                     ->value('#Asunto', 'Prueba')
-                    ->value('#Area', 'Contacto')
+                    ->select('Area', 'Turista')
                     ->value('#Mensaje', 'hola, es una prueba')
                     ->attach('#archivo', __DIR__.'/storage/ciclista1.jpg')
-                    ->click('button[type="submit"]');
+                    ->screenshot('contacto')
+                    ->press('#submit');
         });
     }
 }
