@@ -20,11 +20,11 @@
                   @endcan
 
                   @can('zonas.invoice')
-                      <a href="{{route('zonas.invoice')}}" class="pull-right btn btn-primary btn-sm"><i class="fa fa-check"></i> Reporte </a>
+                      <a dusk="login-button" href="{{route('zonas.invoice')}}" class="pull-right btn btn-primary btn-sm"><i class="fa fa-check"></i> Reporte </a>
                   @endcan
 
                   @can('zonas.invoice')
-                      <a href="{{route('zonas.invoiceDownload')}}" class="pull-right btn btn-primary btn-sm"><i class="fa fa-check"></i>Descargar Reporte </a>
+                      <a  href="{{route('zonas.invoiceDownload')}}" class="pull-right btn btn-primary btn-sm"><i class="fa fa-check"></i>Descargar Reporte </a>
                   @endcan
 
                 </div>

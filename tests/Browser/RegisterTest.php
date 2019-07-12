@@ -2,6 +2,7 @@
 
 namespace Tests\Browser;
 
+use App\User;
 use Tests\DuskTestCase;
 use Laravel\Dusk\Browser;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
@@ -20,7 +21,7 @@ class RegisterTest extends DuskTestCase
             $browser->visit('/register')
                     ->assertSee('Registrar')
                     ->value('#name', 'Joe Schmoe')
-                    ->value('#email', 'joess@example.com')
+                    ->value('#email', 'jasi@example.com')
                     ->value('#password', '12345678')
                     ->value('#password-confirm', '12345678')
                     ->screenshot('register')

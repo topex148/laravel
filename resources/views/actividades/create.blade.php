@@ -32,20 +32,20 @@
 											<div class="col-md-4">
 	                      <h5>Titulo</h5>
 	                      <!-- date picker -->
-	                      <input type="text" value="{{old('titulo')}}" class="form-control" name="titulo"  placeholder="Ingrese el Titulo">
+	                      <input id="titulo" type="text" value="{{old('titulo')}}" class="form-control" name="titulo"  placeholder="Ingrese el Titulo">
 
 	                    </div>
 
 	                    <div class="col-md-4">
 	                      <h5>Descripcion</h5>
 	                      <!-- date picker -->
-	                      <input type="text" value="{{old('descripcion')}}" class="form-control" name="descripcion"  placeholder="Ingrese la Descripcion">
+	                      <input id="descripcion" type="text" value="{{old('descripcion')}}" class="form-control" name="descripcion"  placeholder="Ingrese la Descripcion">
 
 	                    </div>
 
 											<div class="col-md-4"><!-- select -->
 												<h5>Id de paquete</h5>
-													<select class="form-control" name="id_P_3" value="{{old('id_P_3')}}">
+													<select id="id_P_3" class="form-control" name="id_P_3" value="{{old('id_P_3')}}">
 															<option value="">--- Seleccione el id del paquete ---</option>
 															@foreach ($paquetes as $paquete)
 																<option value="{{$paquete->id}}">Paquete Número: {{$paquete->id}}</option>
@@ -62,7 +62,7 @@
 								<div class="row">
 									<div class="col-md-12">
 										  <br /><br />
-										<button type="submit" class="btn btn-primary"><i class="fa fa-check"></i> Registrar</button>
+										<button id="submitAct" type="submit" class="btn btn-primary"><i class="fa fa-check"></i> Registrar</button>
 									</div>
 								</div>
 							</form>

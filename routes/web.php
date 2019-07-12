@@ -232,7 +232,7 @@ Route::middleware(['auth'])->group(function(){
   //Actividades
 
   Route::post('actividades/store', 'ActividadeController@store')->name('actividades/.store')
-        ->middleware('permission:actividades/.create');
+        ->middleware('permission:actividades.create');
 
   Route::get('actividades', 'ActividadeController@index')->name('actividades.index')
         ->middleware('permission:actividades.index');

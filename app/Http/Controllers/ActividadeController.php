@@ -48,6 +48,7 @@ class ActividadeController extends Controller
    */
   public function store(Request $request)
   {
+      
       $actividade = Actividade::create($request->all());
 
       $id = request()->id_P_3;

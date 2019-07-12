@@ -56,7 +56,7 @@
             <div class="card-block">
               <a href='{{asset('zonaLista/'.$notes->id.'/zona')}}' class="text-black fs-20 mb-20 block">Zona {{$notes->id}}: {{$notes->nombre}}</a>
               <p class="fs-15 mb-20">{{$notes->Descripcion_Zona}}</p>
-              <a href='{{asset('zonaLista/'.$notes->id.'/zona')}}' class="text-muted fs-15">VER ZONA</a>
+              <a dusk="login-button" href='{{asset('zonaLista/'.$notes->id.'/zona')}}' class="text-muted fs-15">VER ZONA</a>      
             </div>
 
           </div>

@@ -55,14 +55,14 @@
 						</div>
 
             <div class="card-block">
-              <a href='{{asset('atractivoLista/'.$notes->id.'/atractivo')}}' class="text-black fs-20 mb-20 block">Atractivo {{$notes->id}}: {{$notes->Nombre_Atractivo}}</a>
+              <a id="atractivo" href='{{asset('atractivoLista/'.$notes->id.'/atractivo')}}' class="text-black fs-20 mb-20 block">Atractivo {{$notes->id}}: {{$notes->Nombre_Atractivo}}</a>
               <p class="fs-15 mb-20">{{$notes->Descripcion_Atractivo}}</p>
 							@foreach ($zonas as $zona)
 							@if (($notes->zona_id) == ($zona->id))
 							<h4>Pertenece a la Zona {{$notes->zona_id}}: {{$zona->nombre}}</h4>
 							@endif
 							@endforeach
-              <a href='{{asset('atractivoLista/'.$notes->id.'/atractivo')}}' class="text-muted fs-15">VER ATRACTIVO</a>
+              <a  href='{{asset('atractivoLista/'.$notes->id.'/atractivo')}}' class="text-muted fs-15">VER ATRACTIVO</a>
             </div>
 
           </div>

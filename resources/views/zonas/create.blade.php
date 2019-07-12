@@ -32,7 +32,7 @@
 											<div class="col-md-6">
 	                      <h5>Nombre</h5>
 	                      <!-- date picker -->
-	                      <input type="text" value="{{old('nombre')}}" class="form-control"  name="nombre"
+	                      <input id="nombre" type="text" value="{{old('nombre')}}" class="form-control"  name="nombre"
 												 placeholder="Ingrese el Nombre">
 
 	                    </div>
@@ -40,7 +40,7 @@
 	                    <div class="col-md-6">
 	                      <h5>Descripcion de la Zona</h5>
 	                      <!-- date picker -->
-	                      <input type="text" value="{{old('Descripcion_Zona')}}" class="form-control" name="Descripcion_Zona"
+	                      <input id="descripcion" type="text" value="{{old('Descripcion_Zona')}}" class="form-control" name="Descripcion_Zona"
 												 placeholder="Ingrese la Descripcion de la Zona">
 
 	                    </div>
@@ -53,7 +53,7 @@
 								<div class="row">
 									<div class="col-md-12">
 										  <br /><br />
-										<button type="submit" class="btn btn-primary"><i class="fa fa-check"></i> Registrar</button>
+										<button id="submit" type="submit" class="btn btn-primary"><i class="fa fa-check"></i> Registrar</button>
 									</div>
 								</div>
 							</form>
