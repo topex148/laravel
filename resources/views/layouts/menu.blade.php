@@ -93,7 +93,7 @@
 
 
 						<!-- Logo -->
-						<a  href="http://localhost/LaTesis/public/inicio" class="logo float-left" href="index.html">
+						<a  href="http://localhost:8080/LaTesis/public/inicio" class="logo float-left" href="index.html">
 							<img src="{{ asset("assets/images/_smarty/logo-126x80.png") }}" alt="" />
 						</a>
 
@@ -133,7 +133,7 @@
 
 									<li class="dropdown"><!-- NOSOTROS -->
 
-										<a  href="http://localhost/LaTesis/public/nosotros">
+										<a  href="http://localhost:8080/LaTesis/public/nosotros">
 											<span class="bordered">Nosotros</span>
 										</a>
 
@@ -141,7 +141,7 @@
 
 									<li class="dropdown"><!-- ZONAS -->
 
-										<a  href="http://localhost/LaTesis/public/zonaLista">
+										<a  href="http://localhost:8080/LaTesis/public/zonaLista">
 											<span class="bordered">Zonas</span>
 										</a>
 
@@ -149,7 +149,7 @@
 
 									<li class="nav-link" class="dropdown"><!-- ATRACTIVOS -->
 
-										<a  href="http://localhost/LaTesis/public/atractivoLista">
+										<a  href="http://localhost:8080/LaTesis/public/atractivoLista">
 											<span class="bordered">Atractivos</span>
 										</a>
 
@@ -157,7 +157,7 @@
 
 									<li class="dropdown"><!-- ACTIVIDADES -->
 
-										<a  href="http://localhost/LaTesis/public/actividadLista">
+										<a  href="http://localhost:8080/LaTesis/public/actividadLista">
 											<span class="bordered">Actividades</span>
 										</a>
 
@@ -165,7 +165,7 @@
 
 									<li class="dropdown"><!-- SERVICIOS -->
 
-										<a  href="http://localhost/LaTesis/public/servicioLista">
+										<a  href="http://localhost:8080/LaTesis/public/servicioLista">
 											<span class="bordered">Servicios</span>
 										</a>
 
@@ -173,7 +173,7 @@
 
 									<li class="dropdown"><!-- Planes -->
 
-										<a  href="http://localhost/LaTesis/public/plan">
+										<a  href="http://localhost:8080/LaTesis/public/plan">
 											<span class="bordered">Planes</span>
 										</a>
 
@@ -181,7 +181,7 @@
 
 									<li class="dropdown"><!-- GALERIA -->
 
-										<a  href="http://localhost/LaTesis/public/galeria">
+										<a  href="http://localhost:8080/LaTesis/public/galeria">
 											<span class="bordered">Galeria</span>
 										</a>
 
@@ -189,7 +189,7 @@
 
 									<li class="dropdown"><!-- CONTACTO -->
 
-										<a  href="http://localhost/LaTesis/public/contacto">
+										<a  href="http://localhost:8080/LaTesis/public/contacto">
 											<span class="bordered">Contacto</span>
 										</a>
 
@@ -225,13 +225,13 @@
 											<ul class="dropdown-menu">
 
 												<li class="dropdown">
-												<a  href="http://localhost/LaTesis/public/inicio">
+												<a  href="http://localhost:8080/LaTesis/public/inicio">
 													<span class="bordered">Menu Principal</span>
 												</a>
 												</li>
 
 												<li class="dropdown">
-												<a  href="http://localhost/LaTesis/public/home">
+												<a  href="http://localhost:8080/LaTesis/public/home">
 													<span class="bordered">Menu Usuario</span>
 												</a>
 												</li>
@@ -421,6 +421,6 @@
 		<!-- PAGE LEVEL SCRIPTS -->
 		<script type="text/javascript" src="{{ asset("assets/js/view/demo.shop.js") }}"></script>
 
-		
+
 </body>
 </html>

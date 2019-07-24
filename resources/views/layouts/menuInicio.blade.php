@@ -82,7 +82,7 @@
 										@can('users.index')
 										<li class="dropdown"><!-- Factura STRIPE -->
 
-											<a  href="http://localhost/LaTesis/public/invoices">
+											<a  href="http://localhost:8080/LaTesis/public/invoices">
 												<span class="bordered">Factura Stripe</span>
 											</a>
 
@@ -198,13 +198,13 @@
 														<ul class="dropdown-menu">
 
 															<li class="dropdown">
-															<a  href="http://localhost/LaTesis/public/inicio">
+															<a  href="http://localhost:8080/LaTesis/public/inicio">
 																<span class="bordered">Menu Principal</span>
 															</a>
 															</li>
 
 															<li class="dropdown">
-															<a  href="http://localhost/LaTesis/public/home">
+															<a  href="http://localhost:8080/LaTesis/public/home">
 																<span class="bordered">Menu Usuario</span>
 															</a>
 															</li>

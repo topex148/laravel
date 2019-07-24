@@ -16,6 +16,7 @@ class CreateAtractivosTable extends Migration
         Schema::create('atractivos', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('zona_id');
+            $table->foreign('zona_id')->references('id')->on('zonas')->onDelete('cascade');
             $table->string('Nombre_Atractivo');
             $table->string('Ubicacion');
             $table->text('Descripcion_Atractivo');
