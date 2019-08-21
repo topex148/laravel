@@ -37,7 +37,7 @@
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/home') }}">
+                <a class="navbar-brand" href="{{ url('/inicio') }}">
                     <img src="{{ asset("assets/images/_smarty/logo-126x39.png") }}" alt="" />
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
@@ -186,8 +186,7 @@
     		<!-- PAGE LEVEL SCRIPTS -->
     		<script type="text/javascript" src="{{ asset("assets/js/view/demo.shop.js") }}"></script>
 
-        <!-- STYLESWITCHER - REMOVE -->
-    		<script async type="text/javascript" src="{{ asset("demo_files/styleswitcher/styleswitcher.js") }}"></script>
+
 
 </body>
 </html>
