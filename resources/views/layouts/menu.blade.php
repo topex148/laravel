@@ -93,7 +93,7 @@
 
 
 						<!-- Logo -->
-						<a  href="http://localhost:8080/LaTesis/public/inicio" class="logo float-left" href="index.html">
+						<a  href="{{route('inicio')}}" class="logo float-left" href="index.html">
 							<img src="{{ asset("assets/images/_smarty/logo-126x80.png") }}" alt="" />
 						</a>
 
@@ -133,7 +133,7 @@
 
 									<li class="dropdown"><!-- NOSOTROS -->
 
-										<a  href="http://localhost:8080/LaTesis/public/nosotros">
+										<a  href="{{route('nosotros')}}">
 											<span class="bordered">Nosotros</span>
 										</a>
 
@@ -141,7 +141,7 @@
 
 									<li class="dropdown"><!-- ZONAS -->
 
-										<a  href="http://localhost:8080/LaTesis/public/zonaLista">
+										<a  href="{{route('zonas')}}">
 											<span class="bordered">Zonas</span>
 										</a>
 
@@ -149,7 +149,7 @@
 
 									<li class="nav-link" class="dropdown"><!-- ATRACTIVOS -->
 
-										<a  href="http://localhost:8080/LaTesis/public/atractivoLista">
+										<a  href="{{route('atractivos')}}">
 											<span class="bordered">Atractivos</span>
 										</a>
 
@@ -157,7 +157,7 @@
 
 									<li class="dropdown"><!-- ACTIVIDADES -->
 
-										<a  href="http://localhost:8080/LaTesis/public/actividadLista">
+										<a  href="{{route('actividades')}}">
 											<span class="bordered">Actividades</span>
 										</a>
 
@@ -165,7 +165,7 @@
 
 									<li class="dropdown"><!-- SERVICIOS -->
 
-										<a  href="http://localhost:8080/LaTesis/public/servicioLista">
+										<a  href="{{route('servicios')}}">
 											<span class="bordered">Servicios</span>
 										</a>
 
@@ -173,7 +173,7 @@
 
 									<li class="dropdown"><!-- Planes -->
 
-										<a  href="http://localhost:8080/LaTesis/public/plan">
+										<a  href="{{route('planes')}}">
 											<span class="bordered">Planes</span>
 										</a>
 
@@ -181,7 +181,7 @@
 
 									<li class="dropdown"><!-- GALERIA -->
 
-										<a  href="http://localhost:8080/LaTesis/public/galeria">
+										<a  href="{{route('galeria')}}">
 											<span class="bordered">Galeria</span>
 										</a>
 
@@ -189,7 +189,7 @@
 
 									<li class="dropdown"><!-- CONTACTO -->
 
-										<a  href="http://localhost:8080/LaTesis/public/contacto">
+										<a  href="{{route('contactos')}}">
 											<span class="bordered">Contacto</span>
 										</a>
 
