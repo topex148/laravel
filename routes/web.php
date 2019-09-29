@@ -23,6 +23,11 @@ Route::get('/', function () {
 });
 
 
+Route::get('planesPrestador/exitosa/guardar1', 'PerfilPrestadorController@storePlan')->name('prestador.guardar');
+
+Route::get('planesPrestador/exitosa/guardar2', 'PerfilPrestadorController@storePlan1')->name('prestador.guardar1');
+
+
 //Suspender Prestador
 
 Route::get('prestadores/suspender', 'PrestadoreController@suspender')->name('prestadores.suspender')
@@ -447,7 +452,15 @@ Route::middleware(['auth'])->group(function(){
 
   Route::get('planesPrestador', 'PerfilPrestadorController@planes')->name('prestador.planes');
 
-  Route::get('planesPrestador/exitosa', 'PerfilPrestadorController@planesExito')->name('prestador.planesExito');
+  Route::get('planesPrestador/exitosa1', 'PerfilPrestadorController@planesExito1')->name('prestador.planesExito1');
+
+  Route::get('planesPrestador/exitosa2', 'PerfilPrestadorController@planesExito2')->name('prestador.planesExito2');
+
+  Route::get('planesPrestador/exitosa3', 'PerfilPrestadorController@planesExito3')->name('prestador.planesExito3');
+
+  Route::get('planesPrestador/exitosa4', 'PerfilPrestadorController@planesExito4')->name('prestador.planesExito4');
+
+
 
   Route::get('planesPrestador/exitosa/descargar', 'PerfilPrestadorController@descargar')->name('prestador.planilla');
 

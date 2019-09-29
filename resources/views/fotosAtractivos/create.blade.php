@@ -54,7 +54,7 @@
 											<select class="form-control" name="id_Atrac" value="{{old('id_Atrac')}}">
 													<option value="">--- Seleccione el id del atractivo ---</option>
 													@foreach ($atractivos as $atractivo)
-														<option value="{{$atractivo->id}}">{{$atractivo->id}}</option>
+														<option value="{{$atractivo->id}}">{{$atractivo->id}}--{{$atractivo->Nombre_Atractivo}}</option>
 													@endforeach
 											</select>
 									</div>

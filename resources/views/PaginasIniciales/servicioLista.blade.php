@@ -48,7 +48,7 @@
   									<p>{{$notes->DescripcionPrestador}}</p>
   									<cite>
   										<a href="servicioLista/{{$notes->RIF}}/prestador">{{$notes->Nombre}}</a>
-  										<span>{{$notes->Telefono}}</span>
+  										<!--<span>{{$notes->Telefono}}</span>-->
   									</cite>
   								</div>
   							</div>

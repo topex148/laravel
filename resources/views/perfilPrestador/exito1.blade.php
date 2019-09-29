@@ -24,7 +24,7 @@
       </br>
 
         <div class="text-center">
-        <a href="{{route('prestador.guardar')}}" class="btn btn-3d btn-xlg btn-red">
+        <a href="{{route('prestador.guardar1')}}" class="btn btn-3d btn-xlg btn-red">
           SUBSCRIPCION EXITOSA
           <span class="block font-lato">Presiona este boton para continuar!</span>
         </a>

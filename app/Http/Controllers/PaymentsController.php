@@ -61,7 +61,7 @@ class PaymentsController extends Controller
               }
             }
 
-            return redirect()->route('prestador.planesExito');
+            return redirect()->route('prestador.planesExito1');
         } catch (\Exception $ex) {
             return $ex->getMessage();
         }
@@ -90,7 +90,7 @@ class PaymentsController extends Controller
               }
             }
 
-            return redirect()->route('prestador.planesExito');
+            return redirect()->route('prestador.planesExito2');
 
         } catch (\Exception $ex) {
             return $ex->getMessage();
@@ -107,7 +107,7 @@ class PaymentsController extends Controller
             $user = User::find($id);
             $user->newSubscription('PublicidadMensual', 'mes')->create($request->stripeToken);
 
-            return redirect()->route('prestador.planesExito');
+            return redirect()->route('prestador.planesExito3');
         } catch (\Exception $ex) {
             return $ex->getMessage();
         }
@@ -123,7 +123,7 @@ class PaymentsController extends Controller
             $user = User::find($id);
             $user->newSubscription('PublicidadAnual', 'año')->create($request->stripeToken);
 
-            return redirect()->route('prestador.planesExito');
+            return redirect()->route('prestador.planesExito4');
 
         } catch (\Exception $ex) {
             return $ex->getMessage();

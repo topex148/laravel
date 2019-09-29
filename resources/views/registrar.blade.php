@@ -27,19 +27,19 @@
 
         <div class="row">
           <div class="col-sm-4">
-            <a href="http://localhost/LaTesis/public/registro/prestador" class="btn btn-default btn-featured btn-inverse">
+            <a href="{{route('registroPrestador')}}" class="btn btn-default btn-featured btn-inverse">
               <span>PRESTADOR</span>
               <i class="et-bike"></i>
             </a>
           </div>
           <div class="col-sm-4">
-            <a href="http://localhost/LaTesis/public/registro/turista" class="btn btn-danger btn-featured">
+            <a href="{{route('registroTurista')}}" class="btn btn-danger btn-featured">
               <span>TURISTA</span>
               <i class="et-flag"></i>
             </a>
           </div>
           <div class="col-sm-4">
-            <a href="http://localhost/LaTesis/public/home" class="btn btn-warning btn-featured">
+            <a href="{{route('home')}}" class="btn btn-warning btn-featured">
               <span>OTRO</span>
               <i class="et-tools-2"></i>
             </a>

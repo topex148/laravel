@@ -48,11 +48,68 @@ class PerfilPrestadorController extends Controller
     return view("perfilPrestador.planes", compact ('id'), [ 'planes' => $plane, 'suscripciones' => $suscripcione, 'prestadores' => $prestadore]);
   }
 
-  public function planesExito()
+  public function planesExito1()
   {
 
     return view("perfilPrestador.exito");
   }
+
+  public function planesExito2()
+  {
+
+    return view("perfilPrestador.exito1");
+  }
+
+  public function planesExito3()
+  {
+
+    return view("perfilPrestador.exito2");
+  }
+
+  public function planesExito4()
+  {
+
+    return view("perfilPrestador.exito3");
+  }
+
+
+
+  public function storePlan()
+  {
+
+    $id = Auth::user()->id;
+    $prueba= Prestadore::onlyTrashed()->where('userId', $id)->restore();
+
+      $prestadores = Prestadore::all();
+      foreach ($prestadores as $prestadore){
+        if (($prestadore->userId) == (Auth::user()->id)) {
+          $post = Prestadore::find($prestadore->RIF);
+          $post->Fecha_Final = date('Y-m-d',strtotime(date("Y-m-d", time()) . " + 1 month"));
+          $post->save();
+          return redirect()->route('home');
+        }
+      }
+
+  }
+
+  public function storePlan1()
+  {
+
+    $id = Auth::user()->id;
+    $prueba= Prestadore::onlyTrashed()->where('userId', $id)->restore();
+
+      $prestadores = Prestadore::all();
+      foreach ($prestadores as $prestadore){
+        if (($prestadore->userId) == (Auth::user()->id)) {
+          $post = Prestadore::find($prestadore->RIF);
+          $post->Fecha_Final = date('Y-m-d',strtotime(date("Y-m-d", time()) . " + 1 year"));
+          $post->save();
+          return redirect()->route('home');
+        }
+      }
+
+  }
+
 
   public function editPrestador(Prestadore $prestadore)
   {
