@@ -1,7 +1,7 @@
 @extends('layouts.menu')
 
 @section('content')
-<div class="container">
+
 <!-- OWL SLIDER -->
     <section id="slider">
 
@@ -248,5 +248,5 @@
             				</div>
             			</section>
             			<!-- /CONTACT -->
-</div>
+
 @endsection

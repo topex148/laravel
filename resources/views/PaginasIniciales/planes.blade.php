@@ -18,154 +18,53 @@
 
 			<!-- /FEATURES -->
 
-			<!-- FEATURED -->
-
-				<div class="container">
-					<div class="row">
-
-						<div class="col-lg-12 col-md-12 col-sm-8">
-							<h2 class="owl-featured b-0"><strong>PLANES DE </strong> ALOJAMIENTO Y <strong>PROMOCION</strong></h2>
-							</br>
-							<div class="owl-carousel featured m-0 owl-padding-10" data-plugin-options='{"loop":true,"singleItem": false, "items": "4", "stopOnHover":false, "autoPlay":4000, "autoHeight": false, "navigation": true, "pagination": false}'>
 
 
-								<!-- item -->
-								<div class="shop-item m-1">
 
-									<div class="thumbnail">
-										<!-- product image(s) -->
-										<a class="shop-item-image" >
-											<img class="img-fluid" src="{{asset('assets/images/publicidad/PlanDeAlojamiento.png')}}" style="width:300px; height:450px;" alt="shop first image" />
-										</a>
-										<!-- /product image(s) -->
+			<div class="container">
+				<div class="row">
+					<div class="owl-carousel featured m-0 owl-padding-10" data-plugin-options='{"loop":true,"singleItem": false, "items": "4", "stopOnHover":false, "autoPlay":4000, "autoHeight": false, "navigation": true, "pagination": false}'>
+				@foreach ($planes as $notes)
 
-									</div>
+				<!-- item -->
+				<div class="shop-item m-1">
 
-									<div class="shop-item-summary text-center">
-										<h3>Plan Mensual</h3>
-										<h2>Este plan te permite alojarte por un mes en esta plataforma.</h2>
+					<div class="thumbnail">
+						<!-- product image(s) -->
+						<a class="shop-item-image" >
+							<img class="img-fluid" src="{{asset('storage/imagen/plan/'.$notes->imagen)}}" style="width:300px; height:450px;"  />
+						</a>
+						<!-- /product image(s) -->
 
-										<!-- rating -->
-										<div class="shop-item-rating-line">
-											<div class="rating rating-5 fs-13"><!-- rating-0 ... rating-5 --></div>
-										</div>
-										<!-- /rating -->
+					</div>
 
-										<!-- price -->
-										<div class="shop-item-price">
+					<div class="shop-item-summary text-center">
+						<h3>Plan: {{$notes->name}} </h3>
+						<h2>{{$notes->descripcion}}</h2>
 
-											$10
-										</div>
-										<!-- /price -->
-									</div>
-
-								</div>
-								<!-- /item -->
-
-								<!-- item -->
-								<div class="shop-item m-2">
-
-									<div class="thumbnail">
-										<!-- product image(s) -->
-										<a class="shop-item-image" >
-											<img class="img-fluid" src="{{asset('assets/images/publicidad/PlanDeAlojamiento.png')}}" style="width:300px; height:450px;" alt="shop first image" />
-										</a>
-										<!-- /product image(s) -->
-
-									</div>
-
-									<div class="shop-item-summary text-center">
-										<h3>Plan Anual</h3>
-										<h2>Este plan te permite alojarte por un año en esta plataforma.</h2>
-
-										<!-- rating -->
-										<div class="shop-item-rating-line">
-											<div class="rating rating-5 fs-13"><!-- rating-0 ... rating-5 --></div>
-										</div>
-										<!-- /rating -->
-
-										<!-- price -->
-										<div class="shop-item-price">
-
-											$100
-										</div>
-										<!-- /price -->
-									</div>
-
-								</div>
-								<!-- /item -->
-
-								<!-- item -->
-								<div class="shop-item m-3">
-
-									<div class="thumbnail">
-										<!-- product image(s) -->
-										<a class="shop-item-image" >
-											<img class="img-fluid" src="{{asset('assets/images/publicidad/PlanDePromocion.png')}}" style="width:300px; height:450px;" alt="shop first image" />
-										</a>
-										<!-- /product image(s) -->
-
-									</div>
-
-									<div class="shop-item-summary text-center">
-										<h3>Plan Mensual</h3>
-										<h2>Este plan te permite alojarte por un mes en esta plataforma.</h2>
-
-										<!-- rating -->
-										<div class="shop-item-rating-line">
-											<div class="rating rating-5 fs-13"><!-- rating-0 ... rating-5 --></div>
-										</div>
-										<!-- /rating -->
-
-										<!-- price -->
-										<div class="shop-item-price">
-
-											$10
-										</div>
-										<!-- /price -->
-									</div>
-
-								</div>
-								<!-- /item -->
-
-								<!-- item -->
-								<div class="shop-item m-4">
-
-									<div class="thumbnail">
-										<!-- product image(s) -->
-										<a class="shop-item-image" >
-											<img class="img-fluid" src="{{asset('assets/images/publicidad/PlanDePromocion.png')}}" style="width:300px; height:450px;" alt="shop first image" />
-										</a>
-										<!-- /product image(s) -->
-
-									</div>
-
-									<div class="shop-item-summary text-center">
-										<h3>Plan Anual</h3>
-										<h2>Este plan te permite alojarte por un año en esta plataforma.</h2>
-
-										<!-- rating -->
-										<div class="shop-item-rating-line">
-											<div class="rating rating-5 fs-13"><!-- rating-0 ... rating-5 --></div>
-										</div>
-										<!-- /rating -->
-
-										<!-- price -->
-										<div class="shop-item-price">
-
-											$100
-										</div>
-										<!-- /price -->
-									</div>
-
-								</div>
-								<!-- /item -->
-
+						<!-- rating -->
+						<div class="shop-item-rating-line">
+							<div class="rating rating-5 fs-13"><!-- rating-0 ... rating-5 --></div>
 						</div>
+						<!-- /rating -->
+
+						<!-- price -->
+						<div class="shop-item-price">
+
+							Precio: {{$notes->precio}}$
 						</div>
+						<!-- /price -->
+					</div>
 
 				</div>
+				<!-- /item -->
+
+				@endforeach
+	      </div>
 				</div>
+				</div>
+
+
 
 </section>
 

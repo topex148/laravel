@@ -145,8 +145,10 @@ class ControladorPrincipal extends Controller
 
   public function servicio(Request $request , Prestadore $prestadore)
   {
+    $paquete = Package::all();
     $foto = Foto::all();
-    return view("PaginasIniciales/servicio", compact('prestadore'), ['fotos' => $foto]);
+    
+    return view("PaginasIniciales/servicio", compact('prestadore'), ['fotos' => $foto, 'paquetes' => $paquete]);
   }
 
   public function contactarP(Request $request, Prestadore $prestadore)

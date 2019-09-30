@@ -51,7 +51,7 @@
 											<select class="form-control" name="id_Actividad" value="{{old('id_Actividad')}}">
 													<option value="">--- Selecccionar para cambiar ---</option>
 													@foreach ($actividades as $actividade)
-														<option value="{{$actividade->id}}">Actividad Número: {{$actividade->id}}</option>
+														<option value="{{$actividade->id}}">Actividad Número: {{$actividade->id}}--{{$actividade->titulo}}</option>
 													@endforeach
 											</select>
 									</div>
@@ -61,7 +61,7 @@
 											<select class="form-control" name="id_Atractivo" value="{{old('id_Atractivo')}}">
 													<option value="">--- Selecccionar para cambiar ---</option>
 													@foreach ($atractivos as $atractivo)
-														<option value="{{$atractivo->id}}">Actividad Número: {{$atractivo->id}}</option>
+														<option value="{{$atractivo->id}}">Actividad Número: {{$atractivo->id}}--{{$atractivo->Nombre_Atractivo}}</option>
 													@endforeach
 											</select>
 									</div>
@@ -71,7 +71,7 @@
 											<select class="form-control" name="RIF" value="{{old('RIF')}}">
 													<option value="">--- Selecccionar para cambia ---</option>
 													@foreach ($prestadores as $prestadore)
-														<option value="{{$prestadore->RIF}}">Prestador Número: {{$prestadore->RIF}}</option>
+														<option value="{{$prestadore->RIF}}">Prestador Número: {{$prestadore->RIF}}--{{$prestadore->Nombre}}</option>
 													@endforeach
 											</select>
 									</div>
